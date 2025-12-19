@@ -66,5 +66,3 @@ export const localeSlugType = defineType({
     fieldset: lang.isDefault ? undefined : 'translations',
   })),
 })
-
-
