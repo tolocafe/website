@@ -1,6 +1,7 @@
 import { Outlet, redirect, data } from "react-router";
 import type { Route } from "./+types/locale-layout";
 import { Header } from "~/components/Header";
+import { Footer } from "~/components/Footer";
 import {
 	isValidLocale,
 	detectLocaleFromHeader,
@@ -16,7 +17,8 @@ import {
  * 1. Validating the locale parameter
  * 2. Providing locale context to child routes
  * 3. Rendering the Header with locale navigation
- * 4. Adding hreflang meta tags for SEO
+ * 4. Rendering the Footer with navigation links
+ * 5. Adding hreflang meta tags for SEO
  */
 
 export function loader({ params, request }: Route.LoaderArgs) {
@@ -53,10 +55,11 @@ export function meta({ data }: Route.MetaArgs) {
 
 export default function LocaleLayout({ loaderData }: Route.ComponentProps) {
 	return (
-		<>
+		<div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
 			<Header />
 			<Outlet context={{ locale: loaderData.locale }} />
-		</>
+			<Footer />
+		</div>
 	);
 }
 

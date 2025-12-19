@@ -12,7 +12,7 @@ export default [
 	// Locale-prefixed routes
 	route(":locale", "routes/locale-layout.tsx", [
 		index("routes/home.tsx"),
-		// Add more locale-aware routes here, e.g.:
-		// route("about", "routes/about.tsx"),
+		route("blog", "routes/blog.tsx"),
+		route("contact", "routes/contact.tsx"),
 	]),
 ] satisfies RouteConfig;
