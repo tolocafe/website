@@ -22,7 +22,6 @@ globalStyle('*:not(dialog)', {
 globalStyle('html', {
   '@media': {
     '(prefers-reduced-motion: no-preference)': {
-      // @ts-expect-error - interpolate-size is a valid CSS property
       interpolateSize: 'allow-keywords',
     },
   },
@@ -56,12 +55,10 @@ globalStyle('p, h1, h2, h3, h4, h5, h6', {
 
 /* 9. Improve line wrapping */
 globalStyle('p', {
-  // @ts-expect-error - text-wrap: pretty is valid CSS
   textWrap: 'pretty',
 })
 
 globalStyle('h1, h2, h3, h4, h5, h6', {
-  // @ts-expect-error - text-wrap: balance is valid CSS
   textWrap: 'balance',
   fontFamily: vars.font.heading,
   fontWeight: vars.fontWeight.bold,

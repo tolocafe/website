@@ -156,8 +156,8 @@ const sharedTokens = {
 // TOLO Brand Colors - Light theme (cream background)
 const lightColors = {
   background: '#F5F0E8', // warm cream
-  foreground: '#1B4332', // forest green
-  primary: '#1B4332', // forest green
+  foreground: '#3D6039', // forest green
+  primary: '#3D6039', // forest green
   primaryForeground: '#F5F0E8',
   secondary: '#1B4332', // forest green for contrast sections
   secondaryForeground: '#F5F0E8',
