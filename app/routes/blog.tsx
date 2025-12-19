@@ -7,10 +7,15 @@ interface LocaleContext {
 	locale: Locale;
 }
 
+const SITE_URL = "https://tolo.cafe";
+
 const TRANSLATIONS = {
 	en: {
-		title: "Blog - Tolo",
-		description: "Coffee stories, tips, and news from Tolo in Toluca",
+		title: "Blog - Tolo | Coffee Stories & Brewing Tips",
+		description:
+			"Explore coffee stories, brewing guides, origin tales, and news from Tolo coffee shop in Toluca, Mexico. Learn about specialty coffee.",
+		keywords:
+			"coffee blog, brewing guides, coffee origins, tolo, toluca, specialty coffee, coffee tips",
 		heading: "Blog",
 		subtitle: "Stories from the coffee world",
 		comingSoon: "Coming Soon",
@@ -36,8 +41,11 @@ const TRANSLATIONS = {
 		],
 	},
 	es: {
-		title: "Blog - Tolo",
-		description: "Historias de café, consejos y noticias de Tolo en Toluca",
+		title: "Blog - Tolo | Historias de Café y Guías de Preparación",
+		description:
+			"Explora historias de café, guías de preparación, relatos de origen y noticias de la cafetería Tolo en Toluca, México. Aprende sobre café de especialidad.",
+		keywords:
+			"blog de café, guías de preparación, orígenes del café, tolo, toluca, café de especialidad, consejos de café",
 		heading: "Blog",
 		subtitle: "Historias del mundo del café",
 		comingSoon: "Próximamente",
@@ -67,8 +75,30 @@ const TRANSLATIONS = {
 export function meta({ params }: Route.MetaArgs) {
 	const locale = (params.locale as Locale) || "es";
 	const t = TRANSLATIONS[locale] || TRANSLATIONS.es;
+	const canonicalUrl = `${SITE_URL}/${locale}/blog`;
 
-	return [{ title: t.title }, { name: "description", content: t.description }];
+	return [
+		{ title: t.title },
+		{ name: "description", content: t.description },
+		{ name: "keywords", content: t.keywords },
+		{ name: "robots", content: "index, follow" },
+		{ name: "author", content: "Tolo" },
+		// Canonical URL
+		{ tagName: "link", rel: "canonical", href: canonicalUrl },
+		// Open Graph
+		{ property: "og:type", content: "website" },
+		{ property: "og:site_name", content: "Tolo" },
+		{ property: "og:title", content: t.title },
+		{ property: "og:description", content: t.description },
+		{ property: "og:url", content: canonicalUrl },
+		{ property: "og:locale", content: locale === "es" ? "es_MX" : "en_US" },
+		// Twitter Card
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:site", content: "@tolo.cafe" },
+		{ name: "twitter:creator", content: "@tolo.cafe" },
+		{ name: "twitter:title", content: t.title },
+		{ name: "twitter:description", content: t.description },
+	];
 }
 
 export default function Blog() {
