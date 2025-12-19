@@ -15,6 +15,11 @@ export default [
   // Locale-prefixed routes
   route(':locale', 'routes/locale-layout.tsx', [
     index('routes/home.tsx'),
+    // Beans routes (localized paths)
+    route('beans', 'routes/beans.tsx'),
+    route('beans/:slug', 'routes/bean.tsx'),
+    route('granos', 'routes/granos.tsx'),
+    route('granos/:slug', 'routes/grano.tsx'),
     route('blog', 'routes/blog.tsx'),
     route('blog/:slug', 'routes/blog-post.tsx'),
     route('contact', 'routes/contact.tsx'),

@@ -68,6 +68,23 @@ export interface Page {
   navigationOrder?: number
 }
 
+export interface Bean {
+  _id: string
+  _updatedAt?: string
+  name: LocaleString
+  slug: LocaleSlug
+  origin?: LocaleString
+  region?: LocaleString
+  varietal?: LocaleString
+  altitude?: number
+  process?: LocaleString
+  excerpt?: LocaleString
+  tastingNotes?: LocaleString
+  agtron?: number
+  regionImage?: SanityImage
+  varietalImage?: SanityImage
+}
+
 /**
  * Get localized string value with fallback to Spanish
  */
@@ -102,5 +119,3 @@ export function formatDate(date: string, locale: Locale): string {
     },
   )
 }
-
-
