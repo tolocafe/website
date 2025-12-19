@@ -15,26 +15,12 @@ import {
 // Theme contract defines the structure of our theme tokens
 export const vars = createThemeContract({
   color: {
-    background: null,
-    foreground: null,
     primary: null,
-    primaryForeground: null,
     secondary: null,
-    secondaryForeground: null,
-    muted: null,
-    mutedForeground: null,
+    background: null,
     border: null,
-    accent: null,
-    accentForeground: null,
-    // Overlay colors
-    overlay: null,
-    overlayText: null,
-    overlayTextMuted: null,
-    // Header/Footer specific
-    headerBg: null,
-    headerText: null,
-    headerTextMuted: null,
-    headerBorder: null,
+    white: null,
+    text: null,
   },
   font: {
     body: null,
@@ -88,12 +74,6 @@ export const vars = createThemeContract({
     '3xl': null,
     full: null,
   },
-  shadow: {
-    sm: null,
-    md: null,
-    lg: null,
-    xl: null,
-  },
 })
 
 // Shared non-color tokens (same for light and dark)
@@ -115,10 +95,10 @@ const sharedTokens = {
     '4xl': '2.25rem',
   },
   fontWeight: {
-    normal: '400',
-    medium: '500',
-    semibold: '600',
-    bold: '700',
+    normal: '500',
+    medium: '600',
+    semibold: '700',
+    bold: '900',
   },
   lineHeight: {
     none: '1',
@@ -153,74 +133,25 @@ const sharedTokens = {
   },
 }
 
-// TOLO Brand Colors - Light theme (cream background)
+// TOLO Brand Colors - Light theme
 const lightColors = {
-  background: '#F5F0E8', // warm cream
-  foreground: '#3D6039', // forest green
   primary: '#3D6039', // forest green
-  primaryForeground: '#F5F0E8',
-  secondary: '#1B4332', // forest green for contrast sections
-  secondaryForeground: '#F5F0E8',
-  muted: '#EDE8E0',
-  mutedForeground: '#4A6B5D', // muted green
-  border: '#D4CFC5',
-  accent: '#C44536', // terracotta/burnt orange
-  accentForeground: '#FFFFFF',
-  // Overlay colors
-  overlay: 'rgba(0, 0, 0, 0.5)',
-  overlayText: '#FFFFFF',
-  overlayTextMuted: 'rgba(255, 255, 255, 0.9)',
-  // Header/Footer - always forest green with white text
-  headerBg: '#1B4332',
-  headerText: '#FFFFFF',
-  headerTextMuted: 'rgba(255, 255, 255, 0.7)',
-  headerBorder: 'rgba(255, 255, 255, 0.2)',
+  secondary: '#C44536', // terracotta
+  background: '#F5F0E8', // cream
+  border: '#D4CFC5', // cream border
+  white: '#FFFFFF',
+  text: '#333333',
 }
 
-// TOLO Brand Colors - Dark theme (same as light, TOLO brand is consistent)
+// TOLO Brand Colors - Dark theme
 const darkColors = {
-  background: '#F5F0E8', // warm cream (same as light)
-  foreground: '#1B4332', // forest green
-  primary: '#1B4332', // forest green
-  primaryForeground: '#F5F0E8',
-  secondary: '#1B4332', // forest green for contrast sections
-  secondaryForeground: '#F5F0E8',
-  muted: '#EDE8E0',
-  mutedForeground: '#4A6B5D', // muted green
-  border: '#D4CFC5',
-  accent: '#C44536', // terracotta/burnt orange
-  accentForeground: '#FFFFFF',
-  // Overlay colors
-  overlay: 'rgba(0, 0, 0, 0.5)',
-  overlayText: '#FFFFFF',
-  overlayTextMuted: 'rgba(255, 255, 255, 0.9)',
-  // Header/Footer - always forest green with white text
-  headerBg: '#1B4332',
-  headerText: '#FFFFFF',
-  headerTextMuted: 'rgba(255, 255, 255, 0.7)',
-  headerBorder: 'rgba(255, 255, 255, 0.2)',
-}
-
-// Light theme shadows
-const lightShadows = {
-  sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-  md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-  lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-  xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-}
-
-// Dark theme shadows (stronger for visibility on dark backgrounds)
-const darkShadows = {
-  sm: '0 1px 2px 0 rgb(0 0 0 / 0.3)',
-  md: '0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3)',
-  lg: '0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3)',
-  xl: '0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3)',
+  ...lightColors,
+  text: '#FFFFFF',
 }
 
 // Apply light theme to :root (default)
 createGlobalTheme(':root', vars, {
   color: lightColors,
-  shadow: lightShadows,
   ...sharedTokens,
 })
 
@@ -230,7 +161,6 @@ globalStyle(':root', {
     '(prefers-color-scheme: dark)': {
       vars: assignVars(vars, {
         color: darkColors,
-        shadow: darkShadows,
         ...sharedTokens,
       }),
     },

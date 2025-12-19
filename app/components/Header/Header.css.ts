@@ -9,7 +9,7 @@ export const header = style({
   alignItems: 'center',
   justifyContent: 'space-between',
   padding: `${vars.space[3]} ${vars.space[6]}`,
-  backgroundColor: vars.color.headerBg,
+  backgroundColor: vars.color.primary,
   borderBottom: 'none',
 })
 
@@ -40,7 +40,7 @@ export const localeLink = style({
   padding: `${vars.space[2]} ${vars.space[3]}`,
   fontSize: vars.fontSize.sm,
   fontWeight: vars.fontWeight.medium,
-  color: vars.color.headerTextMuted,
+  color: 'rgba(255, 255, 255, 0.7)',
   textDecoration: 'none',
   borderRadius: vars.radius.md,
 })
@@ -49,12 +49,12 @@ export const localeLinkActive = style([
   localeLink,
   {
     backgroundColor: vars.color.background,
-    color: vars.color.foreground,
+    color: vars.color.primary,
   },
 ])
 
 export const separator = style({
   width: '1px',
   height: '1rem',
-  backgroundColor: vars.color.headerBorder,
+  backgroundColor: 'rgba(255, 255, 255, 0.2)',
 })

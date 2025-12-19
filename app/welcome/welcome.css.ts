@@ -29,7 +29,7 @@ export const hero = style({
 export const heroOverlay = style({
   position: 'absolute',
   inset: 0,
-  backgroundColor: vars.color.overlay,
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
 })
 
 export const heroContent = style({
@@ -43,7 +43,7 @@ export const heroContent = style({
 export const heroTitle = style({
   fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
   fontWeight: vars.fontWeight.bold,
-  color: vars.color.overlayText,
+  color: vars.color.white,
   marginBottom: vars.space[6],
   lineHeight: vars.lineHeight.tight,
   textTransform: 'uppercase',
@@ -52,7 +52,7 @@ export const heroTitle = style({
 
 export const heroSubtitle = style({
   fontSize: vars.fontSize.xl,
-  color: vars.color.overlayTextMuted,
+  color: 'rgba(255, 255, 255, 0.9)',
   lineHeight: vars.lineHeight.relaxed,
   maxWidth: '600px',
   margin: '0 auto',
@@ -78,7 +78,6 @@ export const sectionContent = style({
 export const sectionTitle = style({
   fontSize: vars.fontSize['3xl'],
   fontWeight: vars.fontWeight.bold,
-  color: vars.color.accent,
   marginBottom: vars.space[6],
   '@media': {
     '(max-width: 640px)': {
@@ -89,7 +88,7 @@ export const sectionTitle = style({
 
 export const sectionText = style({
   fontSize: vars.fontSize.lg,
-  color: vars.color.foreground,
+  color: vars.color.text,
   lineHeight: vars.lineHeight.relaxed,
   '@media': {
     '(max-width: 640px)': {
@@ -101,13 +100,13 @@ export const sectionText = style({
 // Features Section
 export const featuresSection = style({
   padding: `${vars.space[20]} ${vars.space[6]}`,
-  backgroundColor: vars.color.secondary,
+  backgroundColor: vars.color.primary,
 })
 
 export const featuresSectionTitle = style({
   fontSize: vars.fontSize['3xl'],
   fontWeight: vars.fontWeight.bold,
-  color: vars.color.secondaryForeground,
+  color: vars.color.white,
   textAlign: 'center',
   marginBottom: vars.space[12],
   '@media': {
@@ -130,7 +129,6 @@ export const featureCard = style({
   padding: vars.space[8],
   borderRadius: vars.radius['2xl'],
   textAlign: 'center',
-  boxShadow: vars.shadow.md,
 })
 
 export const featureIcon = style({
@@ -141,20 +139,20 @@ export const featureIcon = style({
   justifyContent: 'center',
   margin: '0 auto',
   marginBottom: vars.space[4],
-  backgroundColor: vars.color.accent,
-  color: vars.color.accentForeground,
+  backgroundColor: vars.color.secondary,
+  color: vars.color.white,
   borderRadius: vars.radius.full,
 })
 
 export const featureTitle = style({
   fontSize: vars.fontSize.xl,
   fontWeight: vars.fontWeight.semibold,
-  color: vars.color.foreground,
+  color: vars.color.text,
   marginBottom: vars.space[3],
 })
 
 export const featureText = style({
   fontSize: vars.fontSize.base,
-  color: vars.color.mutedForeground,
+  color: vars.color.text,
   lineHeight: vars.lineHeight.relaxed,
 })

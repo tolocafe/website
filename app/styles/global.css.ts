@@ -34,7 +34,7 @@ globalStyle('body', {
   fontFamily: vars.font.body,
   fontSize: vars.fontSize.base,
   backgroundColor: vars.color.background,
-  color: vars.color.foreground,
+  color: vars.color.text,
 })
 
 /* 6. Improve media defaults */
@@ -63,6 +63,12 @@ globalStyle('h1, h2, h3, h4, h5, h6', {
   fontFamily: vars.font.heading,
   fontWeight: vars.fontWeight.bold,
   lineHeight: vars.lineHeight.tight,
+})
+
+globalStyle('h1, h2, h3', {
+  color: vars.color.secondary,
+  fontWeight: vars.fontWeight.bold,
+  textTransform: 'uppercase',
 })
 
 /* 10. Create a root stacking context */

@@ -16,7 +16,7 @@ export const backLink = style({
   display: 'inline-flex',
   alignItems: 'center',
   gap: vars.space[2],
-  color: vars.color.accent,
+  color: vars.color.secondary,
   textDecoration: 'none',
   fontSize: vars.fontSize.base,
   fontWeight: vars.fontWeight.medium,
@@ -36,7 +36,6 @@ export const header = style({
 export const title = style({
   fontSize: vars.fontSize['4xl'],
   fontWeight: vars.fontWeight.bold,
-  color: vars.color.foreground,
   lineHeight: vars.lineHeight.tight,
   marginBottom: vars.space[4],
   '@media': {
@@ -50,7 +49,7 @@ export const meta = style({
   display: 'flex',
   alignItems: 'center',
   gap: vars.space[4],
-  color: vars.color.mutedForeground,
+  color: vars.color.text,
   fontSize: vars.fontSize.base,
 })
 
@@ -76,7 +75,7 @@ export const image = style({
 
 export const body = style({
   fontSize: vars.fontSize.lg,
-  color: vars.color.foreground,
+  color: vars.color.text,
   lineHeight: vars.lineHeight.relaxed,
 })
 
@@ -88,7 +87,6 @@ export const paragraph = style({
 export const heading2 = style({
   fontSize: vars.fontSize['2xl'],
   fontWeight: vars.fontWeight.bold,
-  color: vars.color.foreground,
   marginTop: vars.space[8],
   marginBottom: vars.space[4],
 })
@@ -96,20 +94,19 @@ export const heading2 = style({
 export const heading3 = style({
   fontSize: vars.fontSize.xl,
   fontWeight: vars.fontWeight.semibold,
-  color: vars.color.foreground,
   marginTop: vars.space[6],
   marginBottom: vars.space[3],
 })
 
 export const blockquote = style({
-  borderLeft: `4px solid ${vars.color.accent}`,
+  borderLeft: `4px solid ${vars.color.secondary}`,
   paddingLeft: vars.space[6],
   marginLeft: 0,
   marginRight: 0,
   marginTop: vars.space[6],
   marginBottom: vars.space[6],
   fontStyle: 'italic',
-  color: vars.color.mutedForeground,
+  color: vars.color.text,
 })
 
 export const list = style({
@@ -122,7 +119,7 @@ export const listItem = style({
 })
 
 export const link = style({
-  color: vars.color.accent,
+  color: vars.color.secondary,
   textDecoration: 'underline',
 })
 
@@ -134,13 +131,11 @@ export const notFound = style({
 export const notFoundTitle = style({
   fontSize: vars.fontSize['3xl'],
   fontWeight: vars.fontWeight.bold,
-  color: vars.color.foreground,
   marginBottom: vars.space[4],
 })
 
 export const notFoundText = style({
   fontSize: vars.fontSize.lg,
-  color: vars.color.mutedForeground,
+  color: vars.color.text,
   marginBottom: vars.space[8],
 })
-

@@ -20,13 +20,12 @@ export const header = style({
 export const heading = style({
   fontSize: vars.fontSize['4xl'],
   fontWeight: vars.fontWeight.bold,
-  color: vars.color.foreground,
   marginBottom: vars.space[4],
 })
 
 export const subtitle = style({
   fontSize: vars.fontSize.xl,
-  color: vars.color.mutedForeground,
+  color: vars.color.text,
 })
 
 export const content = style({
@@ -45,8 +44,8 @@ export const comingSoonCard = style({
 
 export const badge = style({
   display: 'inline-block',
-  backgroundColor: vars.color.accent,
-  color: vars.color.accentForeground,
+  backgroundColor: vars.color.secondary,
+  color: vars.color.white,
   padding: `${vars.space[2]} ${vars.space[4]}`,
   borderRadius: vars.radius.full,
   fontSize: vars.fontSize.sm,
@@ -56,7 +55,7 @@ export const badge = style({
 
 export const message = style({
   fontSize: vars.fontSize.lg,
-  color: vars.color.foreground,
+  color: vars.color.text,
   lineHeight: vars.lineHeight.relaxed,
   maxWidth: '600px',
   margin: '0 auto',
@@ -69,7 +68,6 @@ export const previewSection = style({
 export const previewTitle = style({
   fontSize: vars.fontSize['2xl'],
   fontWeight: vars.fontWeight.semibold,
-  color: vars.color.foreground,
   marginBottom: vars.space[8],
 })
 
@@ -90,13 +88,13 @@ export const topicCard = style({
 export const topicTitle = style({
   fontSize: vars.fontSize.lg,
   fontWeight: vars.fontWeight.semibold,
-  color: vars.color.accent,
+  color: vars.color.secondary,
   marginBottom: vars.space[2],
 })
 
 export const topicDescription = style({
   fontSize: vars.fontSize.base,
-  color: vars.color.mutedForeground,
+  color: vars.color.text,
   lineHeight: vars.lineHeight.relaxed,
 })
 
@@ -152,13 +150,13 @@ export const postContent = style({
 export const postTitle = style({
   fontSize: vars.fontSize.xl,
   fontWeight: vars.fontWeight.semibold,
-  color: vars.color.foreground,
+  color: vars.color.text,
   lineHeight: vars.lineHeight.tight,
 })
 
 export const postExcerpt = style({
   fontSize: vars.fontSize.base,
-  color: vars.color.mutedForeground,
+  color: vars.color.text,
   lineHeight: vars.lineHeight.relaxed,
   display: '-webkit-box',
   WebkitLineClamp: 2,
@@ -168,6 +166,6 @@ export const postExcerpt = style({
 
 export const postDate = style({
   fontSize: vars.fontSize.sm,
-  color: vars.color.mutedForeground,
+  color: vars.color.text,
   marginTop: 'auto',
 })
