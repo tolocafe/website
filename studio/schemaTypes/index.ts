@@ -7,6 +7,7 @@ import {
 import {beanType} from './beanType'
 import {pageType} from './pageType'
 import {postType} from './postType'
+import {productType} from './productType'
 
 export const schemaTypes = [
   // Locale types
@@ -18,4 +19,5 @@ export const schemaTypes = [
   beanType,
   pageType,
   postType,
+  productType,
 ]
