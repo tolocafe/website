@@ -1,9 +1,5 @@
 import {defineType} from 'sanity'
 
-/**
- * Supported languages for field-level translations
- * Matches the app's SUPPORTED_LOCALES
- */
 const supportedLanguages = [
   {id: 'es', title: 'Español', isDefault: true},
   {id: 'en', title: 'English'},
@@ -11,90 +7,52 @@ const supportedLanguages = [
 
 export const baseLanguage = supportedLanguages.find((l) => l.isDefault)
 
-/**
- * Localized string type for field-level translations
- * Creates an object with a field for each supported language
- */
-export const localeStringType = defineType({
-  title: 'Localized string',
-  name: 'localeString',
-  type: 'object',
-  fieldsets: [
-    {
-      title: 'Translations',
-      name: 'translations',
-      options: {collapsible: true},
-    },
-  ],
-  fields: supportedLanguages.map((lang) => ({
-    title: lang.title,
-    name: lang.id,
-    type: 'string',
-    fieldset: lang.isDefault ? undefined : 'translations',
-  })),
-})
+const translationsFieldset = {
+  title: 'Translations',
+  name: 'translations',
+  options: {collapsible: true},
+}
 
 /**
- * Localized text type for longer content (textarea)
+ * Creates a localized type with fields for each language
  */
-export const localeTextType = defineType({
-  title: 'Localized text',
-  name: 'localeText',
-  type: 'object',
-  fieldsets: [
-    {
-      title: 'Translations',
-      name: 'translations',
-      options: {collapsible: true},
-    },
-  ],
-  fields: supportedLanguages.map((lang) => ({
-    title: lang.title,
-    name: lang.id,
-    type: 'text',
-    rows: 3,
-    fieldset: lang.isDefault ? undefined : 'translations',
-  })),
-})
+function createLocaleType(
+  name: string,
+  title: string,
+  fieldType: string,
+  fieldOptions?: Record<string, unknown>,
+) {
+  return defineType({
+    name,
+    title,
+    type: 'object',
+    fieldsets: [translationsFieldset],
+    fields: supportedLanguages.map((lang) => ({
+      title: lang.title,
+      name: lang.id,
+      type: fieldType,
+      ...fieldOptions,
+      fieldset: lang.isDefault ? undefined : 'translations',
+    })),
+  })
+}
 
-/**
- * Localized block content type for rich text
- */
-export const localeBlockContentType = defineType({
-  title: 'Localized block content',
-  name: 'localeBlockContent',
-  type: 'object',
-  fieldsets: [
-    {
-      title: 'Translations',
-      name: 'translations',
-      options: {collapsible: true},
-    },
-  ],
-  fields: supportedLanguages.map((lang) => ({
-    title: lang.title,
-    name: lang.id,
-    type: 'array',
-    of: [{type: 'block'}],
-    fieldset: lang.isDefault ? undefined : 'translations',
-  })),
-})
+export const localeStringType = createLocaleType('localeString', 'Localized string', 'string')
 
-/**
- * Localized slug type for SEO-friendly URLs in each language
- * Each language gets its own slug derived from its title
- */
+export const localeTextType = createLocaleType('localeText', 'Localized text', 'text', {rows: 3})
+
+export const localeBlockContentType = createLocaleType(
+  'localeBlockContent',
+  'Localized block content',
+  'array',
+  {of: [{type: 'block'}]},
+)
+
 export const localeSlugType = defineType({
-  title: 'Localized slug',
   name: 'localeSlug',
+  title: 'Localized slug',
   type: 'object',
-  fieldsets: [
-    {
-      title: 'Translations',
-      name: 'translations',
-      options: {collapsible: true},
-    },
-  ],
+  fieldsets: [translationsFieldset],
   fields: supportedLanguages.map((lang) => ({
     title: lang.title,
     name: lang.id,

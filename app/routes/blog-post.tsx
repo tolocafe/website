@@ -2,37 +2,14 @@ import { Link, useOutletContext } from 'react-router'
 import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import type { Route } from './+types/blog-post'
 import type { Locale } from '~/lib/locale'
-import { client, urlFor } from '~/lib/sanity'
+import {
+  client,
+  urlFor,
+  getLocalizedString,
+  formatDate,
+  type Post,
+} from '~/lib/sanity'
 import * as styles from './blog-post.css'
-
-interface LocaleContext {
-  locale: Locale
-}
-
-interface Post {
-  _id: string
-  title: {
-    en?: string
-    es?: string
-  }
-  slug: {
-    en?: { current: string }
-    es?: { current: string }
-  }
-  publishedAt: string
-  excerpt?: {
-    en?: string
-    es?: string
-  }
-  body?: {
-    en?: unknown[]
-    es?: unknown[]
-  }
-  image?: {
-    asset: { _ref: string }
-    alt?: string
-  }
-}
 
 const TRANSLATIONS = {
   en: {
@@ -52,40 +29,25 @@ const POST_QUERY = `*[
   _type == "post"
   && (slug.es.current == $slug || slug.en.current == $slug)
 ][0]{
-  _id,
-  title,
-  slug,
-  publishedAt,
-  excerpt,
-  body,
-  image
+  _id, title, slug, publishedAt, excerpt, body, image
 }`
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const post = await client.fetch<Post | null>(POST_QUERY, {
-    slug: params.slug,
-  })
-  return { post }
+  return { post: await client.fetch<Post | null>(POST_QUERY, params) }
 }
 
 export function meta({ data, params }: Route.MetaArgs) {
   const locale = (params.locale as Locale) || 'es'
   const post = data?.post
+  if (!post) return [{ title: 'Post Not Found - TOLO' }]
 
-  if (!post) {
-    return [{ title: 'Post Not Found - TOLO' }]
-  }
-
-  const title = post.title[locale] || post.title.es || 'Untitled'
-  const description = post.excerpt?.[locale] || post.excerpt?.es || ''
-
+  const title = getLocalizedString(post.title, locale, 'Untitled')
   return [
     { title: `${title} - TOLO Blog` },
-    { name: 'description', content: description },
+    { name: 'description', content: getLocalizedString(post.excerpt, locale) },
   ]
 }
 
-// Portable Text components for rendering rich text
 const portableTextComponents: PortableTextComponents = {
   block: {
     h2: ({ children }) => <h2 className={styles.heading2}>{children}</h2>,
@@ -118,7 +80,7 @@ const portableTextComponents: PortableTextComponents = {
 }
 
 export default function BlogPost({ loaderData }: Route.ComponentProps) {
-  const { locale } = useOutletContext<LocaleContext>()
+  const { locale } = useOutletContext<{ locale: Locale }>()
   const t = TRANSLATIONS[locale] || TRANSLATIONS.es
   const { post } = loaderData
 
@@ -138,8 +100,8 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
     )
   }
 
-  const postTitle = post.title[locale] || post.title.es || 'Untitled'
-  const postBody = post.body?.[locale] || post.body?.es
+  const title = getLocalizedString(post.title, locale, 'Untitled')
+  const body = post.body?.[locale] || post.body?.es
   const imageUrl = post.image
     ? urlFor(post.image)?.width(1200).height(675).url()
     : null
@@ -153,17 +115,10 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
 
         <article className={styles.article}>
           <header className={styles.header}>
-            <h1 className={styles.title}>{postTitle}</h1>
+            <h1 className={styles.title}>{title}</h1>
             <div className={styles.meta}>
               <time className={styles.date}>
-                {new Date(post.publishedAt).toLocaleDateString(
-                  locale === 'es' ? 'es-MX' : 'en-US',
-                  {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  },
-                )}
+                {formatDate(post.publishedAt, locale)}
               </time>
             </div>
           </header>
@@ -172,18 +127,15 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
             <div className={styles.imageWrapper}>
               <img
                 src={imageUrl}
-                alt={post.image?.alt || postTitle}
+                alt={post.image?.alt || title}
                 className={styles.image}
               />
             </div>
           )}
 
-          {postBody && Array.isArray(postBody) && (
+          {body && Array.isArray(body) && (
             <div className={styles.body}>
-              <PortableText
-                value={postBody}
-                components={portableTextComponents}
-              />
+              <PortableText value={body} components={portableTextComponents} />
             </div>
           )}
         </article>

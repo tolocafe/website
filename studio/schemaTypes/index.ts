@@ -4,6 +4,7 @@ import {
   localeBlockContentType,
   localeSlugType,
 } from './localeStringType'
+import {pageType} from './pageType'
 import {postType} from './postType'
 
 export const schemaTypes = [
@@ -13,5 +14,6 @@ export const schemaTypes = [
   localeBlockContentType,
   localeSlugType,
   // Document types
+  pageType,
   postType,
 ]

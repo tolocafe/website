@@ -9,24 +9,33 @@ alwaysApply: true
 
 - **Runtime**: Bun
 - **Framework**: React Router 7 with Cloudflare Workers
-- **Styling**: vanilla-extract (type-safe CSS) + Tailwind CSS (utilities)
+- **Styling**: vanilla-extract (type-safe CSS)
+- **CMS**: Sanity (headless CMS with field-level localization)
 - **Language**: TypeScript (strict mode)
+
+## Localization
+
+- Supports `es` (Spanish, default) and `en` (English)
+- Field-level translations in Sanity using `localeString`, `localeText`, `localeBlockContent`, `localeSlug`
+- Use `getLocalizedString()`, `getLocalizedSlug()`, `formatDate()` helpers from `~/lib/sanity`
+- Routes are locale-prefixed: `/:locale/...` (e.g., `/es/blog`, `/en/contact`)
 
 ## Import Conventions
 
 Use absolute imports with the `~` alias for app code:
 
 ```typescript
-import { vars } from "~/styles";
-import { Welcome } from "~/welcome/welcome";
+import { vars } from '~/styles'
+import { client, getLocalizedString, type Post } from '~/lib/sanity'
 ```
 
 ## File Naming
 
-- React components: PascalCase (e.g., `Welcome.tsx`)
-- Style files: Same name with `.css.ts` extension (e.g., `welcome.css.ts`)
-- Utilities/hooks: camelCase (e.g., `useAuth.ts`)
-- Route files: lowercase with hyphens (e.g., `home.tsx`, `user-profile.tsx`)
+- React components: PascalCase (e.g., `Header.tsx`)
+- Style files: Same name with `.css.ts` extension (e.g., `Header.css.ts`)
+- Utilities/hooks: camelCase (e.g., `locale.ts`, `sanity.ts`)
+- Route files: lowercase with hyphens (e.g., `home.tsx`, `blog-post.tsx`)
+- Sanity schema files: camelCase with `Type` suffix (e.g., `postType.ts`, `pageType.ts`)
 
 ## Component Structure
 
@@ -35,11 +44,24 @@ Colocate component files together:
 ```
 app/
   components/
-    Button/
-      Button.tsx
-      Button.css.ts
+    Header/
+      Header.tsx
+      Header.css.ts
       index.ts
+  lib/
+    locale.ts    # Locale utilities
+    sanity.ts    # Sanity client, types, and helpers
+  routes/
+    blog.tsx
+    blog.css.ts
+    blog-post.tsx
+    blog-post.css.ts
 ```
+
+## Sanity Content Types
+
+- **Post**: Blog posts with localized title, slug, excerpt, body, image
+- **Page**: Template pages (about, contact, legal) with localized title, slug, description, body
 
 ## Scripts
 
@@ -48,4 +70,12 @@ bun run dev        # Start development server
 bun run build      # Production build
 bun run typecheck  # Type checking
 bun run deploy     # Deploy to Cloudflare
+```
+
+## Sanity Studio
+
+Located in `/studio`, runs on `localhost:3333`:
+
+```bash
+cd studio && bun run dev
 ```

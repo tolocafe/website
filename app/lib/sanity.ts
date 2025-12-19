@@ -3,6 +3,7 @@ import {
   createImageUrlBuilder,
   type SanityImageSource,
 } from '@sanity/image-url'
+import type { Locale } from './locale'
 
 /**
  * Sanity client configuration
@@ -22,4 +23,82 @@ const { projectId, dataset } = client.config()
 export function urlFor(source: SanityImageSource) {
   if (!projectId || !dataset) return null
   return createImageUrlBuilder({ projectId, dataset }).image(source)
+}
+
+// Shared types for localized content
+export interface LocaleString {
+  en?: string
+  es?: string
+}
+
+export interface LocaleSlug {
+  en?: { current: string }
+  es?: { current: string }
+}
+
+export interface LocaleBlockContent {
+  en?: unknown[]
+  es?: unknown[]
+}
+
+export interface SanityImage {
+  asset: { _ref: string }
+  alt?: string
+}
+
+export interface Post {
+  _id: string
+  _updatedAt?: string
+  title: LocaleString
+  slug: LocaleSlug
+  publishedAt: string
+  excerpt?: LocaleString
+  body?: LocaleBlockContent
+  image?: SanityImage
+}
+
+export interface Page {
+  _id: string
+  _updatedAt?: string
+  title: LocaleString
+  slug: LocaleSlug
+  description?: LocaleString
+  body?: LocaleBlockContent
+  showInNavigation?: boolean
+  navigationOrder?: number
+}
+
+/**
+ * Get localized string value with fallback to Spanish
+ */
+export function getLocalizedString(
+  field: LocaleString | undefined,
+  locale: Locale,
+  fallback = '',
+): string {
+  return field?.[locale] || field?.es || fallback
+}
+
+/**
+ * Get localized slug with fallback to Spanish
+ */
+export function getLocalizedSlug(
+  slug: LocaleSlug | undefined,
+  locale: Locale,
+): string | undefined {
+  return slug?.[locale]?.current || slug?.es?.current
+}
+
+/**
+ * Format date for display based on locale
+ */
+export function formatDate(date: string, locale: Locale): string {
+  return new Date(date).toLocaleDateString(
+    locale === 'es' ? 'es-MX' : 'en-US',
+    {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    },
+  )
 }

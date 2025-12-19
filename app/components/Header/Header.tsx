@@ -1,52 +1,52 @@
-import { Link, useLocation, useParams } from "react-router";
+import { Link, useLocation, useParams } from 'react-router'
 import {
-	SUPPORTED_LOCALES,
-	LOCALE_LABELS,
-	getPathWithoutLocale,
-	isValidLocale,
-	DEFAULT_LOCALE,
-	type Locale,
-} from "~/lib/locale";
-import * as styles from "./Header.css";
-import toloLogo from "~/assets/tolo.png";
+  SUPPORTED_LOCALES,
+  LOCALE_LABELS,
+  getPathWithoutLocale,
+  isValidLocale,
+  DEFAULT_LOCALE,
+  type Locale,
+} from '~/lib/locale'
+import * as styles from './Header.css'
+import toloLogo from '~/assets/tolo.png'
 
 export function Header() {
-	const { locale: localeParam } = useParams<{ locale: string }>();
-	const location = useLocation();
+  const { locale: localeParam } = useParams<{ locale: string }>()
+  const location = useLocation()
 
-	const currentLocale: Locale = isValidLocale(localeParam)
-		? localeParam
-		: DEFAULT_LOCALE;
-	const pathWithoutLocale = getPathWithoutLocale(location.pathname);
+  const currentLocale: Locale = isValidLocale(localeParam)
+    ? localeParam
+    : DEFAULT_LOCALE
+  const pathWithoutLocale = getPathWithoutLocale(location.pathname)
 
-	return (
-		<header className={styles.header}>
-			<nav className={styles.nav}>
-				<Link to={`/${currentLocale}`} className={styles.logo}>
-					<img src={toloLogo} alt="TOLO" className={styles.logoImg} />
-				</Link>
-			</nav>
+  return (
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <Link to={`/${currentLocale}`} className={styles.logo}>
+          <img src={toloLogo} alt="TOLO" className={styles.logoImg} />
+        </Link>
+      </nav>
 
-			<nav className={styles.localeNav} aria-label="Language selection">
-				{SUPPORTED_LOCALES.map((locale, index) => (
-					<>
-						{index > 0 && <span className={styles.separator} aria-hidden />}
-						<Link
-							key={locale}
-							to={`/${locale}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`}
-							className={
-								locale === currentLocale
-									? styles.localeLinkActive
-									: styles.localeLink
-							}
-							aria-current={locale === currentLocale ? "page" : undefined}
-							hrefLang={locale}
-						>
-							{LOCALE_LABELS[locale]}
-						</Link>
-					</>
-				))}
-			</nav>
-		</header>
-	);
+      <nav className={styles.localeNav} aria-label="Language selection">
+        {SUPPORTED_LOCALES.map((locale, index) => (
+          <>
+            {index > 0 && <span className={styles.separator} aria-hidden />}
+            <Link
+              key={locale}
+              to={`/${locale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`}
+              className={
+                locale === currentLocale
+                  ? styles.localeLinkActive
+                  : styles.localeLink
+              }
+              aria-current={locale === currentLocale ? 'page' : undefined}
+              hrefLang={locale}
+            >
+              {LOCALE_LABELS[locale]}
+            </Link>
+          </>
+        ))}
+      </nav>
+    </header>
+  )
 }

@@ -1,33 +1,15 @@
 import { Link, useOutletContext } from 'react-router'
 import type { Route } from './+types/blog'
 import type { Locale } from '~/lib/locale'
-import { client, urlFor } from '~/lib/sanity'
+import {
+  client,
+  urlFor,
+  getLocalizedString,
+  getLocalizedSlug,
+  formatDate,
+  type Post,
+} from '~/lib/sanity'
 import * as styles from './blog.css'
-
-interface LocaleContext {
-  locale: Locale
-}
-
-interface Post {
-  _id: string
-  title: {
-    en?: string
-    es?: string
-  }
-  slug: {
-    en?: { current: string }
-    es?: { current: string }
-  }
-  publishedAt: string
-  excerpt?: {
-    en?: string
-    es?: string
-  }
-  image?: {
-    asset: { _ref: string }
-    alt?: string
-  }
-}
 
 const TRANSLATIONS = {
   en: {
@@ -88,32 +70,23 @@ const POSTS_QUERY = `*[
   _type == "post"
   && (defined(slug.es.current) || defined(slug.en.current))
 ]|order(publishedAt desc)[0...12]{
-  _id,
-  title,
-  slug,
-  publishedAt,
-  excerpt,
-  image
+  _id, title, slug, publishedAt, excerpt, image
 }`
 
 export async function loader() {
-  const posts = await client.fetch<Post[]>(POSTS_QUERY)
-  return { posts }
+  return { posts: await client.fetch<Post[]>(POSTS_QUERY) }
 }
 
 export function meta({ params }: Route.MetaArgs) {
   const locale = (params.locale as Locale) || 'es'
   const t = TRANSLATIONS[locale] || TRANSLATIONS.es
-
   return [{ title: t.title }, { name: 'description', content: t.description }]
 }
 
 export default function Blog({ loaderData }: Route.ComponentProps) {
-  const { locale } = useOutletContext<LocaleContext>()
+  const { locale } = useOutletContext<{ locale: Locale }>()
   const t = TRANSLATIONS[locale] || TRANSLATIONS.es
   const { posts } = loaderData
-
-  const hasPosts = posts && posts.length > 0
 
   return (
     <main className={styles.main}>
@@ -124,50 +97,41 @@ export default function Blog({ loaderData }: Route.ComponentProps) {
         </header>
 
         <div className={styles.content}>
-          {hasPosts ? (
+          {posts.length > 0 ? (
             <div className={styles.postsList}>
               {posts.map((post) => {
-                const postTitle =
-                  post.title[locale] || post.title.es || 'Untitled'
-                const postExcerpt = post.excerpt?.[locale] || post.excerpt?.es
-                const postSlug =
-                  post.slug[locale]?.current || post.slug.es?.current
+                const slug = getLocalizedSlug(post.slug, locale)
+                if (!slug) return null
+
+                const title = getLocalizedString(post.title, locale, 'Untitled')
                 const imageUrl = post.image
                   ? urlFor(post.image)?.width(400).height(280).url()
                   : null
 
-                // Skip posts without a valid slug for current locale
-                if (!postSlug) return null
-
                 return (
                   <Link
                     key={post._id}
-                    to={`/${locale}/blog/${postSlug}`}
+                    to={`/${locale}/blog/${slug}`}
                     className={styles.postCard}
                   >
                     {imageUrl && (
                       <div className={styles.postImageWrapper}>
                         <img
                           src={imageUrl}
-                          alt={post.image?.alt || postTitle}
+                          alt={post.image?.alt || title}
                           className={styles.postImage}
                         />
                       </div>
                     )}
                     <div className={styles.postContent}>
-                      <h2 className={styles.postTitle}>{postTitle}</h2>
-                      {postExcerpt && (
-                        <p className={styles.postExcerpt}>{postExcerpt}</p>
+                      <h2 className={styles.postTitle}>{title}</h2>
+                      {post.excerpt && (
+                        <p className={styles.postExcerpt}>
+                          {getLocalizedString(post.excerpt, locale)}
+                        </p>
                       )}
                       <time className={styles.postDate}>
-                        {new Date(post.publishedAt).toLocaleDateString(
-                          locale === 'es' ? 'es-MX' : 'en-US',
-                          {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                          },
-                        )}
+                        {formatDate(post.publishedAt, locale)}
                       </time>
                     </div>
                   </Link>
