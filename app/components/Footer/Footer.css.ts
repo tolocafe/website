@@ -2,8 +2,8 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "~/styles";
 
 export const footer = style({
-	backgroundColor: vars.color.secondary,
-	borderTop: `1px solid ${vars.color.border}`,
+	backgroundColor: vars.color.headerBg,
+	borderTop: "none",
 	padding: `${vars.space[12]} ${vars.space[6]}`,
 	marginTop: "auto",
 });
@@ -25,38 +25,38 @@ export const section = style({
 export const sectionTitle = style({
 	fontSize: vars.fontSize.lg,
 	fontWeight: vars.fontWeight.semibold,
-	color: vars.color.foreground,
+	color: vars.color.headerText,
 	marginBottom: vars.space[2],
 });
 
 export const link = style({
 	fontSize: vars.fontSize.base,
-	color: vars.color.mutedForeground,
+	color: vars.color.headerTextMuted,
 	textDecoration: "none",
 	transition: "color 0.15s ease",
 	":hover": {
-		color: vars.color.primary,
+		color: vars.color.headerText,
 	},
 });
 
 export const copyright = style({
 	marginTop: vars.space[8],
 	paddingTop: vars.space[6],
-	borderTop: `1px solid ${vars.color.border}`,
+	borderTop: `1px solid ${vars.color.headerBorder}`,
 	textAlign: "center",
 	fontSize: vars.fontSize.sm,
-	color: vars.color.mutedForeground,
+	color: vars.color.headerTextMuted,
 });
 
 export const brand = style({
 	fontSize: vars.fontSize["2xl"],
 	fontWeight: vars.fontWeight.bold,
-	color: vars.color.foreground,
+	color: vars.color.headerText,
 	marginBottom: vars.space[2],
 });
 
 export const tagline = style({
 	fontSize: vars.fontSize.sm,
-	color: vars.color.mutedForeground,
+	color: vars.color.headerTextMuted,
 	lineHeight: vars.lineHeight.relaxed,
 });

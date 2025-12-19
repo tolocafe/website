@@ -2,9 +2,10 @@
  * Styles Entry Point
  *
  * Re-exports all design tokens and theme utilities for easy access.
+ * Theme is automatically adaptive based on system preference (prefers-color-scheme).
  *
  * Usage:
- *   import { vars, lightTheme, darkTheme } from '~/styles';
+ *   import { vars } from '~/styles';
  */
 
-export { vars, lightTheme, darkTheme } from "./tokens.css";
+export { vars } from "./tokens.css";

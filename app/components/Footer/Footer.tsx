@@ -2,28 +2,30 @@ import { Link, useParams } from "react-router";
 import { isValidLocale, DEFAULT_LOCALE, type Locale } from "~/lib/locale";
 import * as styles from "./Footer.css";
 
+const currentYear = new Date().getFullYear();
+
 const TRANSLATIONS = {
 	en: {
-		brand: "Tolo",
+		brand: "TOLO",
 		tagline: "Good coffee, nothing more.",
 		navigation: "Navigation",
 		home: "Home",
 		blog: "Blog",
 		contact: "Contact Us",
 		connect: "Connect",
-		copyright: "© 2024 Tolo. All rights reserved.",
+		copyright: `© ${currentYear} TOLO. All rights reserved.`,
 	},
 	es: {
-		brand: "Tolo",
+		brand: "TOLO",
 		tagline: "Buen café, así nomás.",
 		navigation: "Navegación",
 		home: "Inicio",
 		blog: "Blog",
 		contact: "Contacto",
 		connect: "Conectar",
-		copyright: "© 2024 Tolo. Todos los derechos reservados.",
+		copyright: `© ${currentYear} TOLO. Todos los derechos reservados.`,
 	},
-} as const;
+};
 
 export function Footer() {
 	const { locale: localeParam } = useParams<{ locale: string }>();

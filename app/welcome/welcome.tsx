@@ -3,13 +3,19 @@ import type { Locale } from "~/lib/locale";
 
 const TRANSLATIONS = {
 	en: {
-		heroTitle: "Good Coffee, Nothing More",
+		heroTitle: "Good Coffee, Just That",
 		heroSubtitle:
 			"Coffee in Toluca, an honest cup: micro-lots roasted with precision, served with dedication",
 		aboutTitle: "We're Passionate About Coffee",
 		aboutText:
-			"At Tolo we believe that good coffee should be direct, fresh and straightforward. We are a coffee shop in Toluca dedicated to preparing drinks with selected beans roasted weekly in small micro-lots. Our commitment is simple: serve coffee that speaks for itself.",
-		featuresTitle: "What Makes Us Different",
+			"At TOLO we believe that good coffee should be direct, fresh and straightforward. We are a coffee shop in Toluca dedicated to preparing drinks with selected beans roasted weekly in small micro-lots. Our commitment is simple: serve coffee that speaks for itself.",
+		quickServiceTitle: "Your Coffee in Minutes",
+		quickServiceText:
+			"We designed our bar so the process is fast, but without sacrificing quality. Every drink is ground on the spot, calibrated for extraction and served in under two minutes.",
+		locationTitle: "We're in the Heart of Toluca",
+		locationText:
+			"Find us in the center of Toluca, where the aroma of freshly roasted coffee welcomes you every day.",
+		featuresTitle: "More Than a Cup",
 		feature1Title: "Micro-lot Roasting",
 		feature1Text:
 			"Every week we roast small batches to ensure maximum freshness and flavor in every cup.",
@@ -19,6 +25,7 @@ const TRANSLATIONS = {
 		feature3Title: "Local Passion",
 		feature3Text:
 			"We are part of the Toluca community, committed to sharing exceptional coffee experiences.",
+		connectTitle: "Connect with TOLO",
 	},
 	es: {
 		heroTitle: "Buen Café, Así Nomás",
@@ -26,8 +33,14 @@ const TRANSLATIONS = {
 			"Café en Toluca, una taza honesta: micro-lotes tostados con precisión, servidos con dedicación",
 		aboutTitle: "Nos Apasiona el Café",
 		aboutText:
-			"En Tolo creemos que un buen café debe ser directo, fresco y sin vueltas. Somos una cafetería en Toluca dedicada a preparar bebidas con granos seleccionados y tostados cada semana en micro-lotes pequeños. Nuestro compromiso es simple: servir café que hable por sí mismo.",
-		featuresTitle: "Lo Que Nos Hace Diferentes",
+			"En TOLO creemos que un buen café debe ser directo, fresco y sin vueltas. Somos una cafetería en Toluca dedicada a preparar bebidas con granos seleccionados y tostados cada semana en micro-lotes pequeños. Nuestro compromiso es simple: servir café que hable por sí mismo.",
+		quickServiceTitle: "Tu Café en Minutos",
+		quickServiceText:
+			"Diseñamos nuestra barra para que el proceso sea rápido, pero sin sacrificar calidad. Cada bebida se muele al momento, se calibra la extracción y se sirve lista en menos de dos minutos.",
+		locationTitle: "Estamos en el Corazón de Toluca",
+		locationText:
+			"Encuéntranos en el centro de Toluca, donde el aroma del café recién tostado te recibe cada día.",
+		featuresTitle: "Más Que una Taza",
 		feature1Title: "Tueste en Micro-lotes",
 		feature1Text:
 			"Cada semana tostamos lotes pequeños para asegurar máxima frescura y sabor en cada taza.",
@@ -37,6 +50,7 @@ const TRANSLATIONS = {
 		feature3Title: "Pasión Local",
 		feature3Text:
 			"Somos parte de la comunidad de Toluca, comprometidos con compartir experiencias excepcionales de café.",
+		connectTitle: "Conecta con TOLO",
 	},
 } as const;
 
@@ -64,6 +78,22 @@ export function Welcome({ locale }: WelcomeProps) {
 				<div className={styles.sectionContent}>
 					<h2 className={styles.sectionTitle}>{t.aboutTitle}</h2>
 					<p className={styles.sectionText}>{t.aboutText}</p>
+				</div>
+			</section>
+
+			{/* Quick Service Section */}
+			<section className={styles.section}>
+				<div className={styles.sectionContent}>
+					<h2 className={styles.sectionTitle}>{t.quickServiceTitle}</h2>
+					<p className={styles.sectionText}>{t.quickServiceText}</p>
+				</div>
+			</section>
+
+			{/* Location Section */}
+			<section className={styles.section}>
+				<div className={styles.sectionContent}>
+					<h2 className={styles.sectionTitle}>{t.locationTitle}</h2>
+					<p className={styles.sectionText}>{t.locationText}</p>
 				</div>
 			</section>
 

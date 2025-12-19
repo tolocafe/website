@@ -9,8 +9,8 @@ interface LocaleContext {
 
 const TRANSLATIONS = {
 	en: {
-		title: "Contact Us - Tolo",
-		description: "Get in touch with Tolo coffee shop in Toluca",
+		title: "Contact Us - TOLO",
+		description: "Get in touch with TOLO coffee shop in Toluca",
 		heading: "Contact Us",
 		subtitle: "We'd love to hear from you",
 		comingSoon: "Coming Soon",
@@ -24,8 +24,8 @@ const TRANSLATIONS = {
 		emailPlaceholder: "hola@tolo.cafe",
 	},
 	es: {
-		title: "Contacto - Tolo",
-		description: "Ponte en contacto con la cafetería Tolo en Toluca",
+		title: "Contacto - TOLO",
+		description: "Ponte en contacto con la cafetería TOLO en Toluca",
 		heading: "Contacto",
 		subtitle: "Nos encantaría saber de ti",
 		comingSoon: "Próximamente",

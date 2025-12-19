@@ -8,6 +8,7 @@ import {
 	type Locale,
 } from "~/lib/locale";
 import * as styles from "./Header.css";
+import toloLogo from "~/assets/tolo.png";
 
 export function Header() {
 	const { locale: localeParam } = useParams<{ locale: string }>();
@@ -22,7 +23,7 @@ export function Header() {
 		<header className={styles.header}>
 			<nav className={styles.nav}>
 				<Link to={`/${currentLocale}`} className={styles.logo}>
-					MyApp
+					<img src={toloLogo} alt="TOLO" className={styles.logoImg} />
 				</Link>
 			</nav>
 

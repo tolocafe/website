@@ -118,6 +118,8 @@ web_modules/
 # Optional REPL history
 .node_repl_history
 
+.playwright-mcp
+
 # Output of 'npm pack'
 *.tgz
 

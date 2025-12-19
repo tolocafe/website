@@ -9,8 +9,8 @@ interface LocaleContext {
 
 const TRANSLATIONS = {
 	en: {
-		title: "Blog - Tolo",
-		description: "Coffee stories, tips, and news from Tolo in Toluca",
+		title: "Blog - TOLO",
+		description: "Coffee stories, tips, and news from TOLO in Toluca",
 		heading: "Blog",
 		subtitle: "Stories from the coffee world",
 		comingSoon: "Coming Soon",
@@ -31,13 +31,13 @@ const TRANSLATIONS = {
 			{
 				title: "Shop Updates",
 				description:
-					"News about new offerings, events, and what's happening at Tolo.",
+					"News about new offerings, events, and what's happening at TOLO.",
 			},
 		],
 	},
 	es: {
-		title: "Blog - Tolo",
-		description: "Historias de café, consejos y noticias de Tolo en Toluca",
+		title: "Blog - TOLO",
+		description: "Historias de café, consejos y noticias de TOLO en Toluca",
 		heading: "Blog",
 		subtitle: "Historias del mundo del café",
 		comingSoon: "Próximamente",
@@ -58,7 +58,7 @@ const TRANSLATIONS = {
 			{
 				title: "Novedades de la Tienda",
 				description:
-					"Noticias sobre nuevas ofertas, eventos y lo que pasa en Tolo.",
+					"Noticias sobre nuevas ofertas, eventos y lo que pasa en TOLO.",
 			},
 		],
 	},

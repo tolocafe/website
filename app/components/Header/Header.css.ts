@@ -9,8 +9,8 @@ export const header = style({
 	alignItems: "center",
 	justifyContent: "space-between",
 	padding: `${vars.space[3]} ${vars.space[6]}`,
-	backgroundColor: vars.color.background,
-	borderBottom: `1px solid ${vars.color.border}`,
+	backgroundColor: vars.color.headerBg,
+	borderBottom: "none",
 });
 
 export const nav = style({
@@ -20,13 +20,14 @@ export const nav = style({
 });
 
 export const logo = style({
-	fontSize: vars.fontSize.lg,
-	fontWeight: vars.fontWeight.semibold,
-	color: vars.color.foreground,
+	display: "flex",
+	alignItems: "center",
 	textDecoration: "none",
-	":hover": {
-		color: vars.color.primary,
-	},
+});
+
+export const logoImg = style({
+	height: "24px",
+	width: "auto",
 });
 
 export const localeNav = style({
@@ -39,24 +40,24 @@ export const localeLink = style({
 	padding: `${vars.space[2]} ${vars.space[3]}`,
 	fontSize: vars.fontSize.sm,
 	fontWeight: vars.fontWeight.medium,
-	color: vars.color.mutedForeground,
+	color: vars.color.headerTextMuted,
 	textDecoration: "none",
 	borderRadius: vars.radius.md,
 	transition: "all 0.15s ease",
 	":hover": {
-		backgroundColor: vars.color.secondary,
-		color: vars.color.foreground,
+		backgroundColor: vars.color.headerBorder,
+		color: vars.color.headerText,
 	},
 });
 
 export const localeLinkActive = style([
 	localeLink,
 	{
-		backgroundColor: vars.color.primary,
-		color: vars.color.primaryForeground,
+		backgroundColor: vars.color.background,
+		color: vars.color.foreground,
 		":hover": {
-			backgroundColor: vars.color.primary,
-			color: vars.color.primaryForeground,
+			backgroundColor: vars.color.background,
+			color: vars.color.foreground,
 		},
 	},
 ]);
@@ -64,5 +65,5 @@ export const localeLinkActive = style([
 export const separator = style({
 	width: "1px",
 	height: "1rem",
-	backgroundColor: vars.color.border,
+	backgroundColor: vars.color.headerBorder,
 });
