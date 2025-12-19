@@ -5,11 +5,18 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	useMatches,
 } from "react-router";
 
 import type { Route } from "./+types/root";
 import "./app.css";
 import "~/styles/global.css";
+import {
+	DEFAULT_LOCALE,
+	isValidLocale,
+	SUPPORTED_LOCALES,
+	type Locale,
+} from "~/lib/locale";
 
 export const links: Route.LinksFunction = () => [
 	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -24,12 +31,30 @@ export const links: Route.LinksFunction = () => [
 	},
 ];
 
+/**
+ * Layout component that sets the HTML lang attribute dynamically
+ * based on the current locale from URL params.
+ */
 export function Layout({ children }: { children: React.ReactNode }) {
+	// Extract locale from URL matches
+	const matches = useMatches();
+	const localeMatch = matches.find(
+		(match) => (match.params as { locale?: string }).locale,
+	);
+	const localeParam = (localeMatch?.params as { locale?: string })?.locale;
+	const locale: Locale = isValidLocale(localeParam)
+		? localeParam
+		: DEFAULT_LOCALE;
+
 	return (
-		<html lang="en">
+		<html lang={locale}>
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				{/* Add hreflang tags for SEO */}
+				{SUPPORTED_LOCALES.map((loc) => (
+					<link key={loc} rel="alternate" hrefLang={loc} href={`/${loc}`} />
+				))}
 				<Meta />
 				<Links />
 			</head>
