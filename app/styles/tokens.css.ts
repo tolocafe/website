@@ -1,18 +1,5 @@
-import {
-	createGlobalTheme,
-	createThemeContract,
-	createTheme,
-} from "@vanilla-extract/css";
+import { createThemeContract, createTheme } from "@vanilla-extract/css";
 
-/**
- * Design Tokens using vanilla-extract
- *
- * This file defines the design system tokens for colors, spacing, typography, etc.
- * Use createThemeContract for type-safe theme switching (light/dark mode).
- * Use createGlobalTheme for simpler, single-theme setups.
- */
-
-// Theme contract defines the structure of our theme tokens
 export const vars = createThemeContract({
 	color: {
 		background: null,
@@ -87,7 +74,11 @@ export const vars = createThemeContract({
 	},
 });
 
-// Light theme values
+const systemFont =
+	'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+const monoFont =
+	'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace';
+
 export const lightTheme = createTheme(vars, {
 	color: {
 		background: "#ffffff",
@@ -103,10 +94,9 @@ export const lightTheme = createTheme(vars, {
 		accentForeground: "#ffffff",
 	},
 	font: {
-		body: '"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-		heading:
-			'"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-		mono: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
+		body: systemFont,
+		heading: systemFont,
+		mono: monoFont,
 	},
 	fontSize: {
 		xs: "0.75rem",
@@ -163,7 +153,6 @@ export const lightTheme = createTheme(vars, {
 	},
 });
 
-// Dark theme values
 export const darkTheme = createTheme(vars, {
 	color: {
 		background: "#0f172a",
@@ -179,10 +168,9 @@ export const darkTheme = createTheme(vars, {
 		accentForeground: "#0f172a",
 	},
 	font: {
-		body: '"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-		heading:
-			'"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-		mono: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
+		body: systemFont,
+		heading: systemFont,
+		mono: monoFont,
 	},
 	fontSize: {
 		xs: "0.75rem",

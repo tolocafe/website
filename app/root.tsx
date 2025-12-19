@@ -18,25 +18,7 @@ import {
 	type Locale,
 } from "~/lib/locale";
 
-export const links: Route.LinksFunction = () => [
-	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
-	{
-		rel: "preconnect",
-		href: "https://fonts.gstatic.com",
-		crossOrigin: "anonymous",
-	},
-	{
-		rel: "stylesheet",
-		href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-	},
-];
-
-/**
- * Layout component that sets the HTML lang attribute dynamically
- * based on the current locale from URL params.
- */
 export function Layout({ children }: { children: React.ReactNode }) {
-	// Extract locale from URL matches
 	const matches = useMatches();
 	const localeMatch = matches.find(
 		(match) => (match.params as { locale?: string }).locale,
@@ -51,7 +33,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				{/* Add hreflang tags for SEO */}
 				{SUPPORTED_LOCALES.map((loc) => (
 					<link key={loc} rel="alternate" hrefLang={loc} href={`/${loc}`} />
 				))}

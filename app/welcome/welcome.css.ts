@@ -1,13 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "~/styles/tokens.css";
 
-/**
- * Welcome component styles using vanilla-extract
- *
- * This demonstrates how to create component-scoped styles
- * with type-safe design tokens.
- */
-
 export const main = style({
 	display: "flex",
 	alignItems: "center",
