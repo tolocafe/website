@@ -20,10 +20,27 @@ export const hero = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundImage:
-    "url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1920&q=80')",
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
+  overflow: 'hidden',
+})
+
+export const heroVideo = style({
+  position: 'absolute',
+  inset: 0,
+  width: '100%',
+  height: '100%',
+})
+
+export const heroVideoIframe = style({
+  border: 'none',
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  width: '177.78vh', // 16:9 aspect ratio coverage
+  height: '100vh',
+  minWidth: '100%',
+  minHeight: '56.25vw', // 16:9 aspect ratio coverage
+  transform: 'translate(-50%, -50%)',
+  pointerEvents: 'none',
 })
 
 export const heroOverlay = style({
