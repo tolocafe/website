@@ -7,13 +7,72 @@ import {
 /**
  * Design Tokens using vanilla-extract
  *
- * This file defines the design system tokens for colors, spacing, typography, etc.
- * Use createThemeContract for type-safe theme switching (light/dark mode).
- * Use createGlobalTheme for simpler, single-theme setups.
+ * Uses a theme contract for color/shadow values that change between themes,
+ * and a global theme for static tokens (fonts, spacing, etc.).
  */
 
-// Theme contract defines the structure of our theme tokens
-export const vars = createThemeContract({
+// System font stacks - no external fonts needed
+const fonts = {
+	body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+	heading:
+		'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+	mono: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
+} as const;
+
+// Static tokens that don't change between themes
+const staticTokens = {
+	font: fonts,
+	fontSize: {
+		xs: "0.75rem",
+		sm: "0.875rem",
+		base: "1rem",
+		lg: "1.125rem",
+		xl: "1.25rem",
+		"2xl": "1.5rem",
+		"3xl": "1.875rem",
+		"4xl": "2.25rem",
+	},
+	fontWeight: {
+		normal: "400",
+		medium: "500",
+		semibold: "600",
+		bold: "700",
+	},
+	lineHeight: {
+		none: "1",
+		tight: "1.25",
+		normal: "1.5",
+		relaxed: "1.75",
+	},
+	space: {
+		0: "0",
+		1: "0.25rem",
+		2: "0.5rem",
+		3: "0.75rem",
+		4: "1rem",
+		5: "1.25rem",
+		6: "1.5rem",
+		8: "2rem",
+		10: "2.5rem",
+		12: "3rem",
+		16: "4rem",
+		20: "5rem",
+		24: "6rem",
+	},
+	radius: {
+		none: "0",
+		sm: "0.125rem",
+		md: "0.375rem",
+		lg: "0.5rem",
+		xl: "0.75rem",
+		"2xl": "1rem",
+		"3xl": "1.5rem",
+		full: "9999px",
+	},
+} as const;
+
+// Theme contract for values that change between light/dark
+const themeContract = createThemeContract({
 	color: {
 		background: null,
 		foreground: null,
@@ -27,58 +86,6 @@ export const vars = createThemeContract({
 		accent: null,
 		accentForeground: null,
 	},
-	font: {
-		body: null,
-		heading: null,
-		mono: null,
-	},
-	fontSize: {
-		xs: null,
-		sm: null,
-		base: null,
-		lg: null,
-		xl: null,
-		"2xl": null,
-		"3xl": null,
-		"4xl": null,
-	},
-	fontWeight: {
-		normal: null,
-		medium: null,
-		semibold: null,
-		bold: null,
-	},
-	lineHeight: {
-		none: null,
-		tight: null,
-		normal: null,
-		relaxed: null,
-	},
-	space: {
-		0: null,
-		1: null,
-		2: null,
-		3: null,
-		4: null,
-		5: null,
-		6: null,
-		8: null,
-		10: null,
-		12: null,
-		16: null,
-		20: null,
-		24: null,
-	},
-	radius: {
-		none: null,
-		sm: null,
-		md: null,
-		lg: null,
-		xl: null,
-		"2xl": null,
-		"3xl": null,
-		full: null,
-	},
 	shadow: {
 		sm: null,
 		md: null,
@@ -87,8 +94,17 @@ export const vars = createThemeContract({
 	},
 });
 
-// Light theme values
-export const lightTheme = createTheme(vars, {
+// Create global theme for static tokens on :root
+createGlobalTheme(":root", staticTokens);
+
+// Export combined vars object for convenient access
+export const vars = {
+	...staticTokens,
+	...themeContract,
+};
+
+// Light theme colors and shadows
+export const lightTheme = createTheme(themeContract, {
 	color: {
 		background: "#ffffff",
 		foreground: "#0f172a",
@@ -102,59 +118,6 @@ export const lightTheme = createTheme(vars, {
 		accent: "#3b82f6",
 		accentForeground: "#ffffff",
 	},
-	font: {
-		body: '"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-		heading:
-			'"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-		mono: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
-	},
-	fontSize: {
-		xs: "0.75rem",
-		sm: "0.875rem",
-		base: "1rem",
-		lg: "1.125rem",
-		xl: "1.25rem",
-		"2xl": "1.5rem",
-		"3xl": "1.875rem",
-		"4xl": "2.25rem",
-	},
-	fontWeight: {
-		normal: "400",
-		medium: "500",
-		semibold: "600",
-		bold: "700",
-	},
-	lineHeight: {
-		none: "1",
-		tight: "1.25",
-		normal: "1.5",
-		relaxed: "1.75",
-	},
-	space: {
-		0: "0",
-		1: "0.25rem",
-		2: "0.5rem",
-		3: "0.75rem",
-		4: "1rem",
-		5: "1.25rem",
-		6: "1.5rem",
-		8: "2rem",
-		10: "2.5rem",
-		12: "3rem",
-		16: "4rem",
-		20: "5rem",
-		24: "6rem",
-	},
-	radius: {
-		none: "0",
-		sm: "0.125rem",
-		md: "0.375rem",
-		lg: "0.5rem",
-		xl: "0.75rem",
-		"2xl": "1rem",
-		"3xl": "1.5rem",
-		full: "9999px",
-	},
 	shadow: {
 		sm: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
 		md: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
@@ -163,8 +126,8 @@ export const lightTheme = createTheme(vars, {
 	},
 });
 
-// Dark theme values
-export const darkTheme = createTheme(vars, {
+// Dark theme colors and shadows
+export const darkTheme = createTheme(themeContract, {
 	color: {
 		background: "#0f172a",
 		foreground: "#f8fafc",
@@ -177,59 +140,6 @@ export const darkTheme = createTheme(vars, {
 		border: "#334155",
 		accent: "#60a5fa",
 		accentForeground: "#0f172a",
-	},
-	font: {
-		body: '"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-		heading:
-			'"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-		mono: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
-	},
-	fontSize: {
-		xs: "0.75rem",
-		sm: "0.875rem",
-		base: "1rem",
-		lg: "1.125rem",
-		xl: "1.25rem",
-		"2xl": "1.5rem",
-		"3xl": "1.875rem",
-		"4xl": "2.25rem",
-	},
-	fontWeight: {
-		normal: "400",
-		medium: "500",
-		semibold: "600",
-		bold: "700",
-	},
-	lineHeight: {
-		none: "1",
-		tight: "1.25",
-		normal: "1.5",
-		relaxed: "1.75",
-	},
-	space: {
-		0: "0",
-		1: "0.25rem",
-		2: "0.5rem",
-		3: "0.75rem",
-		4: "1rem",
-		5: "1.25rem",
-		6: "1.5rem",
-		8: "2rem",
-		10: "2.5rem",
-		12: "3rem",
-		16: "4rem",
-		20: "5rem",
-		24: "6rem",
-	},
-	radius: {
-		none: "0",
-		sm: "0.125rem",
-		md: "0.375rem",
-		lg: "0.5rem",
-		xl: "0.75rem",
-		"2xl": "1rem",
-		"3xl": "1.5rem",
-		full: "9999px",
 	},
 	shadow: {
 		sm: "0 1px 2px 0 rgb(0 0 0 / 0.3)",

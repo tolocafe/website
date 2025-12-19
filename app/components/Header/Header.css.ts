@@ -32,7 +32,11 @@ export const logo = style({
 export const localeNav = style({
 	display: "flex",
 	alignItems: "center",
-	gap: vars.space[2],
+});
+
+export const localeItem = style({
+	display: "flex",
+	alignItems: "center",
 });
 
 export const localeLink = style({
