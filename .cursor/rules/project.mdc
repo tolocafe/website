@@ -1,0 +1,51 @@
+---
+description: General project conventions and structure
+alwaysApply: true
+---
+
+# Project Conventions
+
+## Tech Stack
+
+- **Runtime**: Bun
+- **Framework**: React Router 7 with Cloudflare Workers
+- **Styling**: vanilla-extract (type-safe CSS) + Tailwind CSS (utilities)
+- **Language**: TypeScript (strict mode)
+
+## Import Conventions
+
+Use absolute imports with the `~` alias for app code:
+
+```typescript
+import { vars } from "~/styles";
+import { Welcome } from "~/welcome/welcome";
+```
+
+## File Naming
+
+- React components: PascalCase (e.g., `Welcome.tsx`)
+- Style files: Same name with `.css.ts` extension (e.g., `welcome.css.ts`)
+- Utilities/hooks: camelCase (e.g., `useAuth.ts`)
+- Route files: lowercase with hyphens (e.g., `home.tsx`, `user-profile.tsx`)
+
+## Component Structure
+
+Colocate component files together:
+
+```
+app/
+  components/
+    Button/
+      Button.tsx
+      Button.css.ts
+      index.ts
+```
+
+## Scripts
+
+```bash
+bun run dev        # Start development server
+bun run build      # Production build
+bun run typecheck  # Type checking
+bun run deploy     # Deploy to Cloudflare
+```

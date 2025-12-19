@@ -1,0 +1,64 @@
+---
+description: Vanilla-extract styling conventions and design tokens
+globs: ["**/*.css.ts", "**/styles/**"]
+---
+
+# Styling with vanilla-extract
+
+This project uses **vanilla-extract** for type-safe CSS-in-JS styling with design tokens.
+
+## File Structure
+
+- `app/styles/tokens.css.ts` - Design tokens (colors, spacing, typography, etc.)
+- `app/styles/global.css.ts` - Global styles
+- `app/styles/index.ts` - Public exports
+- Component styles should be colocated in `.css.ts` files (e.g., `Component.css.ts`)
+
+## Design Tokens
+
+Import tokens using the `vars` object:
+
+```typescript
+import { vars } from "~/styles";
+
+export const button = style({
+  backgroundColor: vars.color.primary,
+  padding: vars.space[4],
+  borderRadius: vars.radius.md,
+});
+```
+
+### Available Token Categories
+
+- `vars.color` - Colors (background, foreground, primary, secondary, muted, border, accent)
+- `vars.font` - Font families (body, heading, mono)
+- `vars.fontSize` - Font sizes (xs, sm, base, lg, xl, 2xl, 3xl, 4xl)
+- `vars.fontWeight` - Font weights (normal, medium, semibold, bold)
+- `vars.lineHeight` - Line heights (none, tight, normal, relaxed)
+- `vars.space` - Spacing scale (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24)
+- `vars.radius` - Border radius (none, sm, md, lg, xl, 2xl, 3xl, full)
+- `vars.shadow` - Box shadows (sm, md, lg, xl)
+
+## Theme Support
+
+Light and dark themes are available:
+
+```typescript
+import { lightTheme, darkTheme } from "~/styles";
+
+// Apply theme class to a container element
+<div className={darkTheme}>...</div>
+```
+
+## Style Composition
+
+Compose multiple styles using arrays:
+
+```typescript
+export const primaryButton = style([
+  baseButton,
+  {
+    backgroundColor: vars.color.primary,
+  },
+]);
+```
