@@ -28,10 +28,9 @@ export function Header() {
 
 			<nav className={styles.localeNav} aria-label="Language selection">
 				{SUPPORTED_LOCALES.map((locale, index) => (
-					<>
+					<span key={locale} className={styles.localeItem}>
 						{index > 0 && <span className={styles.separator} aria-hidden />}
 						<Link
-							key={locale}
 							to={`/${locale}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`}
 							className={
 								locale === currentLocale
@@ -43,7 +42,7 @@ export function Header() {
 						>
 							{LOCALE_LABELS[locale]}
 						</Link>
-					</>
+					</span>
 				))}
 			</nav>
 		</header>

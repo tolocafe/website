@@ -9,8 +9,8 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
-import "./app.css";
 import "~/styles/global.css";
+import * as styles from "./root.css";
 import {
 	DEFAULT_LOCALE,
 	isValidLocale,
@@ -18,18 +18,7 @@ import {
 	type Locale,
 } from "~/lib/locale";
 
-export const links: Route.LinksFunction = () => [
-	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
-	{
-		rel: "preconnect",
-		href: "https://fonts.gstatic.com",
-		crossOrigin: "anonymous",
-	},
-	{
-		rel: "stylesheet",
-		href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-	},
-];
+export const links: Route.LinksFunction = () => [];
 
 /**
  * Layout component that sets the HTML lang attribute dynamically
@@ -88,11 +77,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 	}
 
 	return (
-		<main className="pt-16 p-4 container mx-auto">
+		<main className={styles.errorContainer}>
 			<h1>{message}</h1>
 			<p>{details}</p>
 			{stack && (
-				<pre className="w-full p-4 overflow-x-auto">
+				<pre className={styles.errorStack}>
 					<code>{stack}</code>
 				</pre>
 			)}

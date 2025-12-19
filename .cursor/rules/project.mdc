@@ -9,7 +9,7 @@ alwaysApply: true
 
 - **Runtime**: Bun
 - **Framework**: React Router 7 with Cloudflare Workers
-- **Styling**: vanilla-extract (type-safe CSS) + Tailwind CSS (utilities)
+- **Styling**: vanilla-extract (type-safe CSS with design tokens)
 - **Language**: TypeScript (strict mode)
 
 ## Import Conventions

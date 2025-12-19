@@ -5,12 +5,12 @@ globs: ["**/*.css.ts", "**/styles/**"]
 
 # Styling with vanilla-extract
 
-This project uses **vanilla-extract** for type-safe CSS-in-JS styling with design tokens.
+This project uses **vanilla-extract** for type-safe CSS-in-JS styling with design tokens and system fonts.
 
 ## File Structure
 
 - `app/styles/tokens.css.ts` - Design tokens (colors, spacing, typography, etc.)
-- `app/styles/global.css.ts` - Global styles
+- `app/styles/global.css.ts` - Global styles and dark mode support
 - `app/styles/index.ts` - Public exports
 - Component styles should be colocated in `.css.ts` files (e.g., `Component.css.ts`)
 
@@ -31,7 +31,7 @@ export const button = style({
 ### Available Token Categories
 
 - `vars.color` - Colors (background, foreground, primary, secondary, muted, border, accent)
-- `vars.font` - Font families (body, heading, mono)
+- `vars.font` - Font families (body, heading, mono) - uses system fonts
 - `vars.fontSize` - Font sizes (xs, sm, base, lg, xl, 2xl, 3xl, 4xl)
 - `vars.fontWeight` - Font weights (normal, medium, semibold, bold)
 - `vars.lineHeight` - Line heights (none, tight, normal, relaxed)
@@ -39,15 +39,21 @@ export const button = style({
 - `vars.radius` - Border radius (none, sm, md, lg, xl, 2xl, 3xl, full)
 - `vars.shadow` - Box shadows (sm, md, lg, xl)
 
-## Theme Support
+## Dark Mode
 
-Light and dark themes are available:
+Dark mode is handled automatically via `prefers-color-scheme` media query. For component-level dark mode styling:
 
 ```typescript
-import { lightTheme, darkTheme } from "~/styles";
+import { vars, darkColors } from "~/styles";
 
-// Apply theme class to a container element
-<div className={darkTheme}>...</div>
+export const card = style({
+  backgroundColor: vars.color.secondary,
+  "@media": {
+    "(prefers-color-scheme: dark)": {
+      backgroundColor: darkColors.color.secondary,
+    },
+  },
+});
 ```
 
 ## Style Composition

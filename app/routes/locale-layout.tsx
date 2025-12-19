@@ -1,14 +1,13 @@
-import { Outlet, redirect, data } from "react-router";
+import { Outlet, redirect } from "react-router";
 import type { Route } from "./+types/locale-layout";
 import { Header } from "~/components/Header";
 import { Footer } from "~/components/Footer";
 import {
 	isValidLocale,
 	detectLocaleFromHeader,
-	DEFAULT_LOCALE,
 	SUPPORTED_LOCALES,
-	type Locale,
 } from "~/lib/locale";
+import * as styles from "./locale-layout.css";
 
 /**
  * Locale Layout Route
@@ -42,8 +41,6 @@ export function loader({ params, request }: Route.LoaderArgs) {
 export function meta({ data }: Route.MetaArgs) {
 	if (!data) return [];
 
-	const { locale } = data;
-
 	// Generate hreflang link tags for SEO
 	return SUPPORTED_LOCALES.map((loc) => ({
 		tagName: "link",
@@ -55,18 +52,10 @@ export function meta({ data }: Route.MetaArgs) {
 
 export default function LocaleLayout({ loaderData }: Route.ComponentProps) {
 	return (
-		<div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+		<div className={styles.layout}>
 			<Header />
 			<Outlet context={{ locale: loaderData.locale }} />
 			<Footer />
 		</div>
 	);
-}
-
-/**
- * Handle for nested routes to access locale
- */
-export function useLocale(): Locale {
-	// This would be used with useOutletContext in child routes
-	return DEFAULT_LOCALE;
 }
