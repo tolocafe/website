@@ -1,10 +1,10 @@
 /**
  * Styles Entry Point
  *
- * Re-exports all design tokens and theme utilities for easy access.
+ * Re-exports all design tokens for easy access.
  *
  * Usage:
- *   import { vars, lightTheme, darkTheme } from '~/styles';
+ *   import { vars } from '~/styles';
  */
 
-export { vars, lightTheme, darkTheme } from "./tokens.css";
+export { vars, darkColors } from "./tokens.css";

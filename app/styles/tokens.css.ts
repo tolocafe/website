@@ -1,14 +1,10 @@
-import {
-	createGlobalTheme,
-	createThemeContract,
-	createTheme,
-} from "@vanilla-extract/css";
+import { createGlobalTheme } from "@vanilla-extract/css";
 
 /**
  * Design Tokens using vanilla-extract
  *
- * Uses a theme contract for color/shadow values that change between themes,
- * and a global theme for static tokens (fonts, spacing, etc.).
+ * Uses createGlobalTheme for static tokens and color values.
+ * Dark mode is handled via CSS custom properties and prefers-color-scheme.
  */
 
 // System font stacks - no external fonts needed
@@ -19,8 +15,8 @@ const fonts = {
 	mono: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
 } as const;
 
-// Static tokens that don't change between themes
-const staticTokens = {
+// All design tokens
+const tokens = {
 	font: fonts,
 	fontSize: {
 		xs: "0.75rem",
@@ -69,42 +65,7 @@ const staticTokens = {
 		"3xl": "1.5rem",
 		full: "9999px",
 	},
-} as const;
-
-// Theme contract for values that change between light/dark
-const themeContract = createThemeContract({
-	color: {
-		background: null,
-		foreground: null,
-		primary: null,
-		primaryForeground: null,
-		secondary: null,
-		secondaryForeground: null,
-		muted: null,
-		mutedForeground: null,
-		border: null,
-		accent: null,
-		accentForeground: null,
-	},
-	shadow: {
-		sm: null,
-		md: null,
-		lg: null,
-		xl: null,
-	},
-});
-
-// Create global theme for static tokens on :root
-createGlobalTheme(":root", staticTokens);
-
-// Export combined vars object for convenient access
-export const vars = {
-	...staticTokens,
-	...themeContract,
-};
-
-// Light theme colors and shadows
-export const lightTheme = createTheme(themeContract, {
+	// Light theme colors (default)
 	color: {
 		background: "#ffffff",
 		foreground: "#0f172a",
@@ -124,10 +85,10 @@ export const lightTheme = createTheme(themeContract, {
 		lg: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
 		xl: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
 	},
-});
+} as const;
 
-// Dark theme colors and shadows
-export const darkTheme = createTheme(themeContract, {
+// Dark theme color overrides
+export const darkColors = {
 	color: {
 		background: "#0f172a",
 		foreground: "#f8fafc",
@@ -147,4 +108,10 @@ export const darkTheme = createTheme(themeContract, {
 		lg: "0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3)",
 		xl: "0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3)",
 	},
-});
+} as const;
+
+// Create global theme on :root
+createGlobalTheme(":root", tokens);
+
+// Export vars for use in styles
+export const vars = tokens;

@@ -1,12 +1,15 @@
 import { globalStyle } from "@vanilla-extract/css";
-import { vars } from "./tokens.css";
+import { vars, darkColors } from "./tokens.css";
 
 /**
  * Global styles using vanilla-extract
  *
- * These styles apply globally to elements based on the current theme.
- * The theme class (lightTheme or darkTheme) should be applied to a parent element.
+ * Light theme is the default, dark theme is applied via prefers-color-scheme.
  */
+
+globalStyle("html", {
+	colorScheme: "light dark",
+});
 
 globalStyle("html, body", {
 	margin: 0,
@@ -18,13 +21,15 @@ globalStyle("html, body", {
 	color: vars.color.foreground,
 	WebkitFontSmoothing: "antialiased",
 	MozOsxFontSmoothing: "grayscale",
+	"@media": {
+		"(prefers-color-scheme: dark)": {
+			backgroundColor: darkColors.color.background,
+			color: darkColors.color.foreground,
+		},
+	},
 });
 
 globalStyle("*", {
-	boxSizing: "border-box",
-});
-
-globalStyle("*::before, *::after", {
 	boxSizing: "border-box",
 });
 
@@ -38,6 +43,11 @@ globalStyle("h1, h2, h3, h4, h5, h6", {
 globalStyle("a", {
 	color: vars.color.primary,
 	textDecoration: "none",
+	"@media": {
+		"(prefers-color-scheme: dark)": {
+			color: darkColors.color.primary,
+		},
+	},
 });
 
 globalStyle("a:hover", {
