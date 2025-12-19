@@ -56,7 +56,7 @@ export function Footer() {
 				<div className={styles.section}>
 					<h3 className={styles.sectionTitle}>{t.connect}</h3>
 					<a
-						href="https://instagram.com"
+						href="https://instagram.com/tolo.cafe"
 						target="_blank"
 						rel="noreferrer"
 						className={styles.link}
@@ -64,7 +64,7 @@ export function Footer() {
 						Instagram
 					</a>
 					<a
-						href="https://facebook.com"
+						href="https://facebook.com/tolo.cafe"
 						target="_blank"
 						rel="noreferrer"
 						className={styles.link}

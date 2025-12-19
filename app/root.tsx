@@ -18,6 +18,8 @@ import {
 	type Locale,
 } from "~/lib/locale";
 
+const SITE_URL = "https://tolo.cafe";
+
 export const links: Route.LinksFunction = () => [
 	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
 	{
@@ -29,7 +31,24 @@ export const links: Route.LinksFunction = () => [
 		rel: "stylesheet",
 		href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
 	},
+	{ rel: "icon", href: "/favicon.ico", sizes: "any" },
 ];
+
+export function meta(): Route.MetaDescriptors {
+	return [
+		{ charSet: "utf-8" },
+		{ name: "viewport", content: "width=device-width, initial-scale=1" },
+		// Default site-wide meta (can be overridden by child routes)
+		{ name: "theme-color", content: "#1a1a1a" },
+		{ name: "format-detection", content: "telephone=no" },
+		// Geographic targeting for local SEO
+		{ name: "geo.region", content: "MX-MEX" },
+		{ name: "geo.placename", content: "Toluca" },
+		// Open Graph defaults
+		{ property: "og:site_name", content: "Tolo" },
+		{ property: "og:type", content: "website" },
+	];
+}
 
 /**
  * Layout component that sets the HTML lang attribute dynamically
@@ -49,12 +68,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang={locale}>
 			<head>
-				<meta charSet="utf-8" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				{/* Add hreflang tags for SEO */}
+				{/* Add hreflang tags for SEO with full URLs */}
 				{SUPPORTED_LOCALES.map((loc) => (
-					<link key={loc} rel="alternate" hrefLang={loc} href={`/${loc}`} />
+					<link
+						key={loc}
+						rel="alternate"
+						hrefLang={loc}
+						href={`${SITE_URL}/${loc}`}
+					/>
 				))}
+				{/* x-default for users without a preferred language */}
+				<link
+					rel="alternate"
+					hrefLang="x-default"
+					href={`${SITE_URL}/${DEFAULT_LOCALE}`}
+				/>
 				<Meta />
 				<Links />
 			</head>
