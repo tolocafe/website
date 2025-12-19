@@ -1,13 +1,6 @@
 import { globalStyle } from "@vanilla-extract/css";
 import { vars } from "./tokens.css";
 
-/**
- * Global styles using vanilla-extract
- *
- * These styles apply globally to elements based on the current theme.
- * The theme class (lightTheme or darkTheme) should be applied to a parent element.
- */
-
 globalStyle("html, body", {
 	margin: 0,
 	padding: 0,
