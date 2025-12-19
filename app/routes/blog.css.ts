@@ -85,11 +85,6 @@ export const topicCard = style({
   padding: vars.space[6],
   border: `1px solid ${vars.color.border}`,
   textAlign: 'left',
-  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-  ':hover': {
-    transform: 'translateY(-2px)',
-    boxShadow: vars.shadow.md,
-  },
 })
 
 export const topicTitle = style({
@@ -120,11 +115,6 @@ export const postCard = style({
   padding: vars.space[6],
   border: `1px solid ${vars.color.border}`,
   textDecoration: 'none',
-  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-  ':hover': {
-    transform: 'translateY(-2px)',
-    boxShadow: vars.shadow.md,
-  },
   '@media': {
     '(max-width: 640px)': {
       flexDirection: 'column',

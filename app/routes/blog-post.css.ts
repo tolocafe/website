@@ -21,10 +21,6 @@ export const backLink = style({
   fontSize: vars.fontSize.base,
   fontWeight: vars.fontWeight.medium,
   marginBottom: vars.space[8],
-  transition: 'opacity 0.2s ease',
-  ':hover': {
-    opacity: 0.8,
-  },
 })
 
 export const article = style({
@@ -128,9 +124,6 @@ export const listItem = style({
 export const link = style({
   color: vars.color.accent,
   textDecoration: 'underline',
-  ':hover': {
-    opacity: 0.8,
-  },
 })
 
 export const notFound = style({
@@ -150,3 +143,4 @@ export const notFoundText = style({
   color: vars.color.mutedForeground,
   marginBottom: vars.space[8],
 })
+

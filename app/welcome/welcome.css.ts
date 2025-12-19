@@ -131,11 +131,6 @@ export const featureCard = style({
   borderRadius: vars.radius['2xl'],
   textAlign: 'center',
   boxShadow: vars.shadow.md,
-  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-  ':hover': {
-    transform: 'translateY(-4px)',
-    boxShadow: vars.shadow.lg,
-  },
 })
 
 export const featureIcon = style({

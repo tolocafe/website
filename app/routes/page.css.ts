@@ -79,9 +79,6 @@ export const listItem = style({
 export const link = style({
   color: vars.color.accent,
   textDecoration: 'underline',
-  ':hover': {
-    opacity: 0.8,
-  },
 })
 
 export const notFound = style({

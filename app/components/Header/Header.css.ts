@@ -43,11 +43,6 @@ export const localeLink = style({
   color: vars.color.headerTextMuted,
   textDecoration: 'none',
   borderRadius: vars.radius.md,
-  transition: 'all 0.15s ease',
-  ':hover': {
-    backgroundColor: vars.color.headerBorder,
-    color: vars.color.headerText,
-  },
 })
 
 export const localeLinkActive = style([
@@ -55,10 +50,6 @@ export const localeLinkActive = style([
   {
     backgroundColor: vars.color.background,
     color: vars.color.foreground,
-    ':hover': {
-      backgroundColor: vars.color.background,
-      color: vars.color.foreground,
-    },
   },
 ])
 
