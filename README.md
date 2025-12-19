@@ -1,48 +1,36 @@
-# Welcome to React Router + Cloudflare Workers!
+# TOLO - Buen Café
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/react-router-starter-template)
+Website for TOLO, a specialty coffee shop in Toluca, Mexico.
 
-![React Router Starter Template Preview](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/bfdc2f85-e5c9-4c92-128b-3a6711249800/public)
+## Tech Stack
 
-<!-- dash-content-start -->
-
-A modern, production-ready template for building full-stack React applications using [React Router](https://reactrouter.com/) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
+- **Runtime**: [Bun](https://bun.sh/)
+- **Framework**: [React Router 7](https://reactrouter.com/) with SSR
+- **Hosting**: [Cloudflare Workers](https://workers.cloudflare.com/)
+- **Styling**: [vanilla-extract](https://vanilla-extract.style/) (type-safe CSS)
+- **CMS**: [Sanity](https://www.sanity.io/) (headless CMS)
+- **Language**: TypeScript (strict mode)
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎨 [vanilla-extract](https://vanilla-extract.style/) for type-safe styling with design tokens
-- 🎉 TailwindCSS for utility classes
-- 📖 [React Router docs](https://reactrouter.com/)
-- 🔎 Built-in Observability to monitor your Worker
-<!-- dash-content-end -->
+- 🌐 **Bilingual** - Full Spanish (default) and English support
+- ☕ **Beans Catalog** - Showcase coffee beans with origin, varietal, altitude, and tasting notes
+- 🥤 **Products Menu** - Display drinks with intensity, caffeine levels, and recipes
+- 📝 **Blog** - Localized blog posts with rich content
+- 📄 **Dynamic Pages** - CMS-managed pages (about, contact, legal, etc.)
+- 🚀 **Edge Rendering** - Server-side rendering on Cloudflare Workers
 
 ## Prerequisites
 
-This project requires [Bun](https://bun.sh/) as the package manager and runtime.
+Install [Bun](https://bun.sh/) as the package manager:
 
 ```bash
-# Install Bun (macOS, Linux, WSL)
 curl -fsSL https://bun.sh/install | bash
 ```
 
 ## Getting Started
 
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
-
-```bash
-bun create cloudflare@latest -- --template=cloudflare/templates/react-router-starter-template
-```
-
-A live public deployment of this template is available at [https://react-router-starter-template.templates.workers.dev](https://react-router-starter-template.templates.workers.dev)
-
-### Installation
-
-Install the dependencies:
+### Install Dependencies
 
 ```bash
 bun install
@@ -50,104 +38,139 @@ bun install
 
 ### Development
 
-Start the development server with HMR:
+Start the development server:
 
 ```bash
 bun run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+The website will be available at `http://localhost:5173`.
 
-## Typegen
+### Sanity Studio
 
-Generate types for your Cloudflare bindings in `wrangler.json`:
-
-```bash
-bun run typegen
-```
-
-## Building for Production
-
-Create a production build:
+The Sanity Studio is located in the `/studio` directory:
 
 ```bash
-bun run build
+cd studio
+bun install
+bun run dev
 ```
 
-## Previewing the Production Build
+The studio will be available at `http://localhost:3333`.
 
-Preview the production build locally:
+## Project Structure
+
+```
+├── app/
+│   ├── components/        # Reusable UI components
+│   │   ├── Header/
+│   │   └── Footer/
+│   ├── lib/
+│   │   ├── locale.ts      # Locale utilities
+│   │   └── sanity.ts      # Sanity client and helpers
+│   ├── routes/            # Route components
+│   │   ├── home.tsx
+│   │   ├── beans.tsx      # Beans list (/en/beans, /es/granos)
+│   │   ├── bean.tsx       # Bean detail
+│   │   ├── blog.tsx       # Blog list
+│   │   ├── blog-post.tsx  # Blog post detail
+│   │   ├── contact.tsx
+│   │   └── page.tsx       # Dynamic CMS pages
+│   ├── styles/            # Design tokens and global styles
+│   └── routes.ts          # Route configuration
+├── studio/                # Sanity Studio
+│   └── schemaTypes/       # Content schemas
+│       ├── beanType.ts    # Coffee beans
+│       ├── productType.ts # Menu products/drinks
+│       ├── postType.ts    # Blog posts
+│       └── pageType.ts    # CMS pages
+└── workers/               # Cloudflare Worker entry
+```
+
+## Localization
+
+The site supports two locales:
+
+- **Spanish (`es`)** - Default, primary language
+- **English (`en`)** - Secondary language
+
+### URL Structure
+
+Routes are prefixed with the locale:
+
+- `/es/` - Spanish pages
+- `/en/` - English pages
+
+Some routes have localized paths:
+
+- `/es/granos` → `/en/beans` (Coffee beans)
+
+### Content Localization
+
+Sanity uses field-level localization with custom types:
+
+- `localeString` - Localized short text
+- `localeText` - Localized multiline text
+- `localeBlockContent` - Localized rich text (Portable Text)
+- `localeSlug` - Localized URL slugs
+
+## Sanity Schemas
+
+| Schema    | Description                                                          |
+| --------- | -------------------------------------------------------------------- |
+| `bean`    | Coffee beans with origin, varietal, altitude, process, tasting notes |
+| `product` | Menu items with intensity, caffeine, volume, calories, recipe        |
+| `post`    | Blog posts with title, excerpt, body, featured image                 |
+| `page`    | Dynamic pages (about, contact, legal, etc.)                          |
+
+### Deploy Schema Changes
+
+After modifying schemas in `/studio/schemaTypes/`:
 
 ```bash
-bun run preview
+cd studio && bunx sanity schema deploy
 ```
+
+## Scripts
+
+| Command             | Description                       |
+| ------------------- | --------------------------------- |
+| `bun run dev`       | Start development server          |
+| `bun run build`     | Production build                  |
+| `bun run preview`   | Preview production build          |
+| `bun run deploy`    | Deploy to Cloudflare Workers      |
+| `bun run typecheck` | Run TypeScript type checking      |
+| `bun run typegen`   | Generate Cloudflare binding types |
 
 ## Deployment
 
-If you don't have a Cloudflare account, [create one here](https://dash.cloudflare.com/sign-up)! Go to your [Workers dashboard](https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages) to see your [free custom Cloudflare Workers subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) on `*.workers.dev`.
-
-Once that's done, you can build your app:
+Build and deploy to Cloudflare Workers:
 
 ```bash
 bun run build
-```
-
-And deploy it:
-
-```bash
 bun run deploy
-```
-
-To deploy a preview URL:
-
-```bash
-bunx wrangler versions upload
-```
-
-You can then promote a version to production after verification or roll it out progressively.
-
-```bash
-bunx wrangler versions deploy
 ```
 
 ## Styling
 
-This template uses [vanilla-extract](https://vanilla-extract.style/) for type-safe CSS-in-JS styling with design tokens, alongside [Tailwind CSS](https://tailwindcss.com/) for utility classes.
-
-### Design Tokens
-
-Design tokens are defined in `app/styles/tokens.css.ts` and include:
-
-- **Colors**: background, foreground, primary, secondary, muted, border, accent
-- **Typography**: font families, sizes, weights, line heights
-- **Spacing**: 0-24 scale
-- **Border radius**: none to full
-- **Shadows**: sm, md, lg, xl
-
-### Theme Support
-
-The project includes light and dark themes:
-
-```typescript
-import { vars, lightTheme, darkTheme } from "~/styles";
-```
+Uses [vanilla-extract](https://vanilla-extract.style/) with design tokens defined in `app/styles/tokens.css.ts`.
 
 ### Creating Component Styles
 
-Create `.css.ts` files colocated with your components:
+Create `.css.ts` files colocated with components:
 
 ```typescript
-import { style } from "@vanilla-extract/css";
-import { vars } from "~/styles";
+import { style } from '@vanilla-extract/css'
+import { vars } from '~/styles'
 
-export const button = style({
-  backgroundColor: vars.color.primary,
-  color: vars.color.primaryForeground,
-  padding: `${vars.space[2]} ${vars.space[4]}`,
-  borderRadius: vars.radius.md,
-});
+export const card = style({
+  backgroundColor: vars.color.background,
+  padding: vars.space[6],
+  borderRadius: vars.radius.xl,
+  border: `1px solid ${vars.color.border}`,
+})
 ```
 
 ---
 
-Built with ❤️ using React Router.
+Built with ☕ by TOLO
