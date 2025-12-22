@@ -138,3 +138,5 @@ export default function Beans({ loaderData }: Route.ComponentProps) {
     </main>
   )
 }
+
+

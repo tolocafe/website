@@ -11,8 +11,8 @@ export const pageType = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'name',
+      title: 'Name',
       type: 'localeString',
       validation: (rule) => rule.required(),
     }),
@@ -26,7 +26,7 @@ export const pageType = defineType({
     defineField({
       name: 'description',
       title: 'Description',
-      type: 'localeText',
+      type: 'localeBlockContent',
       description: 'Brief description for SEO and page previews',
     }),
     defineField({
@@ -51,7 +51,7 @@ export const pageType = defineType({
   ],
   preview: {
     select: {
-      title: `title.${baseLanguage?.id || 'es'}`,
+      title: `name.${baseLanguage?.id || 'es'}`,
       slugEs: 'slug.es.current',
       slugEn: 'slug.en.current',
     },
@@ -65,9 +65,9 @@ export const pageType = defineType({
   },
   orderings: [
     {
-      title: 'Title',
-      name: 'titleAsc',
-      by: [{field: `title.${baseLanguage?.id || 'es'}`, direction: 'asc'}],
+      title: 'Name',
+      name: 'nameAsc',
+      by: [{field: `name.${baseLanguage?.id || 'es'}`, direction: 'asc'}],
     },
     {
       title: 'Navigation Order',

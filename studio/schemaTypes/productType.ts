@@ -13,6 +13,13 @@ export const productType = defineType({
   icon: BasketIcon,
   fields: [
     defineField({
+      name: 'posterId',
+      title: 'Poster ID',
+      type: 'string',
+      description: 'ID in Poster',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'name',
       title: 'Name',
       type: 'localeString',
@@ -51,7 +58,7 @@ export const productType = defineType({
             defineField({
               name: 'alt',
               title: 'Alternative text',
-              type: 'string',
+              type: 'localeString',
               description: 'Important for accessibility and SEO',
             }),
           ],
@@ -97,7 +104,7 @@ export const productType = defineType({
     select: {
       title: `name.${baseLanguage?.id || 'es'}`,
       subtitle: `excerpt.${baseLanguage?.id || 'es'}`,
-      media: 'images.0',
+      media: 'images',
     },
     prepare({title, subtitle, media}) {
       return {

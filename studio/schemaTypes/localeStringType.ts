@@ -3,6 +3,8 @@ import {defineType} from 'sanity'
 const supportedLanguages = [
   {id: 'es', title: 'Español', isDefault: true},
   {id: 'en', title: 'English'},
+  {id: 'de', title: 'Deutsch'},
+  {id: 'fr', title: 'Français'},
 ]
 
 export const baseLanguage = supportedLanguages.find((l) => l.isDefault)
@@ -59,7 +61,7 @@ export const localeSlugType = defineType({
     type: 'slug',
     options: {
       source: (doc: Record<string, unknown>) => {
-        const title = doc.title as Record<string, string> | undefined
+        const title = (doc.title || doc.name) as Record<string, string> | undefined
         return title?.[lang.id] || ''
       },
     },

@@ -88,7 +88,7 @@ export const beanType = defineType({
         defineField({
           name: 'alt',
           title: 'Alternative text',
-          type: 'string',
+          type: 'localeString',
           description: 'Important for accessibility and SEO',
         }),
       ],
@@ -105,7 +105,7 @@ export const beanType = defineType({
         defineField({
           name: 'alt',
           title: 'Alternative text',
-          type: 'string',
+          type: 'localeString',
           description: 'Important for accessibility and SEO',
         }),
       ],
@@ -143,3 +143,6 @@ export const beanType = defineType({
     },
   ],
 })
+
+
+

@@ -11,8 +11,8 @@ export const postType = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'name',
+      title: 'Name',
       type: 'localeString',
       validation: (rule) => rule.required(),
     }),
@@ -47,7 +47,7 @@ export const postType = defineType({
         defineField({
           name: 'alt',
           title: 'Alternative text',
-          type: 'string',
+          type: 'localeString',
           description: 'Important for accessibility and SEO',
         }),
       ],
@@ -60,7 +60,7 @@ export const postType = defineType({
   ],
   preview: {
     select: {
-      title: `title.${baseLanguage?.id || 'es'}`,
+      title: `name.${baseLanguage?.id || 'es'}`,
       subtitle: 'publishedAt',
       media: 'image',
     },
