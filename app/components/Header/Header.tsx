@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from 'react-router'
+import { Link, useLocation, useParams, useNavigate } from 'react-router'
 import {
   SUPPORTED_LOCALES,
   LOCALE_LABELS,
@@ -13,11 +13,18 @@ import toloLogo from '~/assets/tolo.png'
 export function Header() {
   const { locale: localeParam } = useParams<{ locale: string }>()
   const location = useLocation()
+  const navigate = useNavigate()
 
   const currentLocale: Locale = isValidLocale(localeParam)
     ? localeParam
     : DEFAULT_LOCALE
   const pathWithoutLocale = getPathWithoutLocale(location.pathname)
+
+  function handleLocaleChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    const newLocale = event.target.value as Locale
+    const newPath = `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`
+    navigate(newPath)
+  }
 
   return (
     <header className={styles.header}>
@@ -28,24 +35,18 @@ export function Header() {
       </nav>
 
       <nav className={styles.localeNav} aria-label="Language selection">
-        {SUPPORTED_LOCALES.map((locale, index) => (
-          <>
-            {index > 0 && <span className={styles.separator} aria-hidden />}
-            <Link
-              key={locale}
-              to={`/${locale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`}
-              className={
-                locale === currentLocale
-                  ? styles.localeLinkActive
-                  : styles.localeLink
-              }
-              aria-current={locale === currentLocale ? 'page' : undefined}
-              hrefLang={locale}
-            >
+        <select
+          className={styles.localeSelect}
+          value={currentLocale}
+          onChange={handleLocaleChange}
+          aria-label="Select language"
+        >
+          {SUPPORTED_LOCALES.map((locale) => (
+            <option key={locale} value={locale}>
               {LOCALE_LABELS[locale]}
-            </Link>
-          </>
-        ))}
+            </option>
+          ))}
+        </select>
       </nav>
     </header>
   )

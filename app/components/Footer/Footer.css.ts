@@ -56,3 +56,27 @@ export const tagline = style({
   color: 'rgba(255, 255, 255, 0.7)',
   lineHeight: vars.lineHeight.relaxed,
 })
+
+export const locationItem = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: vars.space[1],
+  marginBottom: vars.space[3],
+})
+
+export const locationName = style({
+  fontSize: vars.fontSize.base,
+  fontWeight: vars.fontWeight.medium,
+  color: vars.color.white,
+})
+
+export const locationCity = style({
+  fontSize: vars.fontSize.sm,
+  color: 'rgba(255, 255, 255, 0.7)',
+})
+
+export const locationHours = style({
+  fontSize: vars.fontSize.xs,
+  color: 'rgba(255, 255, 255, 0.5)',
+  whiteSpace: 'pre-line',
+})

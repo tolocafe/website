@@ -27,18 +27,27 @@ export function urlFor(source: SanityImageSource) {
 
 // Shared types for localized content
 export interface LocaleString {
-  en?: string
   es?: string
+  en?: string
+  de?: string
+  fr?: string
+  ja?: string
 }
 
 export interface LocaleSlug {
-  en?: { current: string }
   es?: { current: string }
+  en?: { current: string }
+  de?: { current: string }
+  fr?: { current: string }
+  ja?: { current: string }
 }
 
 export interface LocaleBlockContent {
-  en?: unknown[]
   es?: unknown[]
+  en?: unknown[]
+  de?: unknown[]
+  fr?: unknown[]
+  ja?: unknown[]
 }
 
 export interface SanityImage {
@@ -85,6 +94,25 @@ export interface Bean {
   varietalImage?: SanityImage
 }
 
+export interface Location {
+  _id: string
+  _updatedAt?: string
+  name: LocaleString
+  slug: LocaleSlug
+  description?: LocaleBlockContent
+  address?: LocaleString
+  city: string
+  state?: string
+  country: string
+  postalCode?: string
+  coordinates?: { lat: number; lng: number }
+  phone?: string
+  email?: string
+  hours?: LocaleString
+  image?: SanityImage
+  isMainLocation?: boolean
+}
+
 /**
  * Get localized string value with fallback to Spanish
  */
@@ -119,5 +147,3 @@ export function formatDate(date: string, locale: Locale): string {
     },
   )
 }
-
-

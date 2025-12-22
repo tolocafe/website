@@ -1,14 +1,14 @@
-import { Outlet, redirect, data } from "react-router";
+import { Outlet, redirect } from "react-router";
 import type { Route } from "./+types/locale-layout";
 import { Header } from "~/components/Header";
 import { Footer } from "~/components/Footer";
 import {
 	isValidLocale,
 	detectLocaleFromHeader,
-	DEFAULT_LOCALE,
 	SUPPORTED_LOCALES,
 	type Locale,
 } from "~/lib/locale";
+import { client, type Location } from "~/lib/sanity";
 
 /**
  * Locale Layout Route
@@ -17,11 +17,11 @@ import {
  * 1. Validating the locale parameter
  * 2. Providing locale context to child routes
  * 3. Rendering the Header with locale navigation
- * 4. Rendering the Footer with navigation links
+ * 4. Rendering the Footer with navigation links and locations
  * 5. Adding hreflang meta tags for SEO
  */
 
-export function loader({ params, request }: Route.LoaderArgs) {
+export async function loader({ params, request }: Route.LoaderArgs) {
 	const { locale } = params;
 
 	// Validate the locale parameter
@@ -36,13 +36,23 @@ export function loader({ params, request }: Route.LoaderArgs) {
 		throw redirect(`/${preferredLocale}${pathWithoutLocale || ""}`);
 	}
 
-	return { locale };
+	// Fetch locations for the footer
+	const locations = await client.fetch<Location[]>(
+		`*[_type == "location"] | order(isMainLocation desc, name.es asc) {
+			_id,
+			name,
+			city,
+			country,
+			hours,
+			isMainLocation
+		}`
+	);
+
+	return { locale, locations };
 }
 
 export function meta({ data }: Route.MetaArgs) {
 	if (!data) return [];
-
-	const { locale } = data;
 
 	// Generate hreflang link tags for SEO
 	return SUPPORTED_LOCALES.map((loc) => ({
@@ -58,15 +68,7 @@ export default function LocaleLayout({ loaderData }: Route.ComponentProps) {
 		<div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
 			<Header />
 			<Outlet context={{ locale: loaderData.locale }} />
-			<Footer />
+			<Footer locations={loaderData.locations} />
 		</div>
 	);
-}
-
-/**
- * Handle for nested routes to access locale
- */
-export function useLocale(): Locale {
-	// This would be used with useOutletContext in child routes
-	return DEFAULT_LOCALE;
 }
