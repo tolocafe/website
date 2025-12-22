@@ -17,7 +17,17 @@ export const productType = defineType({
       title: 'Poster ID',
       type: 'string',
       description: 'ID in Poster',
-      validation: (rule) => rule.required(),
+      validation: (rule) =>
+        rule.required().custom(async (value, context) => {
+          if (!value) return true
+          const {document, getClient} = context
+          const client = getClient({apiVersion: '2024-01-01'})
+          const id = document?._id?.replace(/^drafts\./, '')
+          const params = {posterId: value, id}
+          const query = `count(*[_type == "product" && posterId == $posterId && !(_id in [$id, "drafts." + $id])])`
+          const count = await client.fetch(query, params)
+          return count === 0 || 'This Poster ID is already in use'
+        }),
     }),
     defineField({
       name: 'name',
@@ -104,13 +114,13 @@ export const productType = defineType({
     select: {
       title: `name.${baseLanguage?.id || 'es'}`,
       subtitle: `excerpt.${baseLanguage?.id || 'es'}`,
-      media: 'images',
+      images: 'images',
     },
-    prepare({title, subtitle, media}) {
+    prepare({title, subtitle, images}) {
       return {
         title: title || 'Untitled',
         subtitle: subtitle || '',
-        media,
+        media: images?.[0],
       }
     },
   },

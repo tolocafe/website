@@ -5,6 +5,7 @@ const supportedLanguages = [
   {id: 'en', title: 'English'},
   {id: 'de', title: 'Deutsch'},
   {id: 'fr', title: 'Français'},
+  {id: 'ja', title: '日本語'},
 ]
 
 export const baseLanguage = supportedLanguages.find((l) => l.isDefault)
@@ -12,7 +13,7 @@ export const baseLanguage = supportedLanguages.find((l) => l.isDefault)
 const translationsFieldset = {
   title: 'Translations',
   name: 'translations',
-  options: {collapsible: true},
+  options: {collapsible: true, collapsed: true},
 }
 
 /**

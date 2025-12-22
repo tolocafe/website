@@ -5,6 +5,7 @@ import {
   localeSlugType,
 } from './localeStringType'
 import {beanType} from './beanType'
+import {locationType} from './locationType'
 import {pageType} from './pageType'
 import {postType} from './postType'
 import {productType} from './productType'
@@ -17,6 +18,7 @@ export const schemaTypes = [
   localeSlugType,
   // Document types
   beanType,
+  locationType,
   pageType,
   postType,
   productType,

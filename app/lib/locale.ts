@@ -9,14 +9,17 @@
  * 5. SEO: Include hreflang link tags for alternate languages
  */
 
-export const SUPPORTED_LOCALES = ["en", "es"] as const;
+export const SUPPORTED_LOCALES = ["es", "en", "de", "fr", "ja"] as const;
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
 export const DEFAULT_LOCALE: Locale = "es";
 
 export const LOCALE_LABELS: Record<Locale, string> = {
-	en: "English",
 	es: "Español",
+	en: "English",
+	de: "Deutsch",
+	fr: "Français",
+	ja: "日本語",
 };
 
 /**
