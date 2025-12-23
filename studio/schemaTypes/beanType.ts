@@ -39,6 +39,12 @@ export const beanType = defineType({
       description: 'Specific region within the origin (e.g., Yirgacheffe, Huila)',
     }),
     defineField({
+      name: 'producer',
+      title: 'Producer',
+      type: 'localeString',
+      description: 'Coffee farm or producer name',
+    }),
+    defineField({
       name: 'varietal',
       title: 'Varietal',
       type: 'localeString',

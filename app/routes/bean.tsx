@@ -5,6 +5,19 @@ import { client, urlFor, getLocalizedString, type Bean } from '~/lib/sanity'
 import * as styles from './bean.css'
 
 const TRANSLATIONS = {
+  es: {
+    backToBeans: '← Volver a Nuestros Granos',
+    notFoundTitle: 'Grano No Encontrado',
+    notFoundText: 'El grano de café que buscas no existe o ha sido eliminado.',
+    originLabel: 'Origen',
+    regionLabel: 'Región',
+    producerLabel: 'Productor',
+    varietalLabel: 'Variedad',
+    altitudeLabel: 'Altitud',
+    processLabel: 'Proceso',
+    agtronLabel: 'Agtron',
+    tastingNotesLabel: 'Notas de Cata',
+  },
   en: {
     backToBeans: '← Back to Our Beans',
     notFoundTitle: 'Bean Not Found',
@@ -12,23 +25,54 @@ const TRANSLATIONS = {
       "The coffee bean you're looking for doesn't exist or has been removed.",
     originLabel: 'Origin',
     regionLabel: 'Region',
+    producerLabel: 'Producer',
     varietalLabel: 'Varietal',
     altitudeLabel: 'Altitude',
     processLabel: 'Process',
     agtronLabel: 'Agtron',
     tastingNotesLabel: 'Tasting Notes',
   },
-  es: {
-    backToBeans: '← Volver a Nuestros Granos',
-    notFoundTitle: 'Grano No Encontrado',
-    notFoundText: 'El grano de café que buscas no existe o ha sido eliminado.',
-    originLabel: 'Origen',
-    regionLabel: 'Región',
-    varietalLabel: 'Variedad',
-    altitudeLabel: 'Altitud',
-    processLabel: 'Proceso',
+  de: {
+    backToBeans: '← Zurück zu Unseren Bohnen',
+    notFoundTitle: 'Bohne Nicht Gefunden',
+    notFoundText:
+      'Die Kaffeebohne, die Sie suchen, existiert nicht oder wurde entfernt.',
+    originLabel: 'Herkunft',
+    regionLabel: 'Region',
+    producerLabel: 'Produzent',
+    varietalLabel: 'Sorte',
+    altitudeLabel: 'Höhe',
+    processLabel: 'Verarbeitung',
     agtronLabel: 'Agtron',
-    tastingNotesLabel: 'Notas de Cata',
+    tastingNotesLabel: 'Verkostungsnotizen',
+  },
+  fr: {
+    backToBeans: '← Retour à Nos Grains',
+    notFoundTitle: 'Grain Non Trouvé',
+    notFoundText:
+      'Le grain de café que vous recherchez n\'existe pas ou a été supprimé.',
+    originLabel: 'Origine',
+    regionLabel: 'Région',
+    producerLabel: 'Producteur',
+    varietalLabel: 'Variété',
+    altitudeLabel: 'Altitude',
+    processLabel: 'Procédé',
+    agtronLabel: 'Agtron',
+    tastingNotesLabel: 'Notes de Dégustation',
+  },
+  ja: {
+    backToBeans: '← コーヒー豆一覧に戻る',
+    notFoundTitle: 'コーヒー豆が見つかりません',
+    notFoundText:
+      'お探しのコーヒー豆は存在しないか、削除されました。',
+    originLabel: '産地',
+    regionLabel: '地域',
+    producerLabel: '生産者',
+    varietalLabel: '品種',
+    altitudeLabel: '標高',
+    processLabel: '精製方法',
+    agtronLabel: 'アグトロン',
+    tastingNotesLabel: 'テイスティングノート',
   },
 } as const
 
@@ -36,7 +80,7 @@ const BEAN_QUERY = `*[
   _type == "bean"
   && (slug.es.current == $slug || slug.en.current == $slug)
 ][0]{
-  _id, name, slug, origin, region, varietal, altitude, process, excerpt, tastingNotes, agtron, regionImage, varietalImage
+  _id, name, slug, origin, region, producer, varietal, altitude, process, excerpt, tastingNotes, agtron, regionImage, varietalImage
 }`
 
 export async function loader({ params }: Route.LoaderArgs) {
@@ -50,11 +94,53 @@ export function meta({ data, params }: Route.MetaArgs) {
 
   const name = getLocalizedString(bean.name, locale, 'Untitled')
   const origin = getLocalizedString(bean.origin, locale)
+  const tastingNotes = getLocalizedString(bean.tastingNotes, locale)
+  const imageUrl = bean.regionImage
+    ? urlFor(bean.regionImage)?.width(800).url()
+    : null
+
   return [
     { title: `${name} - TOLO Beans` },
     {
       name: 'description',
-      content: `${name} from ${origin}. ${getLocalizedString(bean.tastingNotes, locale)}`,
+      content: `${name} from ${origin}. ${tastingNotes}`,
+    },
+    {
+      tagName: 'script',
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name,
+        description: tastingNotes || getLocalizedString(bean.excerpt, locale),
+        brand: {
+          '@type': 'Brand',
+          name: 'TOLO Coffee',
+        },
+        image: imageUrl,
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/InStock',
+          priceCurrency: 'MXN',
+        },
+        additionalProperty: [
+          origin && {
+            '@type': 'PropertyValue',
+            name: 'Origin',
+            value: origin,
+          },
+          bean.altitude && {
+            '@type': 'PropertyValue',
+            name: 'Altitude',
+            value: `${bean.altitude}m`,
+          },
+          getLocalizedString(bean.process, locale) && {
+            '@type': 'PropertyValue',
+            name: 'Process',
+            value: getLocalizedString(bean.process, locale),
+          },
+        ].filter(Boolean),
+      }),
     },
   ]
 }
@@ -84,6 +170,7 @@ export default function BeanDetail({ loaderData }: Route.ComponentProps) {
   const name = getLocalizedString(bean.name, locale, 'Untitled')
   const origin = getLocalizedString(bean.origin, locale)
   const region = getLocalizedString(bean.region, locale)
+  const producer = getLocalizedString(bean.producer, locale)
   const varietal = getLocalizedString(bean.varietal, locale)
   const process = getLocalizedString(bean.process, locale)
   const excerpt = getLocalizedString(bean.excerpt, locale)
@@ -99,6 +186,7 @@ export default function BeanDetail({ loaderData }: Route.ComponentProps) {
   const details = [
     { label: t.originLabel, value: origin },
     { label: t.regionLabel, value: region },
+    { label: t.producerLabel, value: producer },
     { label: t.varietalLabel, value: varietal },
     {
       label: t.altitudeLabel,
@@ -166,5 +254,6 @@ export default function BeanDetail({ loaderData }: Route.ComponentProps) {
     </main>
   )
 }
+
 
 

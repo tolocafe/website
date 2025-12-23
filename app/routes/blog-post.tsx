@@ -12,16 +12,34 @@ import {
 import * as styles from './blog-post.css'
 
 const TRANSLATIONS = {
+  es: {
+    backToBlogs: '← Volver al Blog',
+    notFoundTitle: 'Publicación No Encontrada',
+    notFoundText: 'La publicación que buscas no existe o ha sido eliminada.',
+  },
   en: {
     backToBlogs: '← Back to Blog',
     notFoundTitle: 'Post Not Found',
     notFoundText:
       "The post you're looking for doesn't exist or has been removed.",
   },
-  es: {
-    backToBlogs: '← Volver al Blog',
-    notFoundTitle: 'Publicación No Encontrada',
-    notFoundText: 'La publicación que buscas no existe o ha sido eliminada.',
+  de: {
+    backToBlogs: '← Zurück zum Blog',
+    notFoundTitle: 'Beitrag Nicht Gefunden',
+    notFoundText:
+      'Der Beitrag, den Sie suchen, existiert nicht oder wurde entfernt.',
+  },
+  fr: {
+    backToBlogs: '← Retour au Blog',
+    notFoundTitle: 'Article Non Trouvé',
+    notFoundText:
+      'L\'article que vous recherchez n\'existe pas ou a été supprimé.',
+  },
+  ja: {
+    backToBlogs: '← ブログに戻る',
+    notFoundTitle: '記事が見つかりません',
+    notFoundText:
+      'お探しの記事は存在しないか、削除されました。',
   },
 } as const
 
@@ -42,9 +60,39 @@ export function meta({ data, params }: Route.MetaArgs) {
   if (!post) return [{ title: 'Post Not Found - TOLO' }]
 
   const title = getLocalizedString(post.title, locale, 'Untitled')
+  const excerpt = getLocalizedString(post.excerpt, locale)
+  const imageUrl = post.image
+    ? urlFor(post.image)?.width(1200).url()
+    : null
+
   return [
     { title: `${title} - TOLO Blog` },
-    { name: 'description', content: getLocalizedString(post.excerpt, locale) },
+    { name: 'description', content: excerpt },
+    {
+      tagName: 'script',
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: title,
+        description: excerpt,
+        image: imageUrl,
+        datePublished: post.publishedAt,
+        dateModified: post._updatedAt || post.publishedAt,
+        author: {
+          '@type': 'Organization',
+          name: 'TOLO Coffee',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'TOLO Coffee',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://tolo.cafe/favicon.png',
+          },
+        },
+      }),
+    },
   ]
 }
 
@@ -143,6 +191,7 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
     </main>
   )
 }
+
 
 
 

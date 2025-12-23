@@ -8,13 +8,25 @@ interface LocaleContext {
 }
 
 const TRANSLATIONS = {
+  es: {
+    title: 'TOLO - Buen Café',
+    description: 'Ofrecemos buen café',
+  },
   en: {
     title: 'TOLO - Good Coffee',
     description: 'We offer good coffee',
   },
-  es: {
-    title: 'TOLO - Buen Café',
-    description: 'Ofrecemos buen café',
+  de: {
+    title: 'TOLO - Guter Kaffee',
+    description: 'Wir bieten guten Kaffee',
+  },
+  fr: {
+    title: 'TOLO - Bon Café',
+    description: 'Nous offrons du bon café',
+  },
+  ja: {
+    title: 'TOLO - おいしいコーヒー',
+    description: 'おいしいコーヒーを提供します',
   },
 } as const
 
@@ -22,7 +34,37 @@ export function meta({ params }: Route.MetaArgs) {
   const locale = (params.locale as Locale) || 'es'
   const t = TRANSLATIONS[locale] || TRANSLATIONS.es
 
-  return [{ title: t.title }, { name: 'description', content: t.description }]
+  return [
+    { title: t.title },
+    { name: 'description', content: t.description },
+    {
+      tagName: 'script',
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'TOLO Coffee',
+        url: 'https://tolo.cafe',
+        logo: 'https://tolo.cafe/favicon.png',
+        description: t.description,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Toluca',
+          addressRegion: 'Estado de México',
+          addressCountry: 'MX',
+        },
+        contactPoint: {
+          '@type': 'ContactPoint',
+          email: 'hola@tolo.cafe',
+          contactType: 'customer service',
+        },
+        sameAs: [
+          'https://instagram.com',
+          'https://facebook.com',
+        ],
+      }),
+    },
+  ]
 }
 
 export function loader({ context }: Route.LoaderArgs) {

@@ -8,6 +8,21 @@ interface LocaleContext {
 }
 
 const TRANSLATIONS = {
+	es: {
+		title: "Contacto - TOLO",
+		description: "Ponte en contacto con la cafetería TOLO en Toluca",
+		heading: "Contacto",
+		subtitle: "Nos encantaría saber de ti",
+		comingSoon: "Próximamente",
+		message:
+			"Nuestro formulario de contacto está en preparación. Mientras tanto, puedes encontrarnos en nuestra cafetería en Toluca o comunicarte a través de nuestras redes sociales.",
+		addressTitle: "Visítanos",
+		addressPlaceholder: "Toluca, Estado de México, México",
+		hoursTitle: "Horario",
+		hoursPlaceholder: "Lun-Vie: 8am - 8pm\nSáb-Dom: 9am - 6pm",
+		emailTitle: "Correo",
+		emailPlaceholder: "hola@tolo.cafe",
+	},
 	en: {
 		title: "Contact Us - TOLO",
 		description: "Get in touch with TOLO coffee shop in Toluca",
@@ -23,19 +38,49 @@ const TRANSLATIONS = {
 		emailTitle: "Email",
 		emailPlaceholder: "hola@tolo.cafe",
 	},
-	es: {
-		title: "Contacto - TOLO",
-		description: "Ponte en contacto con la cafetería TOLO en Toluca",
-		heading: "Contacto",
-		subtitle: "Nos encantaría saber de ti",
-		comingSoon: "Próximamente",
+	de: {
+		title: "Kontakt - TOLO",
+		description: "Kontaktieren Sie das TOLO Café in Toluca",
+		heading: "Kontakt",
+		subtitle: "Wir freuen uns von Ihnen zu hören",
+		comingSoon: "Demnächst",
 		message:
-			"Nuestro formulario de contacto está en preparación. Mientras tanto, puedes encontrarnos en nuestra cafetería en Toluca o comunicarte a través de nuestras redes sociales.",
-		addressTitle: "Visítanos",
-		addressPlaceholder: "Toluca, Estado de México, México",
-		hoursTitle: "Horario",
-		hoursPlaceholder: "Lun-Vie: 8am - 8pm\nSáb-Dom: 9am - 6pm",
-		emailTitle: "Correo",
+			"Unser Kontaktformular wird vorbereitet. In der Zwischenzeit finden Sie uns in unserem Café in Toluca oder kontaktieren Sie uns über unsere Social-Media-Kanäle.",
+		addressTitle: "Besuchen Sie Uns",
+		addressPlaceholder: "Toluca, Estado de México, Mexiko",
+		hoursTitle: "Öffnungszeiten",
+		hoursPlaceholder: "Mo-Fr: 8-20 Uhr\nSa-So: 9-18 Uhr",
+		emailTitle: "E-Mail",
+		emailPlaceholder: "hola@tolo.cafe",
+	},
+	fr: {
+		title: "Contact - TOLO",
+		description: "Contactez le café TOLO à Toluca",
+		heading: "Contact",
+		subtitle: "Nous serions ravis d'avoir de vos nouvelles",
+		comingSoon: "Bientôt Disponible",
+		message:
+			"Notre formulaire de contact est en préparation. En attendant, vous pouvez nous trouver dans notre café à Toluca ou nous contacter via nos réseaux sociaux.",
+		addressTitle: "Visitez-Nous",
+		addressPlaceholder: "Toluca, Estado de México, Mexique",
+		hoursTitle: "Horaires",
+		hoursPlaceholder: "Lun-Ven: 8h - 20h\nSam-Dim: 9h - 18h",
+		emailTitle: "E-mail",
+		emailPlaceholder: "hola@tolo.cafe",
+	},
+	ja: {
+		title: "お問い合わせ - TOLO",
+		description: "トルーカのTOLOコーヒーショップへのお問い合わせ",
+		heading: "お問い合わせ",
+		subtitle: "お気軽にご連絡ください",
+		comingSoon: "近日公開",
+		message:
+			"お問い合わせフォームは準備中です。それまでの間、トルーカの店舗にお越しいただくか、SNSでご連絡ください。",
+		addressTitle: "店舗情報",
+		addressPlaceholder: "トルーカ、メキシコ州、メキシコ",
+		hoursTitle: "営業時間",
+		hoursPlaceholder: "月-金: 8時 - 20時\n土-日: 9時 - 18時",
+		emailTitle: "メール",
 		emailPlaceholder: "hola@tolo.cafe",
 	},
 } as const;

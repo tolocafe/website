@@ -6,13 +6,25 @@ import { client, getLocalizedString, type Page } from '~/lib/sanity'
 import * as styles from './page.css'
 
 const TRANSLATIONS = {
+  es: {
+    notFoundTitle: 'Página No Encontrada',
+    notFoundText: 'La página que buscas no existe.',
+  },
   en: {
     notFoundTitle: 'Page Not Found',
     notFoundText: "The page you're looking for doesn't exist.",
   },
-  es: {
-    notFoundTitle: 'Página No Encontrada',
-    notFoundText: 'La página que buscas no existe.',
+  de: {
+    notFoundTitle: 'Seite Nicht Gefunden',
+    notFoundText: 'Die Seite, die Sie suchen, existiert nicht.',
+  },
+  fr: {
+    notFoundTitle: 'Page Non Trouvée',
+    notFoundText: 'La page que vous recherchez n\'existe pas.',
+  },
+  ja: {
+    notFoundTitle: 'ページが見つかりません',
+    notFoundText: 'お探しのページは存在しません。',
   },
 } as const
 
@@ -110,6 +122,7 @@ export default function PageRoute({ loaderData }: Route.ComponentProps) {
     </main>
   )
 }
+
 
 
 

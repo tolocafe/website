@@ -84,6 +84,7 @@ export interface Bean {
   slug: LocaleSlug
   origin?: LocaleString
   region?: LocaleString
+  producer?: LocaleString
   varietal?: LocaleString
   altitude?: number
   process?: LocaleString

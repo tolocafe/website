@@ -23,6 +23,8 @@ export default [
     route('blog', 'routes/blog.tsx'),
     route('blog/:slug', 'routes/blog-post.tsx'),
     route('contact', 'routes/contact.tsx'),
+    // Location routes
+    route('locations/:slug', 'routes/location.tsx'),
     // Dynamic pages from Sanity (must be last to catch remaining slugs)
     route(':slug', 'routes/page.tsx'),
   ]),

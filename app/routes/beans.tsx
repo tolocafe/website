@@ -11,6 +11,18 @@ import {
 import * as styles from './beans.css'
 
 const TRANSLATIONS = {
+  es: {
+    title: 'Nuestros Granos - TOLO',
+    description:
+      'Descubre nuestros granos de café cuidadosamente seleccionados de todo el mundo',
+    heading: 'Nuestros Granos',
+    subtitle: 'Orígenes únicos y mezclas cuidadosamente seleccionados',
+    altitudeLabel: 'Altitud',
+    processLabel: 'Proceso',
+    emptyTitle: 'Próximamente',
+    emptyMessage:
+      'Estamos preparando nuestro catálogo de granos. Vuelve pronto para descubrir nuestros cafés cuidadosamente seleccionados.',
+  },
   en: {
     title: 'Our Beans - TOLO',
     description:
@@ -23,17 +35,41 @@ const TRANSLATIONS = {
     emptyMessage:
       'We are preparing our bean catalog. Check back soon to discover our carefully selected coffees.',
   },
-  es: {
-    title: 'Nuestros Granos - TOLO',
+  de: {
+    title: 'Unsere Bohnen - TOLO',
     description:
-      'Descubre nuestros granos de café cuidadosamente seleccionados de todo el mundo',
-    heading: 'Nuestros Granos',
-    subtitle: 'Orígenes únicos y mezclas cuidadosamente seleccionados',
-    altitudeLabel: 'Altitud',
-    processLabel: 'Proceso',
-    emptyTitle: 'Próximamente',
+      'Entdecken Sie unsere sorgfältig ausgewählten Kaffeebohnen aus aller Welt',
+    heading: 'Unsere Bohnen',
+    subtitle: 'Sorgfältig ausgewählte Single Origins und Blends',
+    altitudeLabel: 'Höhe',
+    processLabel: 'Verarbeitung',
+    emptyTitle: 'Demnächst',
     emptyMessage:
-      'Estamos preparando nuestro catálogo de granos. Vuelve pronto para descubrir nuestros cafés cuidadosamente seleccionados.',
+      'Wir bereiten unseren Bohnenkatalog vor. Schauen Sie bald wieder vorbei, um unsere sorgfältig ausgewählten Kaffees zu entdecken.',
+  },
+  fr: {
+    title: 'Nos Grains - TOLO',
+    description:
+      'Découvrez nos grains de café soigneusement sélectionnés du monde entier',
+    heading: 'Nos Grains',
+    subtitle: 'Origines uniques et mélanges soigneusement sélectionnés',
+    altitudeLabel: 'Altitude',
+    processLabel: 'Procédé',
+    emptyTitle: 'Bientôt Disponible',
+    emptyMessage:
+      'Nous préparons notre catalogue de grains. Revenez bientôt pour découvrir nos cafés soigneusement sélectionnés.',
+  },
+  ja: {
+    title: 'コーヒー豆 - TOLO',
+    description:
+      '世界中から厳選されたコーヒー豆をご紹介します',
+    heading: 'コーヒー豆',
+    subtitle: '厳選されたシングルオリジンとブレンド',
+    altitudeLabel: '標高',
+    processLabel: '精製方法',
+    emptyTitle: '近日公開',
+    emptyMessage:
+      'コーヒー豆カタログを準備中です。厳選されたコーヒーをお届けするため、もうしばらくお待ちください。',
   },
 } as const
 
@@ -138,5 +174,6 @@ export default function Beans({ loaderData }: Route.ComponentProps) {
     </main>
   )
 }
+
 
 
