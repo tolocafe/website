@@ -41,6 +41,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 		`*[_type == "location"] | order(isMainLocation desc, name.es asc) {
 			_id,
 			name,
+			slug,
 			city,
 			country,
 			hours,
