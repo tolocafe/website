@@ -10,23 +10,28 @@ interface LocaleContext {
 const TRANSLATIONS = {
   es: {
     title: 'TOLO - Buen Café',
-    description: 'Ofrecemos buen café',
+    description:
+      'Descubre el mejor café de especialidad en Toluca. Micro-lotes tostados semanalmente, granos seleccionados de alta calidad, baristas expertos y ambiente acogedor. Espresso, pour-over, y métodos de preparación artesanales. Visítanos en el centro de Toluca.',
   },
   en: {
     title: 'TOLO - Good Coffee',
-    description: 'We offer good coffee',
+    description:
+      'Discover the best specialty coffee in Toluca. Weekly roasted micro-lots, high-quality selected beans, expert baristas and welcoming atmosphere. Espresso, pour-over, and artisan brewing methods. Visit us in downtown Toluca.',
   },
   de: {
     title: 'TOLO - Guter Kaffee',
-    description: 'Wir bieten guten Kaffee',
+    description:
+      'Entdecken Sie den besten Spezialitätenkaffee in Toluca. Wöchentlich geröstete Micro-Lots, hochwertige ausgewählte Bohnen, erfahrene Baristas und einladende Atmosphäre. Espresso, Pour-Over und handwerkliche Zubereitungsmethoden. Besuchen Sie uns in der Innenstadt von Toluca.',
   },
   fr: {
     title: 'TOLO - Bon Café',
-    description: 'Nous offrons du bon café',
+    description:
+      'Découvrez le meilleur café de spécialité à Toluca. Micro-lots torréfiés chaque semaine, grains sélectionnés de haute qualité, baristas experts et atmosphère accueillante. Espresso, pour-over et méthodes de préparation artisanales. Visitez-nous au centre-ville de Toluca.',
   },
   ja: {
     title: 'TOLO - おいしいコーヒー',
-    description: 'おいしいコーヒーを提供します',
+    description:
+      'トルーカで最高のスペシャルティコーヒーを発見してください。毎週焙煎されるマイクロロット、高品質な厳選豆、熟練バリスタ、居心地の良い雰囲気。エスプレッソ、プアオーバー、職人的な抽出方法。トルーカのダウンタウンでお待ちしています。',
   },
 } as const
 
