@@ -1,16 +1,16 @@
 import {defineField, defineType} from 'sanity'
-import {BasketIcon} from '@sanity/icons'
+import {TagIcon} from '@sanity/icons'
 import {baseLanguage} from './localeStringType'
 
 /**
- * Product document type for menu items/drinks
- * with field-level translations for name, excerpt, body, and recipe
+ * Promotion document type for special offers and campaigns
+ * with field-level translations for name, excerpt, and body
  */
-export const productType = defineType({
-  name: 'product',
-  title: 'Product',
+export const promotionType = defineType({
+  name: 'promotion',
+  title: 'Promotion',
   type: 'document',
-  icon: BasketIcon,
+  icon: TagIcon,
   fields: [
     defineField({
       name: 'posterId',
@@ -24,7 +24,7 @@ export const productType = defineType({
           const client = getClient({apiVersion: '2024-01-01'})
           const id = document?._id?.replace(/^drafts\./, '')
           const params = {posterId: value, id}
-          const query = `count(*[_type == "product" && posterId == $posterId && !(_id in [$id, "drafts." + $id])])`
+          const query = `count(*[_type == "promotion" && posterId == $posterId && !(_id in [$id, "drafts." + $id])])`
           const count = await client.fetch(query, params)
           return count === 0 || 'This Poster ID is already in use'
         }),
@@ -43,30 +43,16 @@ export const productType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'tag',
-      title: 'Tag',
-      type: 'string',
-      description: 'Optional label for menu items',
-      options: {
-        list: [
-          {title: 'Seasonal', value: 'SEASONAL'},
-          {title: 'Favorite', value: 'FAVORITE'},
-          {title: 'New', value: 'NEW'},
-          {title: 'Special', value: 'SPECIAL'},
-        ],
-      },
-    }),
-    defineField({
       name: 'excerpt',
-      title: 'Small Description',
+      title: 'Excerpt',
       type: 'localeText',
-      description: 'A short summary for previews and cards',
+      description: 'A short summary of the promotion for previews',
     }),
     defineField({
       name: 'body',
-      title: 'Description',
+      title: 'Body',
       type: 'localeBlockContent',
-      description: 'Full product description',
+      description: 'Full promotion details',
     }),
     defineField({
       name: 'images',
@@ -88,40 +74,6 @@ export const productType = defineType({
           ],
         },
       ],
-    }),
-    defineField({
-      name: 'intensity',
-      title: 'Intensity',
-      type: 'number',
-      description: 'Intensity level (1-5)',
-      validation: (rule) => rule.min(1).max(5).integer(),
-    }),
-    defineField({
-      name: 'caffeine',
-      title: 'Caffeine',
-      type: 'number',
-      description: 'Caffeine level (1-5)',
-      validation: (rule) => rule.min(1).max(5).integer(),
-    }),
-    defineField({
-      name: 'volume',
-      title: 'Volume',
-      type: 'number',
-      description: 'Volume in milliliters (ml)',
-      validation: (rule) => rule.min(0),
-    }),
-    defineField({
-      name: 'calories',
-      title: 'Calories',
-      type: 'number',
-      description: 'Calories per serving',
-      validation: (rule) => rule.min(0),
-    }),
-    defineField({
-      name: 'recipe',
-      title: 'Recipe',
-      type: 'localeBlockContent',
-      description: 'Ingredients and preparation instructions',
     }),
   ],
   preview: {

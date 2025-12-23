@@ -9,6 +9,7 @@ import {locationType} from './locationType'
 import {pageType} from './pageType'
 import {postType} from './postType'
 import {productType} from './productType'
+import {promotionType} from './promotionType'
 
 export const schemaTypes = [
   // Locale types
@@ -22,4 +23,5 @@ export const schemaTypes = [
   pageType,
   postType,
   productType,
+  promotionType,
 ]

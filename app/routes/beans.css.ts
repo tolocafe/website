@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css'
-import { vars } from '~/styles'
+import { vars, containerWide } from '~/styles'
 
 export const main = style({
   minHeight: 'calc(100vh - 200px)',
@@ -7,10 +7,7 @@ export const main = style({
   backgroundColor: vars.color.background,
 })
 
-export const container = style({
-  maxWidth: '1100px',
-  margin: '0 auto',
-})
+export const container = containerWide
 
 export const header = style({
   textAlign: 'center',
@@ -48,10 +45,7 @@ export const beanCard = style({
   border: `1px solid ${vars.color.border}`,
   overflow: 'hidden',
   textDecoration: 'none',
-  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
   ':hover': {
-    transform: 'translateY(-4px)',
-    boxShadow: `0 8px 24px rgba(0, 0, 0, 0.1)`,
   },
 })
 
@@ -134,5 +128,6 @@ export const emptyMessage = style({
   maxWidth: '500px',
   margin: '0 auto',
 })
+
 
 

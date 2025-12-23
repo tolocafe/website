@@ -3,6 +3,7 @@ import {
   createImageUrlBuilder,
   type SanityImageSource,
 } from '@sanity/image-url'
+import type { TypedObject } from '@portabletext/types'
 import type { Locale } from './locale'
 
 /**
@@ -43,11 +44,11 @@ export interface LocaleSlug {
 }
 
 export interface LocaleBlockContent {
-  es?: unknown[]
-  en?: unknown[]
-  de?: unknown[]
-  fr?: unknown[]
-  ja?: unknown[]
+  es?: TypedObject[]
+  en?: TypedObject[]
+  de?: TypedObject[]
+  fr?: TypedObject[]
+  ja?: TypedObject[]
 }
 
 export interface SanityImage {

@@ -1,4 +1,5 @@
-import { Outlet, redirect } from "react-router";
+import { useEffect } from "react";
+import { Outlet, redirect, useLocation } from "react-router";
 import type { Route } from "./+types/locale-layout";
 import { Header } from "~/components/Header";
 import { Footer } from "~/components/Footer";
@@ -65,6 +66,23 @@ export function meta({ data }: Route.MetaArgs) {
 }
 
 export default function LocaleLayout({ loaderData }: Route.ComponentProps) {
+	const location = useLocation();
+
+	// Enable hash navigation like "/es#visit" from anywhere in the app.
+	useEffect(() => {
+		if (!location.hash) return;
+
+		const id = decodeURIComponent(location.hash.slice(1));
+		const tryScroll = () => {
+			const el = document.getElementById(id);
+			if (el) el.scrollIntoView({ block: "start" });
+		};
+
+		// Try immediately, then again after paint (useful when navigating between routes).
+		tryScroll();
+		setTimeout(tryScroll, 0);
+	}, [location.hash, location.pathname]);
+
 	return (
 		<div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
 			<Header />

@@ -9,29 +9,30 @@ interface LocaleContext {
 
 const TRANSLATIONS = {
   es: {
-    title: 'TOLO - Buen Café',
+    title: 'TOLO | Café en Toluca | Buen café, así de simple',
     description:
-      'Descubre el mejor café de especialidad en Toluca. Micro-lotes tostados semanalmente, granos seleccionados de alta calidad, baristas expertos y ambiente acogedor. Espresso, pour-over, y métodos de preparación artesanales. Visítanos en el centro de Toluca.',
+      'TOLO es un café de especialidad en Toluca: espresso, pour overs, matcha, cold brew, chai, cacao, té y pan dulce. Tostamos café cada semana y vendemos café en grano (en tienda). Wi‑Fi rápido, pet‑friendly y pide por la app.',
   },
   en: {
-    title: 'TOLO - Good Coffee',
+    title: 'TOLO | Specialty Coffee in Toluca | Good Coffee, Simple as That',
     description:
-      'Discover the best specialty coffee in Toluca. Weekly roasted micro-lots, high-quality selected beans, expert baristas and welcoming atmosphere. Espresso, pour-over, and artisan brewing methods. Visit us in downtown Toluca.',
+      'TOLO is a specialty coffee shop in Toluca: espresso drinks, pour overs, matcha, cold brew, chai, pastries, cacao and tea. We roast weekly and sell whole bean coffee in-store. Fast service, high-speed Wi‑Fi, pet-friendly, and order ahead in our app.',
   },
   de: {
-    title: 'TOLO - Guter Kaffee',
+    title: 'TOLO | Spezialitätenkaffee in Toluca | Guter Kaffee. Ganz einfach.',
     description:
-      'Entdecken Sie den besten Spezialitätenkaffee in Toluca. Wöchentlich geröstete Micro-Lots, hochwertige ausgewählte Bohnen, erfahrene Baristas und einladende Atmosphäre. Espresso, Pour-Over und handwerkliche Zubereitungsmethoden. Besuchen Sie uns in der Innenstadt von Toluca.',
+      'TOLO ist ein Spezialitätencafé in Toluca: Espresso-Getränke, Pour Overs, Matcha, Cold Brew, Chai, Gebäck, Kakao und Tee. Wir rösten wöchentlich und verkaufen ganze Bohnen im Laden. Schnell, gemütlich, mit schnellem WLAN, hundefreundlich und mit Vorbestellung in unserer App.',
   },
   fr: {
-    title: 'TOLO - Bon Café',
+    title: 'TOLO | Café de spécialité à Toluca | Du bon café, tout simplement',
     description:
-      'Découvrez le meilleur café de spécialité à Toluca. Micro-lots torréfiés chaque semaine, grains sélectionnés de haute qualité, baristas experts et atmosphère accueillante. Espresso, pour-over et méthodes de préparation artisanales. Visitez-nous au centre-ville de Toluca.',
+      'TOLO est un café de spécialité à Toluca : espresso, pour overs, matcha, cold brew, chai, pâtisseries, cacao et thé. Torréfaction chaque semaine et café en grains en boutique. Service rapide, Wi‑Fi haut débit, animaux bienvenus et commande à l’avance via notre app.',
   },
   ja: {
-    title: 'TOLO - おいしいコーヒー',
+    title:
+      'TOLO｜トルーカのスペシャルティコーヒー｜おいしいコーヒー。シンプルに。',
     description:
-      'トルーカで最高のスペシャルティコーヒーを発見してください。毎週焙煎されるマイクロロット、高品質な厳選豆、熟練バリスタ、居心地の良い雰囲気。エスプレッソ、プアオーバー、職人的な抽出方法。トルーカのダウンタウンでお待ちしています。',
+      'TOLOはトルーカのスペシャルティコーヒーショップ。エスプレッソ、プアオーバー、抹茶、コールドブリュー、チャイ、焼き菓子、カカオ、紅茶をご用意。毎週焙煎し、店頭でコーヒー豆も販売しています。高速Wi‑Fi、ペットOK、アプリで事前注文も。',
   },
 } as const
 
@@ -54,9 +55,12 @@ export function meta({ params }: Route.MetaArgs) {
         priceRange: '$$',
         address: {
           '@type': 'PostalAddress',
+          streetAddress:
+            'Blvr. José María Pino Suárez 800, Cuauhtémoc, 50130 Toluca de Lerdo, Méx.',
           addressLocality: 'Toluca',
           addressRegion: 'Estado de México',
           addressCountry: 'MX',
+          postalCode: '50130',
         },
         contactPoint: {
           '@type': 'ContactPoint',
