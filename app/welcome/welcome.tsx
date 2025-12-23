@@ -5,151 +5,187 @@ const TRANSLATIONS = {
   es: {
     heroTitle: 'Buen Café, Así Nomás',
     heroSubtitle:
-      'Café de especialidad en Toluca: micro-lotes tostados con precisión, granos mexicanos de altura, servidos con dedicación por baristas expertos',
-    aboutTitle: 'Café de Especialidad en el Corazón de Toluca',
+      'Café de especialidad en Toluca: micro-lotes tostados con precisión, servidos con dedicación',
+    aboutTitle: 'Café de Especialidad en Toluca',
     aboutText:
-      'En TOLO creemos que un buen café debe ser directo, fresco y sin vueltas. Somos una cafetería de especialidad en Toluca dedicada a preparar bebidas excepcionales con granos mexicanos seleccionados y tostados cada semana en micro-lotes pequeños. Trabajamos directamente con productores de café de altura en Chiapas, Oaxaca y Veracruz, garantizando trazabilidad completa y compensación justa. Nuestro compromiso es simple: servir café de especialidad que hable por sí mismo, con perfiles de taza únicos que resaltan las características de cada origen.',
+      'En TOLO creemos que un buen café debe ser directo, fresco y sin vueltas. Somos una cafetería de especialidad en Toluca dedicada a preparar bebidas excepcionales con granos mexicanos seleccionados y tostados cada semana en micro-lotes. Trabajamos directamente con productores de café de altura en Chiapas, Oaxaca y Veracruz, garantizando trazabilidad completa y compensación justa.',
     brewingTitle: 'Métodos de Preparación Artesanales',
     brewingText:
-      'Ofrecemos diversos métodos de extracción para resaltar las mejores características de cada café: espresso calibrado con precisión para bebidas intensas y cremosas, pour-over V60 para perfiles brillantes y limpios, Chemex para tazas delicadas y aromáticas, y AeroPress para extracciones concentradas. Nuestros baristas certificados dominan cada técnica, ajustando variables como temperatura del agua (92-94°C), tiempo de extracción y ratio de preparación para lograr el equilibrio perfecto entre acidez, dulzura y cuerpo.',
-    quickServiceTitle: 'Experiencia Rápida sin Comprometer la Calidad',
+      'Ofrecemos diversos métodos de extracción: espresso calibrado con precisión, pour-over V60 para perfiles brillantes, Chemex para tazas delicadas, y AeroPress para extracciones concentradas. Nuestros baristas certificados ajustan variables como temperatura (92-94°C), tiempo de extracción y ratio de preparación para lograr el balance perfecto.',
+    quickServiceTitle: 'Rápido Sin Comprometer la Calidad',
     quickServiceText:
-      'Diseñamos nuestra barra de café para que el proceso sea rápido y eficiente, pero sin sacrificar un ápice de calidad. Cada bebida se muele al momento con molinos de muelas de precisión, se calibra la extracción según el perfil del grano y se sirve lista en menos de dos minutos. Utilizamos equipamiento profesional de última generación: máquinas de espresso con control PID de temperatura, molinos con ajuste micrométrico y básculas digitales para garantizar consistencia en cada preparación.',
-    roastingTitle: 'Tueste Fresco y Controlado',
+      'Diseñamos nuestra barra para un proceso rápido pero sin sacrificar calidad. Cada bebida se muele al momento con molinos de precisión, se calibra la extracción y se sirve en menos de dos minutos. Equipamiento profesional con control PID de temperatura y básculas digitales garantizan consistencia.',
+    roastingTitle: 'Tueste Fresco Cada Semana',
     roastingText:
-      'Tostamos nuestros granos en lotes pequeños cada semana en nuestra tostadora de tambor, con control preciso de temperatura y perfil de tueste. Esto nos permite desarrollar perfiles de sabor específicos para cada origen: tuestes claros para resaltar notas frutales y florales en cafés africanos, tuestes medios para equilibrar dulzura y acidez en cafés centroamericanos, y desarrollo cuidadoso para maximizar la complejidad en cafés mexicanos de altura. Cada lote se registra y se cata para asegurar estándares de calidad consistentes.',
+      'Tostamos nuestros granos en lotes pequeños semanalmente con control preciso de temperatura y perfil. Desarrollamos perfiles específicos para cada origen: tuestes claros para notas frutales, medios para equilibrar dulzura y acidez. Cada lote se registra y cata para asegurar calidad consistente.',
     locationTitle: 'Encuéntranos en el Centro de Toluca',
     locationText:
-      'Estamos ubicados en el corazón del centro histórico de Toluca, Estado de México. Nuestro espacio está diseñado para ofrecer un ambiente acogedor donde puedas disfrutar de tu café, trabajar con WiFi de alta velocidad, o simplemente relajarte mientras observas el proceso de preparación detrás de nuestra barra. El aroma del café recién tostado te recibe cada día. Abrimos todos los días para servir a la comunidad cafetera de Toluca.',
+      'Estamos en el corazón del centro histórico de Toluca. Nuestro espacio ofrece un ambiente acogedor donde disfrutar tu café, trabajar con WiFi rápido, o relajarte mientras observas el proceso de preparación. El aroma del café recién tostado te recibe cada día.',
     sustainabilityTitle: 'Sostenibilidad y Comercio Directo',
     sustainabilityText:
-      'Creemos en construir relaciones directas y sostenibles con productores de café mexicano. Pagamos precios justos por encima del mercado, garantizando que los caficultores reciban compensación adecuada por su trabajo. Trabajamos con fincas que practican agricultura sostenible, conservación de suelos y manejo responsable del agua. Toda nuestra cadena de suministro es trazable: conocemos el nombre del productor, la finca, la altitud de cultivo, la variedad botánica y el método de procesamiento de cada café que servimos.',
-    featuresTitle: 'Por Qué Elegir TOLO Coffee',
+      'Construimos relaciones directas con productores mexicanos, pagando precios justos por encima del mercado. Trabajamos con fincas que practican agricultura sostenible y manejo responsable. Toda nuestra cadena es trazable: conocemos el productor, finca, altitud, variedad y procesamiento de cada café que servimos.',
+    featuresTitle: 'Por Qué Elegir TOLO',
     feature1Title: 'Tueste en Micro-lotes Semanales',
     feature1Text:
-      'Cada semana tostamos lotes pequeños de 5-10kg para asegurar máxima frescura y sabor en cada taza. Nunca servimos café tostado hace más de dos semanas.',
-    feature2Title: 'Baristas Certificados y Equipamiento Profesional',
+      'Cada semana tostamos lotes de 5-10kg para máxima frescura. Nunca servimos café tostado hace más de dos semanas.',
+    feature2Title: 'Baristas Certificados',
     feature2Text:
-      'Nuestro equipo está certificado en preparación de café de especialidad. Cada bebida se prepara con atención al detalle, desde la selección del grano hasta la presentación final, usando equipamiento profesional calibrado diariamente.',
-    feature3Title: 'Comunidad y Pasión Local',
+      'Equipo certificado en café de especialidad. Cada bebida preparada con atención al detalle usando equipamiento profesional calibrado diariamente.',
+    feature3Title: 'Comunidad Local',
     feature3Text:
-      'Somos parte activa de la comunidad de Toluca, comprometidos con educar y compartir la cultura del café de especialidad. Organizamos catas, talleres de preparación y eventos para conectar a los amantes del buen café.',
-    menuTitle: 'Nuestro Menú de Café',
+      'Parte activa de la comunidad de Toluca. Organizamos catas, talleres y eventos para conectar amantes del café.',
+    menuTitle: 'Nuestro Menú',
     menuText:
-      'Ofrecemos espresso, americano, cappuccino, latte, flat white, cortado, pour-over, Chemex, AeroPress, y métodos de filtro. También contamos con bebidas frías como cold brew y café helado. Todos nuestros cafés están disponibles con leche entera, deslactosada o bebidas vegetales (avena, almendra). Pregunta por nuestros cafés de origen único disponibles cada semana.',
+      'Espresso, americano, cappuccino, latte, flat white, cortado, pour-over, Chemex, AeroPress. También cold brew y café helado. Disponibles con leche entera, deslactosada, avena o almendra. Pregunta por nuestros cafés de origen único.',
     connectTitle: 'Conecta con TOLO Coffee',
   },
   en: {
     heroTitle: 'Good Coffee, Just That',
     heroSubtitle:
-      'Specialty coffee in Toluca: precision-roasted micro-lots, high-altitude Mexican beans, served with dedication by expert baristas',
-    aboutTitle: 'Specialty Coffee in the Heart of Toluca',
+      'Specialty coffee in Toluca: precision-roasted micro-lots, served with dedication',
+    aboutTitle: 'Specialty Coffee in Toluca',
     aboutText:
-      'At TOLO we believe that good coffee should be direct, fresh and straightforward. We are a specialty coffee shop in Toluca dedicated to preparing exceptional drinks with selected Mexican beans roasted weekly in small micro-lots. We work directly with high-altitude coffee producers in Chiapas, Oaxaca and Veracruz, guaranteeing complete traceability and fair compensation. Our commitment is simple: serve specialty coffee that speaks for itself, with unique cup profiles that highlight the characteristics of each origin.',
+      'At TOLO we believe that good coffee should be direct, fresh and straightforward. We are a specialty coffee shop in Toluca dedicated to preparing exceptional drinks with selected Mexican beans roasted weekly in small micro-lots. We work directly with high-altitude coffee producers in Chiapas, Oaxaca and Veracruz, guaranteeing complete traceability and fair compensation.',
     brewingTitle: 'Artisan Brewing Methods',
     brewingText:
-      'We offer various extraction methods to bring out the best characteristics of each coffee: precision-calibrated espresso for intense and creamy drinks, V60 pour-over for bright and clean profiles, Chemex for delicate and aromatic cups, and AeroPress for concentrated extractions. Our certified baristas master each technique, adjusting variables like water temperature (92-94°C), extraction time and brew ratio to achieve the perfect balance between acidity, sweetness and body.',
-    quickServiceTitle: 'Fast Experience Without Compromising Quality',
+      'We offer various extraction methods: precision-calibrated espresso, V60 pour-over for bright profiles, Chemex for delicate cups, and AeroPress for concentrated extractions. Our certified baristas adjust variables like temperature (92-94°C), extraction time and brew ratio to achieve perfect balance.',
+    quickServiceTitle: 'Fast Without Compromising Quality',
     quickServiceText:
-      'We designed our coffee bar so the process is fast and efficient, but without sacrificing an ounce of quality. Every drink is ground on the spot with precision burr grinders, extraction is calibrated according to the bean profile and served ready in under two minutes. We use state-of-the-art professional equipment: espresso machines with PID temperature control, grinders with micrometric adjustment and digital scales to guarantee consistency in every preparation.',
-    roastingTitle: 'Fresh and Controlled Roasting',
+      'We designed our bar for a fast process without sacrificing quality. Every drink is ground on the spot with precision grinders, extraction is calibrated and served in under two minutes. Professional equipment with PID temperature control and digital scales guarantee consistency.',
+    roastingTitle: 'Fresh Roasting Every Week',
     roastingText:
-      'We roast our beans in small batches every week in our drum roaster, with precise control of temperature and roast profile. This allows us to develop specific flavor profiles for each origin: light roasts to highlight fruity and floral notes in African coffees, medium roasts to balance sweetness and acidity in Central American coffees, and careful development to maximize complexity in high-altitude Mexican coffees. Each batch is logged and cupped to ensure consistent quality standards.',
+      'We roast our beans in small batches weekly with precise temperature and profile control. We develop specific profiles for each origin: light roasts for fruity notes, medium to balance sweetness and acidity. Each batch is logged and cupped to ensure consistent quality.',
     locationTitle: 'Find Us in Downtown Toluca',
     locationText:
-      "We're located in the heart of Toluca's historic downtown, Estado de México. Our space is designed to offer a welcoming atmosphere where you can enjoy your coffee, work with high-speed WiFi, or simply relax while watching the brewing process behind our bar. The aroma of freshly roasted coffee welcomes you every day. We're open daily to serve Toluca's coffee community.",
+      "We're in the heart of Toluca's historic downtown. Our space offers a welcoming atmosphere where you can enjoy your coffee, work with fast WiFi, or relax while watching the brewing process. The aroma of freshly roasted coffee welcomes you every day.",
     sustainabilityTitle: 'Sustainability and Direct Trade',
     sustainabilityText:
-      'We believe in building direct and sustainable relationships with Mexican coffee producers. We pay fair prices above the market, ensuring that coffee farmers receive adequate compensation for their work. We work with farms that practice sustainable agriculture, soil conservation and responsible water management. Our entire supply chain is traceable: we know the name of the producer, the farm, the growing altitude, the botanical variety and the processing method of every coffee we serve.',
-    featuresTitle: 'Why Choose TOLO Coffee',
+      'We build direct relationships with Mexican producers, paying fair prices above market. We work with farms that practice sustainable agriculture and responsible management. Our entire chain is traceable: we know the producer, farm, altitude, variety and processing of every coffee we serve.',
+    featuresTitle: 'Why Choose TOLO',
     feature1Title: 'Weekly Micro-lot Roasting',
     feature1Text:
-      'Every week we roast small batches of 5-10kg to ensure maximum freshness and flavor in every cup. We never serve coffee roasted more than two weeks ago.',
-    feature2Title: 'Certified Baristas and Professional Equipment',
+      'Every week we roast 5-10kg batches for maximum freshness. We never serve coffee roasted more than two weeks ago.',
+    feature2Title: 'Certified Baristas',
     feature2Text:
-      'Our team is certified in specialty coffee preparation. Each drink is prepared with attention to detail, from bean selection to final presentation, using professional equipment calibrated daily.',
-    feature3Title: 'Community and Local Passion',
+      'Team certified in specialty coffee. Each drink prepared with attention to detail using professional equipment calibrated daily.',
+    feature3Title: 'Local Community',
     feature3Text:
-      'We are an active part of the Toluca community, committed to educating and sharing specialty coffee culture. We organize cuppings, brewing workshops and events to connect coffee lovers.',
-    menuTitle: 'Our Coffee Menu',
+      'Active part of the Toluca community. We organize cuppings, workshops and events to connect coffee lovers.',
+    menuTitle: 'Our Menu',
     menuText:
-      'We offer espresso, americano, cappuccino, latte, flat white, cortado, pour-over, Chemex, AeroPress, and filter methods. We also have cold drinks like cold brew and iced coffee. All our coffees are available with whole milk, lactose-free or plant-based drinks (oat, almond). Ask about our single-origin coffees available each week.',
+      'Espresso, americano, cappuccino, latte, flat white, cortado, pour-over, Chemex, AeroPress. Also cold brew and iced coffee. Available with whole milk, lactose-free, oat or almond. Ask about our single-origin coffees.',
     connectTitle: 'Connect with TOLO Coffee',
   },
   de: {
     heroTitle: 'Guter Kaffee, Einfach So',
     heroSubtitle:
-      'Kaffee in Toluca, eine ehrliche Tasse: Micro-Lots präzise geröstet, mit Hingabe serviert',
-    aboutTitle: 'Wir Lieben Kaffee',
+      'Spezialitätenkaffee in Toluca: präzise geröstete Micro-Lots, mit Hingabe serviert',
+    aboutTitle: 'Spezialitätenkaffee in Toluca',
     aboutText:
-      'Bei TOLO glauben wir, dass guter Kaffee direkt, frisch und unkompliziert sein sollte. Wir sind ein Café in Toluca, das sich der Zubereitung von Getränken mit ausgewählten, wöchentlich in kleinen Micro-Lots gerösteten Bohnen widmet. Unser Versprechen ist einfach: Kaffee servieren, der für sich selbst spricht.',
-    quickServiceTitle: 'Ihr Kaffee in Minuten',
+      'Bei TOLO glauben wir, dass guter Kaffee direkt, frisch und unkompliziert sein sollte. Wir sind ein Spezialitätencafé in Toluca, das sich der Zubereitung außergewöhnlicher Getränke mit ausgewählten mexikanischen Bohnen widmet, die wöchentlich in kleinen Micro-Lots geröstet werden. Wir arbeiten direkt mit Kaffeeproduzenten aus höheren Lagen in Chiapas, Oaxaca und Veracruz zusammen und garantieren vollständige Rückverfolgbarkeit und faire Vergütung.',
+    brewingTitle: 'Handwerkliche Zubereitungsmethoden',
+    brewingText:
+      'Wir bieten verschiedene Extraktionsmethoden: präzise kalibrierter Espresso, V60 Pour-Over für helle Profile, Chemex für delikate Tassen und AeroPress für konzentrierte Extraktionen. Unsere zertifizierten Baristas passen Variablen wie Temperatur (92-94°C), Extraktionszeit und Brühverhältnis an, um die perfekte Balance zu erreichen.',
+    quickServiceTitle: 'Schnell Ohne Qualitätseinbußen',
     quickServiceText:
-      'Wir haben unsere Bar so gestaltet, dass der Prozess schnell ist, ohne Qualität zu opfern. Jedes Getränk wird frisch gemahlen, für die Extraktion kalibriert und in unter zwei Minuten serviert.',
-    locationTitle: 'Wir Sind im Herzen von Toluca',
+      'Wir haben unsere Bar für einen schnellen Prozess ohne Qualitätseinbußen konzipiert. Jedes Getränk wird vor Ort mit Präzisionsmühlen gemahlen, die Extraktion kalibriert und in weniger als zwei Minuten serviert. Professionelle Ausrüstung mit PID-Temperaturkontrolle und Digitalwaagen garantieren Konsistenz.',
+    roastingTitle: 'Frische Röstung Jede Woche',
+    roastingText:
+      'Wir rösten unsere Bohnen wöchentlich in kleinen Chargen mit präziser Temperatur- und Profilkontrolle. Wir entwickeln spezifische Profile für jede Herkunft: helle Röstungen für fruchtige Noten, mittlere für Balance von Süße und Säure. Jede Charge wird protokolliert und verkostet, um konsistente Qualität zu gewährleisten.',
+    locationTitle: 'Besuchen Sie Uns in der Innenstadt von Toluca',
     locationText:
-      'Finden Sie uns im Zentrum von Toluca, wo der Duft von frisch geröstetem Kaffee Sie jeden Tag begrüßt.',
-    featuresTitle: 'Mehr Als Eine Tasse',
-    feature1Title: 'Micro-Lot Röstung',
+      'Wir befinden uns im Herzen der historischen Altstadt von Toluca. Unser Raum bietet eine einladende Atmosphäre, in der Sie Ihren Kaffee genießen, mit schnellem WLAN arbeiten oder sich entspannen können, während Sie den Zubereitungsprozess beobachten. Der Duft von frisch geröstetem Kaffee empfängt Sie jeden Tag.',
+    sustainabilityTitle: 'Nachhaltigkeit und Direkthandel',
+    sustainabilityText:
+      'Wir bauen direkte Beziehungen mit mexikanischen Produzenten auf und zahlen faire Preise über dem Marktpreis. Wir arbeiten mit Farmen zusammen, die nachhaltige Landwirtschaft und verantwortungsvolles Management praktizieren. Unsere gesamte Kette ist rückverfolgbar: Wir kennen Produzent, Farm, Höhenlage, Sorte und Verarbeitung jedes Kaffees, den wir servieren.',
+    featuresTitle: 'Warum TOLO Wählen',
+    feature1Title: 'Wöchentliche Micro-Lot Röstung',
     feature1Text:
-      'Jede Woche rösten wir kleine Chargen, um maximale Frische und Geschmack in jeder Tasse zu gewährleisten.',
-    feature2Title: 'Präzision & Sorgfalt',
+      'Jede Woche rösten wir 5-10kg Chargen für maximale Frische. Wir servieren nie Kaffee, der vor mehr als zwei Wochen geröstet wurde.',
+    feature2Title: 'Zertifizierte Baristas',
     feature2Text:
-      'Jedes Getränk wird mit Liebe zum Detail zubereitet, von der Bohnenauswahl bis zur finalen Präsentation.',
-    feature3Title: 'Lokale Leidenschaft',
+      'Team zertifiziert in Spezialitätenkaffee. Jedes Getränk mit Liebe zum Detail zubereitet, mit täglich kalibrierter Profiausrüstung.',
+    feature3Title: 'Lokale Gemeinschaft',
     feature3Text:
-      'Wir sind Teil der Toluca-Gemeinschaft und verpflichtet, außergewöhnliche Kaffeeerlebnisse zu teilen.',
-    connectTitle: 'Verbinden Sie sich mit TOLO',
+      'Aktiver Teil der Toluca-Gemeinschaft. Wir organisieren Cuppings, Workshops und Events für Kaffeeliebhaber.',
+    menuTitle: 'Unser Menü',
+    menuText:
+      'Espresso, Americano, Cappuccino, Latte, Flat White, Cortado, Pour-Over, Chemex, AeroPress. Auch Cold Brew und Eiskaffee. Verfügbar mit Vollmilch, laktosefrei, Hafer oder Mandel. Fragen Sie nach unseren Single-Origin-Kaffees.',
+    connectTitle: 'Verbinden Sie sich mit TOLO Coffee',
   },
   fr: {
     heroTitle: 'Du Bon Café, Simplement',
     heroSubtitle:
-      'Café à Toluca, une tasse honnête: micro-lots torréfiés avec précision, servis avec dévouement',
-    aboutTitle: 'Nous Sommes Passionnés de Café',
+      'Café de spécialité à Toluca: micro-lots torréfiés avec précision, servis avec dévouement',
+    aboutTitle: 'Café de Spécialité à Toluca',
     aboutText:
-      'Chez TOLO, nous croyons que le bon café doit être direct, frais et sans détour. Nous sommes un café à Toluca dédié à la préparation de boissons avec des grains sélectionnés et torréfiés chaque semaine en petits micro-lots. Notre engagement est simple: servir un café qui parle de lui-même.',
-    quickServiceTitle: 'Votre Café en Minutes',
+      "Chez TOLO, nous croyons que le bon café doit être direct, frais et sans détour. Nous sommes un café de spécialité à Toluca dédié à la préparation de boissons exceptionnelles avec des grains mexicains sélectionnés et torréfiés chaque semaine en petits micro-lots. Nous travaillons directement avec des producteurs de café d'altitude au Chiapas, Oaxaca et Veracruz, garantissant une traçabilité complète et une compensation équitable.",
+    brewingTitle: "Méthodes d'Infusion Artisanales",
+    brewingText:
+      "Nous proposons diverses méthodes d'extraction: espresso calibré avec précision, pour-over V60 pour des profils lumineux, Chemex pour des tasses délicates, et AeroPress pour des extractions concentrées. Nos baristas certifiés ajustent les variables comme la température (92-94°C), le temps d'extraction et le ratio d'infusion pour obtenir l'équilibre parfait.",
+    quickServiceTitle: 'Rapide Sans Compromettre la Qualité',
     quickServiceText:
-      "Nous avons conçu notre bar pour que le processus soit rapide, sans sacrifier la qualité. Chaque boisson est moulue sur place, calibrée pour l'extraction et servie en moins de deux minutes.",
-    locationTitle: 'Nous Sommes au Cœur de Toluca',
+      "Nous avons conçu notre bar pour un processus rapide sans sacrifier la qualité. Chaque boisson est moulue sur place avec des moulins de précision, l'extraction est calibrée et servie en moins de deux minutes. Équipement professionnel avec contrôle de température PID et balances numériques garantissent la cohérence.",
+    roastingTitle: 'Torréfaction Fraîche Chaque Semaine',
+    roastingText:
+      'Nous torréfions nos grains en petits lots chaque semaine avec un contrôle précis de la température et du profil. Nous développons des profils spécifiques pour chaque origine: torréfactions légères pour les notes fruitées, moyennes pour équilibrer douceur et acidité. Chaque lot est enregistré et dégusté pour assurer une qualité constante.',
+    locationTitle: 'Retrouvez-Nous au Centre de Toluca',
     locationText:
-      "Retrouvez-nous au centre de Toluca, où l'arôme du café fraîchement torréfié vous accueille chaque jour.",
-    featuresTitle: "Plus Qu'une Tasse",
-    feature1Title: 'Torréfaction Micro-lots',
+      "Nous sommes au cœur du centre historique de Toluca. Notre espace offre une atmosphère accueillante où vous pouvez savourer votre café, travailler avec WiFi rapide, ou vous détendre en observant le processus d'infusion. L'arôme du café fraîchement torréfié vous accueille chaque jour.",
+    sustainabilityTitle: 'Durabilité et Commerce Direct',
+    sustainabilityText:
+      "Nous construisons des relations directes avec les producteurs mexicains, payant des prix équitables au-dessus du marché. Nous travaillons avec des fermes qui pratiquent l'agriculture durable et la gestion responsable. Toute notre chaîne est traçable: nous connaissons le producteur, la ferme, l'altitude, la variété et le traitement de chaque café que nous servons.",
+    featuresTitle: 'Pourquoi Choisir TOLO',
+    feature1Title: 'Torréfaction Micro-lots Hebdomadaire',
     feature1Text:
-      'Chaque semaine, nous torréfions de petits lots pour assurer une fraîcheur et une saveur maximales dans chaque tasse.',
-    feature2Title: 'Précision & Soin',
+      'Chaque semaine nous torréfions des lots de 5-10kg pour une fraîcheur maximale. Nous ne servons jamais de café torréfié il y a plus de deux semaines.',
+    feature2Title: 'Baristas Certifiés',
     feature2Text:
-      'Chaque boisson est préparée avec attention aux détails, de la sélection du grain à la présentation finale.',
-    feature3Title: 'Passion Locale',
+      'Équipe certifiée en café de spécialité. Chaque boisson préparée avec attention aux détails utilisant un équipement professionnel calibré quotidiennement.',
+    feature3Title: 'Communauté Locale',
     feature3Text:
-      'Nous faisons partie de la communauté de Toluca, engagés à partager des expériences café exceptionnelles.',
-    connectTitle: 'Connectez-vous avec TOLO',
+      'Partie active de la communauté de Toluca. Nous organisons des dégustations, ateliers et événements pour connecter les amateurs de café.',
+    menuTitle: 'Notre Menu',
+    menuText:
+      "Espresso, americano, cappuccino, latte, flat white, cortado, pour-over, Chemex, AeroPress. Aussi cold brew et café glacé. Disponibles avec lait entier, sans lactose, avoine ou amande. Demandez nos cafés d'origine unique.",
+    connectTitle: 'Connectez-vous avec TOLO Coffee',
   },
   ja: {
     heroTitle: 'おいしいコーヒー、シンプルに',
     heroSubtitle:
-      'トルーカのコーヒー、正直な一杯：精密に焙煎されたマイクロロット、心を込めて提供',
-    aboutTitle: 'コーヒーへの情熱',
+      'トルーカのスペシャルティコーヒー：精密に焙煎されたマイクロロット、心を込めて提供',
+    aboutTitle: 'トルーカのスペシャルティコーヒー',
     aboutText:
-      'TOLOでは、良いコーヒーは直接的で、新鮮で、シンプルであるべきだと信じています。私たちはトルーカにあるカフェで、毎週小さなマイクロロットで焙煎された厳選豆でドリンクを作ることに専念しています。私たちの約束はシンプル：自ら語るコーヒーを提供すること。',
-    quickServiceTitle: '数分であなたのコーヒーを',
+      'TOLOでは、良いコーヒーは直接的で、新鮮で、シンプルであるべきだと信じています。私たちはトルーカにあるスペシャルティコーヒーショップで、毎週小さなマイクロロットで焙煎された厳選メキシコ豆で特別なドリンクを作ることに専念しています。チアパス、オアハカ、ベラクルスの高地産コーヒー生産者と直接協力し、完全なトレーサビリティと公正な報酬を保証しています。',
+    brewingTitle: '職人的な抽出方法',
+    brewingText:
+      '様々な抽出方法を提供：精密に調整されたエスプレッソ、明るいプロファイルのV60プアオーバー、繊細なカップのChemex、濃縮抽出のAeroPress。認定バリスタが温度（92-94°C）、抽出時間、抽出比などの変数を調整し、完璧なバランスを実現します。',
+    quickServiceTitle: '品質を犠牲にせず迅速に',
     quickServiceText:
-      '私たちは品質を犠牲にすることなく、プロセスが迅速になるようバーを設計しました。すべてのドリンクはその場で挽かれ、抽出のために調整され、2分以内に提供されます。',
-    locationTitle: 'トルーカの中心にいます',
+      '品質を犠牲にすることなく迅速なプロセスのためにバーを設計しました。すべてのドリンクは精密グラインダーでその場で挽かれ、抽出が調整され、2分以内に提供されます。PID温度制御とデジタルスケールを備えたプロ仕様の機器が一貫性を保証します。',
+    roastingTitle: '毎週新鮮な焙煎',
+    roastingText:
+      '毎週、精密な温度とプロファイル制御で小ロットの豆を焙煎しています。各産地に特化したプロファイルを開発：フルーティーなノートのライトロースト、甘さと酸味のバランスのミディアムロースト。各ロットは記録され、カッピングされて一貫した品質を確保します。',
+    locationTitle: 'トルーカのダウンタウンでお待ちしています',
     locationText:
-      '毎日焙煎したてのコーヒーの香りがお迎えするトルーカの中心でお待ちしています。',
-    featuresTitle: '一杯以上のもの',
-    feature1Title: 'マイクロロット焙煎',
+      'トルーカの歴史的中心部にあります。コーヒーを楽しんだり、高速WiFiで仕事をしたり、抽出プロセスを見ながらリラックスできる居心地の良い雰囲気を提供しています。焙煎したてのコーヒーの香りが毎日お迎えします。',
+    sustainabilityTitle: '持続可能性と直接取引',
+    sustainabilityText:
+      'メキシコの生産者との直接関係を構築し、市場価格を上回る公正な価格を支払います。持続可能な農業と責任ある管理を実践する農園と協力しています。私たちのチェーン全体はトレース可能：提供するすべてのコーヒーの生産者、農園、標高、品種、処理方法を知っています。',
+    featuresTitle: 'TOLOを選ぶ理由',
+    feature1Title: '毎週のマイクロロット焙煎',
     feature1Text:
-      '毎週小さなバッチを焙煎し、すべてのカップで最大限の鮮度と風味を確保します。',
-    feature2Title: '精密さと心遣い',
+      '毎週5-10kgのロットを焙煎し、最大の鮮度を確保します。2週間以上前に焙煎したコーヒーは決して提供しません。',
+    feature2Title: '認定バリスタ',
     feature2Text:
-      '豆の選択から最終的なプレゼンテーションまで、細部に注意を払って各ドリンクを準備します。',
-    feature3Title: '地元への情熱',
+      'スペシャルティコーヒー認定チーム。毎日キャリブレーションされたプロ仕様の機器を使用し、細部に注意を払って各ドリンクを準備します。',
+    feature3Title: '地元コミュニティ',
     feature3Text:
-      '私たちはトルーカコミュニティの一員として、特別なコーヒー体験を共有することに専念しています。',
-    connectTitle: 'TOLOとつながる',
+      'トルーカコミュニティの積極的な一員。コーヒー愛好家をつなぐカッピング、ワークショップ、イベントを開催しています。',
+    menuTitle: '私たちのメニュー',
+    menuText:
+      'エスプレッソ、アメリカーノ、カプチーノ、ラテ、フラットホワイト、コルタード、プアオーバー、Chemex、AeroPress。コールドブリューとアイスコーヒーもあります。全乳、ラクトースフリー、オーツ、アーモンドで利用可能。シングルオリジンコーヒーについてお尋ねください。',
+    connectTitle: 'TOLO Coffeeとつながる',
   },
 } as const
 
