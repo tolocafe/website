@@ -1,7 +1,7 @@
 import { client, type Post, type Page } from '~/lib/sanity'
 import { SUPPORTED_LOCALES } from '~/lib/locale'
 
-const SITE_URL = 'https://tolo.coffee' // Update with your actual domain
+const SITE_URL = 'https://tolo.cafe'
 
 const POSTS_QUERY = `*[_type == "post" && (defined(slug.es.current) || defined(slug.en.current))]{
   slug, publishedAt, _updatedAt
@@ -106,6 +106,7 @@ export async function loader() {
     },
   })
 }
+
 
 
 
