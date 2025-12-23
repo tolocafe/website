@@ -33,13 +33,12 @@ const TRANSLATIONS = {
     backToBlogs: '← Retour au Blog',
     notFoundTitle: 'Article Non Trouvé',
     notFoundText:
-      'L\'article que vous recherchez n\'existe pas ou a été supprimé.',
+      "L'article que vous recherchez n'existe pas ou a été supprimé.",
   },
   ja: {
     backToBlogs: '← ブログに戻る',
     notFoundTitle: '記事が見つかりません',
-    notFoundText:
-      'お探しの記事は存在しないか、削除されました。',
+    notFoundText: 'お探しの記事は存在しないか、削除されました。',
   },
 } as const
 
@@ -61,17 +60,13 @@ export function meta({ data, params }: Route.MetaArgs) {
 
   const title = getLocalizedString(post.name, locale, 'Untitled')
   const excerpt = getLocalizedString(post.excerpt, locale)
-  const imageUrl = post.image
-    ? urlFor(post.image)?.width(1200).url()
-    : null
+  const imageUrl = post.image ? urlFor(post.image)?.width(1200).url() : null
 
   return [
     { title: `${title} - TOLO Blog` },
     { name: 'description', content: excerpt },
     {
-      tagName: 'script',
-      type: 'application/ld+json',
-      children: JSON.stringify({
+      'script:ld+json': {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: title,
@@ -95,7 +90,7 @@ export function meta({ data, params }: Route.MetaArgs) {
           '@type': 'WebPage',
           '@id': `https://tolo.cafe/${locale}/blog/${params.slug}`,
         },
-      }),
+      },
     },
   ]
 }
@@ -195,9 +190,3 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
     </main>
   )
 }
-
-
-
-
-
-

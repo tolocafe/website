@@ -91,9 +91,7 @@ export function meta({ params }: Route.MetaArgs) {
     { title: t.title },
     { name: 'description', content: t.description },
     {
-      tagName: 'script',
-      type: 'application/ld+json',
-      children: JSON.stringify({
+      'script:ld+json': {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
         name: t.heading,
@@ -103,7 +101,7 @@ export function meta({ params }: Route.MetaArgs) {
           '@type': 'Organization',
           name: 'TOLO Coffee',
         },
-      }),
+      },
     },
   ]
 }

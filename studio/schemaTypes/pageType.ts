@@ -24,10 +24,11 @@ export const pageType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'localeBlockContent',
-      description: 'Brief description for SEO and page previews',
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'localeString',
+      description: 'Brief excerpt for SEO and page previews',
+      validation: (rule) => rule.max(200),
     }),
     defineField({
       name: 'body',

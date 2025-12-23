@@ -38,9 +38,7 @@ export function meta({ params }: Route.MetaArgs) {
     { title: t.title },
     { name: 'description', content: t.description },
     {
-      tagName: 'script',
-      type: 'application/ld+json',
-      children: JSON.stringify({
+      'script:ld+json': {
         '@context': 'https://schema.org',
         '@type': ['Organization', 'CafeOrRestaurant'],
         name: 'TOLO Coffee',
@@ -80,7 +78,7 @@ export function meta({ params }: Route.MetaArgs) {
             'https://play.google.com/store/apps/details?id=cafe.tolo.app',
           ],
         },
-      }),
+      },
     },
   ]
 }

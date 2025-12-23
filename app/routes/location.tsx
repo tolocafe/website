@@ -88,9 +88,7 @@ export function meta({ data, params }: Route.MetaArgs) {
       content: `${name} in ${location.city}, ${location.country}`,
     },
     {
-      tagName: 'script',
-      type: 'application/ld+json',
-      children: JSON.stringify({
+      'script:ld+json': {
         '@context': 'https://schema.org',
         '@type': 'CoffeeShop',
         name,
@@ -113,7 +111,7 @@ export function meta({ data, params }: Route.MetaArgs) {
         openingHours: hours,
         priceRange: '$$',
         servesCuisine: 'Coffee',
-      }),
+      },
     },
   ]
 }

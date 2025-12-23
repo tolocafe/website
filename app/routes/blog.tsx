@@ -76,7 +76,8 @@ const TRANSLATIONS = {
     topics: [
       {
         title: 'Brühanleitungen',
-        description: 'Schritt-für-Schritt-Anleitungen für die perfekte Tasse zu Hause.',
+        description:
+          'Schritt-für-Schritt-Anleitungen für die perfekte Tasse zu Hause.',
       },
       {
         title: 'Kaffee-Herkunft',
@@ -97,17 +98,18 @@ const TRANSLATIONS = {
     subtitle: 'Histoires du monde du café',
     comingSoon: 'Bientôt Disponible',
     message:
-      'Nous préparons du contenu génial pour vous. Notre blog proposera des conseils café, des guides de préparation, des histoires d\'origine et des actualités de notre café à Toluca.',
-    previewTitle: 'À Quoi S\'Attendre',
+      "Nous préparons du contenu génial pour vous. Notre blog proposera des conseils café, des guides de préparation, des histoires d'origine et des actualités de notre café à Toluca.",
+    previewTitle: "À Quoi S'Attendre",
     topics: [
       {
         title: 'Guides de Préparation',
-        description: 'Instructions étape par étape pour la tasse parfaite à la maison.',
+        description:
+          'Instructions étape par étape pour la tasse parfaite à la maison.',
       },
       {
         title: 'Origines du Café',
         description:
-          'Histoires sur les fermes et les régions d\'où proviennent nos grains.',
+          "Histoires sur les fermes et les régions d'où proviennent nos grains.",
       },
       {
         title: 'Actualités de la Boutique',
@@ -128,12 +130,12 @@ const TRANSLATIONS = {
     topics: [
       {
         title: '抽出ガイド',
-        description: '自宅で完璧な一杯を淹れるためのステップバイステップガイド。',
+        description:
+          '自宅で完璧な一杯を淹れるためのステップバイステップガイド。',
       },
       {
         title: 'コーヒーの産地',
-        description:
-          '私たちの豆がどこの農園や地域から来ているかのストーリー。',
+        description: '私たちの豆がどこの農園や地域から来ているかのストーリー。',
       },
       {
         title: 'ショップニュース',
@@ -162,9 +164,7 @@ export function meta({ params }: Route.MetaArgs) {
     { title: t.title },
     { name: 'description', content: t.description },
     {
-      tagName: 'script',
-      type: 'application/ld+json',
-      children: JSON.stringify({
+      'script:ld+json': {
         '@context': 'https://schema.org',
         '@type': 'Blog',
         name: t.heading,
@@ -178,7 +178,7 @@ export function meta({ params }: Route.MetaArgs) {
             url: 'https://tolo.cafe/favicon.png',
           },
         },
-      }),
+      },
     },
   ]
 }

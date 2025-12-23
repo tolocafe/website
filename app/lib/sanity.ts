@@ -71,7 +71,7 @@ export interface Page {
   _updatedAt?: string
   name: LocaleString
   slug: LocaleSlug
-  description?: LocaleString
+  excerpt?: LocaleString
   body?: LocaleBlockContent
   showInNavigation?: boolean
   navigationOrder?: number

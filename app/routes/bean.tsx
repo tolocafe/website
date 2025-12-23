@@ -106,9 +106,7 @@ export function meta({ data, params }: Route.MetaArgs) {
       content: `${name} from ${origin}. ${tastingNotes}`,
     },
     {
-      tagName: 'script',
-      type: 'application/ld+json',
-      children: JSON.stringify({
+      'script:ld+json': {
         '@context': 'https://schema.org',
         '@type': 'Product',
         name,
@@ -140,7 +138,7 @@ export function meta({ data, params }: Route.MetaArgs) {
             value: getLocalizedString(bean.process, locale),
           },
         ].filter(Boolean),
-      }),
+      },
     },
   ]
 }

@@ -20,7 +20,7 @@ const TRANSLATIONS = {
   },
   fr: {
     notFoundTitle: 'Page Non Trouvée',
-    notFoundText: 'La page que vous recherchez n\'existe pas.',
+    notFoundText: "La page que vous recherchez n'existe pas.",
   },
   ja: {
     notFoundTitle: 'ページが見つかりません',
@@ -32,7 +32,7 @@ const PAGE_QUERY = `*[
   _type == "page"
   && (slug.es.current == $slug || slug.en.current == $slug)
 ][0]{
-  _id, name, slug, description, body
+  _id, name, slug, excerpt, body
 }`
 
 export async function loader({ params }: Route.LoaderArgs) {
@@ -45,32 +45,31 @@ export function meta({ data, params }: Route.MetaArgs) {
   if (!page) return [{ title: 'Page Not Found - TOLO' }]
 
   const title = getLocalizedString(page.name, locale, 'Untitled')
-  const description = getLocalizedString(page.description, locale)
+  const excerpt = getLocalizedString(page.excerpt, locale)
   const slug = params.slug || ''
-  
+
   // Determine if this is an about page or generic page
-  const isAboutPage = slug.includes('about') || slug.includes('acerca') || slug.includes('sobre')
-  
+  const isAboutPage =
+    slug.includes('about') || slug.includes('acerca') || slug.includes('sobre')
+
   return [
     { title: `${title} - TOLO` },
     {
       name: 'description',
-      content: description,
+      content: excerpt,
     },
     {
-      tagName: 'script',
-      type: 'application/ld+json',
-      children: JSON.stringify({
+      'script:ld+json': {
         '@context': 'https://schema.org',
         '@type': isAboutPage ? 'AboutPage' : 'WebPage',
         name: title,
-        description: description,
+        description: excerpt,
         url: `https://tolo.cafe/${locale}/${slug}`,
         publisher: {
           '@type': 'Organization',
           name: 'TOLO Coffee',
         },
-      }),
+      },
     },
   ]
 }
@@ -143,9 +142,3 @@ export default function PageRoute({ loaderData }: Route.ComponentProps) {
     </main>
   )
 }
-
-
-
-
-
-
