@@ -59,8 +59,9 @@ export function meta({ params }: Route.MetaArgs) {
           contactType: 'customer service',
         },
         sameAs: [
-          'https://instagram.com',
-          'https://facebook.com',
+          'https://instagram.com/tolo.cafe',
+          'https://facebook.com/tolo.cafe',
+          'https://tiktok.com/@tolo.cafe',
         ],
       }),
     },
