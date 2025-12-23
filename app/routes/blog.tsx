@@ -158,7 +158,29 @@ export async function loader() {
 export function meta({ params }: Route.MetaArgs) {
   const locale = (params.locale as Locale) || 'es'
   const t = TRANSLATIONS[locale] || TRANSLATIONS.es
-  return [{ title: t.title }, { name: 'description', content: t.description }]
+  return [
+    { title: t.title },
+    { name: 'description', content: t.description },
+    {
+      tagName: 'script',
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        name: t.heading,
+        description: t.subtitle,
+        url: `https://tolo.cafe/${locale}/blog`,
+        publisher: {
+          '@type': 'Organization',
+          name: 'TOLO Coffee',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://tolo.cafe/favicon.png',
+          },
+        },
+      }),
+    },
+  ]
 }
 
 export default function Blog({ loaderData }: Route.ComponentProps) {

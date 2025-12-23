@@ -73,7 +73,7 @@ export function meta({ data, params }: Route.MetaArgs) {
       type: 'application/ld+json',
       children: JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'Article',
+        '@type': 'BlogPosting',
         headline: title,
         description: excerpt,
         image: imageUrl,
@@ -90,6 +90,10 @@ export function meta({ data, params }: Route.MetaArgs) {
             '@type': 'ImageObject',
             url: 'https://tolo.cafe/favicon.png',
           },
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `https://tolo.cafe/${locale}/blog/${params.slug}`,
         },
       }),
     },

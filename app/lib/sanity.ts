@@ -69,7 +69,7 @@ export interface Post {
 export interface Page {
   _id: string
   _updatedAt?: string
-  title: LocaleString
+  name: LocaleString
   slug: LocaleSlug
   description?: LocaleString
   body?: LocaleBlockContent

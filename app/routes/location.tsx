@@ -2,12 +2,7 @@ import { Link, useOutletContext } from 'react-router'
 import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import type { Route } from './+types/location'
 import type { Locale } from '~/lib/locale'
-import {
-  client,
-  urlFor,
-  getLocalizedString,
-  type Location,
-} from '~/lib/sanity'
+import { client, urlFor, getLocalizedString, type Location } from '~/lib/sanity'
 import * as styles from './location.css'
 
 const TRANSLATIONS = {
@@ -69,7 +64,9 @@ const LOCATION_QUERY = `*[
 }`
 
 export async function loader({ params }: Route.LoaderArgs) {
-  return { location: await client.fetch<Location | null>(LOCATION_QUERY, params) }
+  return {
+    location: await client.fetch<Location | null>(LOCATION_QUERY, params),
+  }
 }
 
 export function meta({ data, params }: Route.MetaArgs) {
@@ -95,7 +92,7 @@ export function meta({ data, params }: Route.MetaArgs) {
       type: 'application/ld+json',
       children: JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'CoffeShop',
+        '@type': 'CoffeeShop',
         name,
         image: imageUrl,
         address: {
@@ -219,10 +216,7 @@ export default function LocationDetail({ loaderData }: Route.ComponentProps) {
             {location.phone && (
               <div className={styles.detailItem}>
                 <span className={styles.detailLabel}>{t.phoneLabel}</span>
-                <a
-                  href={`tel:${location.phone}`}
-                  className={styles.detailLink}
-                >
+                <a href={`tel:${location.phone}`} className={styles.detailLink}>
                   {location.phone}
                 </a>
               </div>
@@ -255,4 +249,3 @@ export default function LocationDetail({ loaderData }: Route.ComponentProps) {
     </main>
   )
 }
-

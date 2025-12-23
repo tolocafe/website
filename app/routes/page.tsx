@@ -32,7 +32,7 @@ const PAGE_QUERY = `*[
   _type == "page"
   && (slug.es.current == $slug || slug.en.current == $slug)
 ][0]{
-  _id, title, slug, description, body
+  _id, name, slug, description, body
 }`
 
 export async function loader({ params }: Route.LoaderArgs) {
@@ -44,12 +44,33 @@ export function meta({ data, params }: Route.MetaArgs) {
   const page = data?.page
   if (!page) return [{ title: 'Page Not Found - TOLO' }]
 
-  const title = getLocalizedString(page.title, locale, 'Untitled')
+  const title = getLocalizedString(page.name, locale, 'Untitled')
+  const description = getLocalizedString(page.description, locale)
+  const slug = params.slug || ''
+  
+  // Determine if this is an about page or generic page
+  const isAboutPage = slug.includes('about') || slug.includes('acerca') || slug.includes('sobre')
+  
   return [
     { title: `${title} - TOLO` },
     {
       name: 'description',
-      content: getLocalizedString(page.description, locale),
+      content: description,
+    },
+    {
+      tagName: 'script',
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': isAboutPage ? 'AboutPage' : 'WebPage',
+        name: title,
+        description: description,
+        url: `https://tolo.cafe/${locale}/${slug}`,
+        publisher: {
+          '@type': 'Organization',
+          name: 'TOLO Coffee',
+        },
+      }),
     },
   ]
 }
@@ -103,7 +124,7 @@ export default function PageRoute({ loaderData }: Route.ComponentProps) {
     )
   }
 
-  const title = getLocalizedString(page.title, locale, 'Untitled')
+  const title = getLocalizedString(page.name, locale, 'Untitled')
   const body = page.body?.[locale] || page.body?.es
 
   return (

@@ -61,8 +61,7 @@ const TRANSLATIONS = {
   },
   ja: {
     title: 'コーヒー豆 - TOLO',
-    description:
-      '世界中から厳選されたコーヒー豆をご紹介します',
+    description: '世界中から厳選されたコーヒー豆をご紹介します',
     heading: 'コーヒー豆',
     subtitle: '厳選されたシングルオリジンとブレンド',
     altitudeLabel: '標高',
@@ -87,7 +86,26 @@ export async function loader() {
 export function meta({ params }: Route.MetaArgs) {
   const locale = (params.locale as Locale) || 'es'
   const t = TRANSLATIONS[locale] || TRANSLATIONS.es
-  return [{ title: t.title }, { name: 'description', content: t.description }]
+
+  return [
+    { title: t.title },
+    { name: 'description', content: t.description },
+    {
+      tagName: 'script',
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: t.heading,
+        description: t.subtitle,
+        url: `https://tolo.cafe/${locale}/beans`,
+        publisher: {
+          '@type': 'Organization',
+          name: 'TOLO Coffee',
+        },
+      }),
+    },
+  ]
 }
 
 export default function Beans({ loaderData }: Route.ComponentProps) {
@@ -174,6 +192,3 @@ export default function Beans({ loaderData }: Route.ComponentProps) {
     </main>
   )
 }
-
-
-

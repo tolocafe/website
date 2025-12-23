@@ -89,7 +89,32 @@ export function meta({ params }: Route.MetaArgs) {
 	const locale = (params.locale as Locale) || "es";
 	const t = TRANSLATIONS[locale] || TRANSLATIONS.es;
 
-	return [{ title: t.title }, { name: "description", content: t.description }];
+	return [
+		{ title: t.title },
+		{ name: "description", content: t.description },
+		{
+			tagName: "script",
+			type: "application/ld+json",
+			children: JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "ContactPage",
+				name: t.heading,
+				description: t.description,
+				url: `https://tolo.cafe/${locale}/contact`,
+				mainEntity: {
+					"@type": "Organization",
+					name: "TOLO Coffee",
+					email: "hola@tolo.cafe",
+					address: {
+						"@type": "PostalAddress",
+						addressLocality: "Toluca",
+						addressRegion: "Estado de México",
+						addressCountry: "MX",
+					},
+				},
+			}),
+		},
+	];
 }
 
 export default function Contact() {

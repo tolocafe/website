@@ -42,11 +42,13 @@ export function meta({ params }: Route.MetaArgs) {
       type: 'application/ld+json',
       children: JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'Organization',
+        '@type': ['Organization', 'CafeOrRestaurant'],
         name: 'TOLO Coffee',
         url: 'https://tolo.cafe',
         logo: 'https://tolo.cafe/favicon.png',
         description: t.description,
+        servesCuisine: 'Coffee',
+        priceRange: '$$',
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Toluca',
@@ -63,6 +65,21 @@ export function meta({ params }: Route.MetaArgs) {
           'https://facebook.com/tolo.cafe',
           'https://tiktok.com/@tolo.cafe',
         ],
+        mobileApplication: {
+          '@type': 'MobileApplication',
+          name: 'TOLO - Buen Café',
+          operatingSystem: 'iOS, Android',
+          applicationCategory: 'LifestyleApplication',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'USD',
+          },
+          downloadUrl: [
+            'https://apps.apple.com/app/tolo-buen-café/id6749597635',
+            'https://play.google.com/store/apps/details?id=cafe.tolo.app',
+          ],
+        },
       }),
     },
   ]
