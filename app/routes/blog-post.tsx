@@ -47,7 +47,7 @@ const POST_QUERY = `*[
   _type == "post"
   && (slug.es.current == $slug || slug.en.current == $slug)
 ][0]{
-  _id, title, slug, publishedAt, excerpt, body, image
+  _id, name, slug, publishedAt, excerpt, body, image
 }`
 
 export async function loader({ params }: Route.LoaderArgs) {
@@ -59,7 +59,7 @@ export function meta({ data, params }: Route.MetaArgs) {
   const post = data?.post
   if (!post) return [{ title: 'Post Not Found - TOLO' }]
 
-  const title = getLocalizedString(post.title, locale, 'Untitled')
+  const title = getLocalizedString(post.name, locale, 'Untitled')
   const excerpt = getLocalizedString(post.excerpt, locale)
   const imageUrl = post.image
     ? urlFor(post.image)?.width(1200).url()
@@ -148,7 +148,7 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
     )
   }
 
-  const title = getLocalizedString(post.title, locale, 'Untitled')
+  const title = getLocalizedString(post.name, locale, 'Untitled')
   const body = post.body?.[locale] || post.body?.es
   const imageUrl = post.image
     ? urlFor(post.image)?.width(1200).height(675).url()

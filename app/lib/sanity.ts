@@ -58,7 +58,7 @@ export interface SanityImage {
 export interface Post {
   _id: string
   _updatedAt?: string
-  title: LocaleString
+  name: LocaleString
   slug: LocaleSlug
   publishedAt: string
   excerpt?: LocaleString

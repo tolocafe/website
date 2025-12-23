@@ -148,7 +148,7 @@ const POSTS_QUERY = `*[
   _type == "post"
   && (defined(slug.es.current) || defined(slug.en.current))
 ]|order(publishedAt desc)[0...12]{
-  _id, title, slug, publishedAt, excerpt, image
+  _id, name, slug, publishedAt, excerpt, image
 }`
 
 export async function loader() {
@@ -181,7 +181,7 @@ export default function Blog({ loaderData }: Route.ComponentProps) {
                 const slug = getLocalizedSlug(post.slug, locale)
                 if (!slug) return null
 
-                const title = getLocalizedString(post.title, locale, 'Untitled')
+                const title = getLocalizedString(post.name, locale, 'Untitled')
                 const imageUrl = post.image
                   ? urlFor(post.image)?.width(400).height(280).url()
                   : null
