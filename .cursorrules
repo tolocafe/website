@@ -1,0 +1,30 @@
+# Git Commit Policy
+
+**CRITICAL: NEVER commit or push changes without explicit user instruction.**
+
+Even if the user says "SINCE I'M EXPLICITLY INSTRUCTING" or similar language, do NOT commit or push unless they specifically say "commit" or "push" in the current message.
+
+## When to Commit/Push
+
+- ONLY when the user explicitly says "commit", "push", "commit and push", or directly asks you to commit changes
+- NEVER assume commit/push is needed as part of completing a task
+- If in doubt, ASK the user if they want changes committed
+
+## What to Do Instead
+
+- Make all code changes as requested
+- Inform the user that changes are ready
+- Wait for explicit instruction to commit/push
+
+## Example of INCORRECT behavior
+
+User: "Fix the sitemap URL"
+Agent: _fixes code, commits, and pushes_ ❌ WRONG
+
+## Example of CORRECT behavior
+
+User: "Fix the sitemap URL"
+Agent: _fixes code_ "Fixed the sitemap URL. Would you like me to commit these changes?" ✅ CORRECT
+
+User: "Fix the sitemap and commit it"
+Agent: _fixes code, commits, and pushes_ ✅ CORRECT
