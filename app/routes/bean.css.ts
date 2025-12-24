@@ -137,6 +137,3 @@ export const notFoundText = style({
   color: vars.color.text,
   marginBottom: vars.space[8],
 })
-
-
-
