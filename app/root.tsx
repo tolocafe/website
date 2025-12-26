@@ -17,6 +17,7 @@ import {
   SUPPORTED_LOCALES,
   type Locale,
 } from '~/lib/locale'
+import { PHProvider } from './provider'
 
 /**
  * Layout component that sets the HTML lang attribute dynamically
@@ -46,9 +47,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body id="root">
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+        <PHProvider>
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </PHProvider>
       </body>
     </html>
   )

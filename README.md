@@ -9,6 +9,7 @@ Website for TOLO, a specialty coffee shop in Toluca, Mexico.
 - **Hosting**: [Cloudflare Workers](https://workers.cloudflare.com/)
 - **Styling**: [vanilla-extract](https://vanilla-extract.style/) (type-safe CSS)
 - **CMS**: [Sanity](https://www.sanity.io/) (headless CMS)
+- **Analytics**: [PostHog](https://posthog.com/) (product analytics)
 - **Language**: TypeScript (strict mode)
 
 ## Features
@@ -35,6 +36,19 @@ curl -fsSL https://bun.sh/install | bash
 ```bash
 bun install
 ```
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory with your PostHog configuration:
+
+```bash
+VITE_PUBLIC_POSTHOG_KEY=your_posthog_project_api_key_here
+VITE_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+```
+
+Get your PostHog API key from: https://app.posthog.com/project/settings
+
+**Note**: These variables must be prefixed with `VITE_PUBLIC_` to be accessible in the frontend.
 
 ### Development
 
@@ -151,6 +165,19 @@ bun run build
 bun run deploy
 ```
 
+### Environment Variables in Production
+
+Set your PostHog environment variables in your hosting provider:
+
+**Cloudflare Workers (via Wrangler)**:
+
+```bash
+wrangler secret put VITE_PUBLIC_POSTHOG_KEY
+wrangler secret put VITE_PUBLIC_POSTHOG_HOST
+```
+
+Or add them to your `wrangler.json` or Cloudflare Dashboard under your Worker's settings.
+
 ## Styling
 
 Uses [vanilla-extract](https://vanilla-extract.style/) with design tokens defined in `app/styles/tokens.css.ts`.
@@ -169,6 +196,59 @@ export const card = style({
   borderRadius: vars.radius.xl,
   border: `1px solid ${vars.color.border}`,
 })
+```
+
+## Analytics
+
+PostHog is integrated for product analytics and event tracking.
+
+### Automatic Page Tracking
+
+To track page views in a route component:
+
+```typescript
+import { usePageTracking } from '~/lib/posthog'
+
+export default function MyRoute() {
+  usePageTracking()
+  
+  return <div>My Page</div>
+}
+```
+
+### Custom Event Tracking
+
+To track custom events:
+
+```typescript
+import { usePostHog } from '@posthog/react'
+
+export default function MyComponent() {
+  const posthog = usePostHog()
+  
+  const handleClick = () => {
+    posthog?.capture('button_clicked', {
+      button_name: 'cta_button',
+      location: 'hero_section',
+    })
+  }
+  
+  return <button onClick={handleClick}>Click me</button>
+}
+```
+
+### Feature Flags
+
+Check feature flags:
+
+```typescript
+import { useFeatureFlagEnabled } from 'posthog-js/react'
+
+export default function MyComponent() {
+  const showNewFeature = useFeatureFlagEnabled('new_feature')
+  
+  return showNewFeature ? <NewFeature /> : <OldFeature />
+}
 ```
 
 ---
