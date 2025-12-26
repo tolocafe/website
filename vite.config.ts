@@ -1,7 +1,6 @@
 import { reactRouter } from '@react-router/dev/vite'
 import { cloudflare } from '@cloudflare/vite-plugin'
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
-import tailwindcss from '@tailwindcss/vite'
 import { defineConfig, type Plugin } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
@@ -70,7 +69,6 @@ function vanillaExtractCloudflare(): Plugin[] {
 export default defineConfig({
 	plugins: [
 		cloudflare({ viteEnvironment: { name: 'ssr' } }),
-		tailwindcss(),
 		vanillaExtractCloudflare(),
 		reactRouter(),
 		tsconfigPaths(),
