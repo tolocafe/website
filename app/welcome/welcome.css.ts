@@ -137,7 +137,7 @@ export const trustBar = style({
 	gap: vars.space[4],
 	padding: vars.space[5],
 	borderRadius: vars.radius['2xl'],
-	backgroundColor: vars.color.white,
+	backgroundColor: vars.color.surface,
 	'@media': {
 		'(max-width: 640px)': {
 			gap: vars.space[3],
@@ -509,7 +509,7 @@ export const directionsLink = buttonSecondary
 export const mapWrapper = style({
 	borderRadius: vars.radius['2xl'],
 	overflow: 'hidden',
-	backgroundColor: vars.color.white,
+	backgroundColor: vars.color.surface,
 	minHeight: '360px',
 })
 

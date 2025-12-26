@@ -144,7 +144,7 @@ export const buttonOutline = style([
 		border: `1px solid ${vars.color.border}`,
 		color: vars.color.text,
 		':hover': {
-			backgroundColor: vars.color.white,
+			backgroundColor: vars.color.surface,
 		},
 	},
 ])
@@ -174,7 +174,7 @@ export const buttonLight = style([
 
 // Cards
 export const card = style({
-	backgroundColor: vars.color.white,
+	backgroundColor: vars.color.surface,
 	borderRadius: vars.radius['2xl'],
 	padding: vars.space[6],
 })
@@ -190,7 +190,7 @@ export const cardHover = style([
 	card,
 	{
 		':hover': {
-			backgroundColor: 'rgba(255, 255, 255, 0.95)',
+			filter: 'brightness(0.98)',
 		},
 	},
 ])
@@ -278,7 +278,7 @@ export const flexColumn = style({
 
 // Image placeholder
 export const imagePlaceholder = style({
-	backgroundColor: '#e5e5e5',
+	backgroundColor: vars.color.border,
 	borderRadius: vars.radius['2xl'],
 	overflow: 'hidden',
 })

@@ -18,6 +18,7 @@ export const vars = createThemeContract({
 		primary: null,
 		secondary: null,
 		background: null,
+		surface: null,
 		border: null,
 		white: null,
 		text: null,
@@ -138,6 +139,7 @@ const lightColors = {
 	primary: '#3D6039', // forest green
 	secondary: '#C44536', // terracotta
 	background: '#F5F0E8', // cream
+	surface: '#FFFFFF', // white cards in light mode
 	border: '#D4CFC5', // cream border
 	white: '#FFFFFF',
 	text: '#333333',
@@ -145,8 +147,13 @@ const lightColors = {
 
 // TOLO Brand Colors - Dark theme
 const darkColors = {
-	...lightColors,
-	text: '#FFFFFF',
+	primary: '#4A7345', // slightly lighter forest green for dark mode
+	secondary: '#D9594A', // slightly lighter terracotta for dark mode
+	background: '#1A1A1A', // dark background
+	surface: '#2A2A2A', // dark cards
+	border: '#3D3D3D', // dark border
+	white: '#FFFFFF',
+	text: '#F5F0E8', // cream text on dark background
 }
 
 // Apply light theme to :root (default)
