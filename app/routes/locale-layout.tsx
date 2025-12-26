@@ -1,15 +1,10 @@
-import { useEffect } from "react";
-import { Outlet, redirect, useLocation } from "react-router";
-import type { Route } from "./+types/locale-layout";
-import { Header } from "~/components/Header";
-import { Footer } from "~/components/Footer";
-import {
-	isValidLocale,
-	detectLocaleFromHeader,
-	SUPPORTED_LOCALES,
-	type Locale,
-} from "~/lib/locale";
-import { client, type Location } from "~/lib/sanity";
+import { useEffect } from 'react'
+import { Outlet, redirect, useLocation } from 'react-router'
+import type { Route } from './+types/locale-layout'
+import { Header } from '~/components/Header'
+import { Footer } from '~/components/Footer'
+import { isValidLocale, detectLocaleFromHeader, SUPPORTED_LOCALES } from '~/lib/locale'
+import { client, type Location } from '~/lib/sanity'
 
 /**
  * Locale Layout Route
@@ -23,18 +18,18 @@ import { client, type Location } from "~/lib/sanity";
  */
 
 export async function loader({ params, request }: Route.LoaderArgs) {
-	const { locale } = params;
+	const { locale } = params
 
 	// Validate the locale parameter
 	if (!isValidLocale(locale)) {
 		// Detect preferred locale from Accept-Language header
-		const acceptLanguage = request.headers.get("Accept-Language");
-		const preferredLocale = detectLocaleFromHeader(acceptLanguage);
+		const acceptLanguage = request.headers.get('Accept-Language')
+		const preferredLocale = detectLocaleFromHeader(acceptLanguage)
 
 		// Redirect to the preferred locale
-		const url = new URL(request.url);
-		const pathWithoutLocale = url.pathname.replace(/^\/[^/]*/, "");
-		throw redirect(`/${preferredLocale}${pathWithoutLocale || ""}`);
+		const url = new URL(request.url)
+		const pathWithoutLocale = url.pathname.replace(/^\/[^/]*/, '')
+		throw redirect(`/${preferredLocale}${pathWithoutLocale || ''}`)
 	}
 
 	// Fetch locations for the footer
@@ -47,47 +42,47 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 			country,
 			hours,
 			isMainLocation
-		}`
-	);
+		}`,
+	)
 
-	return { locale, locations };
+	return { locale, locations }
 }
 
 export function meta({ data }: Route.MetaArgs) {
-	if (!data) return [];
+	if (!data) return []
 
 	// Generate hreflang link tags for SEO
 	return SUPPORTED_LOCALES.map((loc) => ({
-		tagName: "link",
-		rel: "alternate",
+		tagName: 'link',
+		rel: 'alternate',
 		hrefLang: loc,
 		href: `/${loc}`,
-	}));
+	}))
 }
 
 export default function LocaleLayout({ loaderData }: Route.ComponentProps) {
-	const location = useLocation();
+	const location = useLocation()
 
 	// Enable hash navigation like "/es#visit" from anywhere in the app.
 	useEffect(() => {
-		if (!location.hash) return;
+		if (!location.hash) return
 
-		const id = decodeURIComponent(location.hash.slice(1));
+		const id = decodeURIComponent(location.hash.slice(1))
 		const tryScroll = () => {
-			const el = document.getElementById(id);
-			if (el) el.scrollIntoView({ block: "start" });
-		};
+			const el = document.getElementById(id)
+			if (el) el.scrollIntoView({ block: 'start' })
+		}
 
 		// Try immediately, then again after paint (useful when navigating between routes).
-		tryScroll();
-		setTimeout(tryScroll, 0);
-	}, [location.hash, location.pathname]);
+		tryScroll()
+		setTimeout(tryScroll, 0)
+	}, [location.hash, location.pathname])
 
 	return (
-		<div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+		<div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 			<Header />
 			<Outlet context={{ locale: loaderData.locale }} />
 			<Footer locations={loaderData.locations} />
 		</div>
-	);
+	)
 }

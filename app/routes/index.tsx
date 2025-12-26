@@ -1,6 +1,6 @@
-import { redirect } from "react-router";
-import type { Route } from "./+types/index";
-import { detectLocaleFromHeader } from "~/lib/locale";
+import { redirect } from 'react-router'
+import type { Route } from './+types/index'
+import { detectLocaleFromHeader } from '~/lib/locale'
 
 /**
  * Root Index Route
@@ -10,8 +10,8 @@ import { detectLocaleFromHeader } from "~/lib/locale";
  * 2. Falls back to default locale (es)
  */
 export function loader({ request }: Route.LoaderArgs) {
-	const acceptLanguage = request.headers.get("Accept-Language");
-	const preferredLocale = detectLocaleFromHeader(acceptLanguage);
+	const acceptLanguage = request.headers.get('Accept-Language')
+	const preferredLocale = detectLocaleFromHeader(acceptLanguage)
 
-	return redirect(`/${preferredLocale}`);
+	return redirect(`/${preferredLocale}`)
 }

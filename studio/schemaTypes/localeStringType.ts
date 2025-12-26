@@ -1,72 +1,72 @@
-import {defineType} from 'sanity'
+import { defineType } from 'sanity'
 
 const supportedLanguages = [
-  {id: 'es', title: 'Español', isDefault: true},
-  {id: 'en', title: 'English'},
-  {id: 'de', title: 'Deutsch'},
-  {id: 'fr', title: 'Français'},
-  {id: 'ja', title: '日本語'},
-  {id: 'pt', title: 'Português'},
+	{ id: 'es', title: 'Español', isDefault: true },
+	{ id: 'en', title: 'English' },
+	{ id: 'de', title: 'Deutsch' },
+	{ id: 'fr', title: 'Français' },
+	{ id: 'ja', title: '日本語' },
+	{ id: 'pt', title: 'Português' },
 ]
 
 export const baseLanguage = supportedLanguages.find((l) => l.isDefault)
 
 const translationsFieldset = {
-  title: 'Translations',
-  name: 'translations',
-  options: {collapsible: true, collapsed: true},
+	title: 'Translations',
+	name: 'translations',
+	options: { collapsible: true, collapsed: true },
 }
 
 /**
  * Creates a localized type with fields for each language
  */
 function createLocaleType(
-  name: string,
-  title: string,
-  fieldType: string,
-  fieldOptions?: Record<string, unknown>,
+	name: string,
+	title: string,
+	fieldType: string,
+	fieldOptions?: Record<string, unknown>,
 ) {
-  return defineType({
-    name,
-    title,
-    type: 'object',
-    fieldsets: [translationsFieldset],
-    fields: supportedLanguages.map((lang) => ({
-      title: lang.title,
-      name: lang.id,
-      type: fieldType,
-      ...fieldOptions,
-      fieldset: lang.isDefault ? undefined : 'translations',
-    })),
-  })
+	return defineType({
+		name,
+		title,
+		type: 'object',
+		fieldsets: [translationsFieldset],
+		fields: supportedLanguages.map((lang) => ({
+			title: lang.title,
+			name: lang.id,
+			type: fieldType,
+			...fieldOptions,
+			fieldset: lang.isDefault ? undefined : 'translations',
+		})),
+	})
 }
 
 export const localeStringType = createLocaleType('localeString', 'Localized string', 'string')
 
-export const localeTextType = createLocaleType('localeText', 'Localized text', 'text', {rows: 3})
+export const localeTextType = createLocaleType('localeText', 'Localized text', 'text', { rows: 3 })
 
 export const localeBlockContentType = createLocaleType(
-  'localeBlockContent',
-  'Localized block content',
-  'array',
-  {of: [{type: 'block'}]},
+	'localeBlockContent',
+	'Localized block content',
+	'array',
+	{ of: [{ type: 'block' }] },
 )
 
 export const localeSlugType = defineType({
-  name: 'localeSlug',
-  title: 'Localized slug',
-  type: 'object',
-  fieldsets: [translationsFieldset],
-  fields: supportedLanguages.map((lang) => ({
-    title: lang.title,
-    name: lang.id,
-    type: 'slug',
-    options: {
-      source: (doc: Record<string, unknown>) => {
-        const title = (doc.title || doc.name) as Record<string, string> | undefined
-        return title?.[lang.id] || ''
-      },
-    },
-    fieldset: lang.isDefault ? undefined : 'translations',
-  })),
+	name: 'localeSlug',
+	title: 'Localized slug',
+	type: 'object',
+	fieldsets: [translationsFieldset],
+	fields: supportedLanguages.map((lang) => ({
+		title: lang.title,
+		name: lang.id,
+		type: 'slug',
+		options: {
+			source: (doc: Record<string, unknown>) => {
+				const title = (doc.title || doc.name) as Record<string, string> | undefined
+				return title?.[lang.id] || ''
+			},
+		},
+		fieldset: lang.isDefault ? undefined : 'translations',
+	})),
 })

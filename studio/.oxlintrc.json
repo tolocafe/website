@@ -1,0 +1,23 @@
+{
+	"$schema": "https://raw.githubusercontent.com/oxc-project/oxlint/main/npm/oxlint/configuration_schema.json",
+	"plugins": ["import", "unicorn", "react", "react-hooks"],
+	"env": {
+		"browser": true,
+		"es2024": true
+	},
+	"settings": {
+		"react": {
+			"version": "19.1.0"
+		}
+	},
+	"rules": {
+		"import/no-cycle": "warn",
+		"import/no-self-import": "error",
+		"import/no-duplicates": "warn",
+		"unicorn/no-null": "off",
+		"unicorn/filename-case": "off",
+		"unicorn/prevent-abbreviations": "off"
+	},
+	"ignorePatterns": ["node_modules", "dist"]
+}
+

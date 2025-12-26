@@ -211,7 +211,7 @@ import { usePageTracking } from '~/lib/posthog'
 
 export default function MyRoute() {
   usePageTracking()
-  
+
   return <div>My Page</div>
 }
 ```
@@ -225,14 +225,14 @@ import { usePostHog } from '@posthog/react'
 
 export default function MyComponent() {
   const posthog = usePostHog()
-  
+
   const handleClick = () => {
     posthog?.capture('button_clicked', {
       button_name: 'cta_button',
       location: 'hero_section',
     })
   }
-  
+
   return <button onClick={handleClick}>Click me</button>
 }
 ```
@@ -246,7 +246,7 @@ import { useFeatureFlagEnabled } from 'posthog-js/react'
 
 export default function MyComponent() {
   const showNewFeature = useFeatureFlagEnabled('new_feature')
-  
+
   return showNewFeature ? <NewFeature /> : <OldFeature />
 }
 ```

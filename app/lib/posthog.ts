@@ -7,13 +7,12 @@ import { useLocation } from 'react-router'
  * Call this in your route components to track page views
  */
 export function usePageTracking() {
-  const posthog = usePostHog()
-  const location = useLocation()
+	const posthog = usePostHog()
+	const location = useLocation()
 
-  useEffect(() => {
-    if (posthog) {
-      posthog.capture('$pageview')
-    }
-  }, [location.pathname, posthog])
+	useEffect(() => {
+		if (posthog) {
+			posthog.capture('$pageview')
+		}
+	}, [location.pathname, posthog])
 }
-

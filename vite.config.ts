@@ -1,81 +1,81 @@
-import { reactRouter } from "@react-router/dev/vite";
-import { cloudflare } from "@cloudflare/vite-plugin";
-import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
-import tailwindcss from "@tailwindcss/vite";
-import { defineConfig, type Plugin } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
+import { reactRouter } from '@react-router/dev/vite'
+import { cloudflare } from '@cloudflare/vite-plugin'
+import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
+import tailwindcss from '@tailwindcss/vite'
+import { defineConfig, type Plugin } from 'vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 // Remove SSR externals from config to ensure compatibility with Cloudflare Workers
 function removeExternals<T>(config: T): T {
-	if (!config || typeof config !== "object") return config;
-	const c = config as Record<string, unknown>;
+	if (!config || typeof config !== 'object') return config
+	const c = config as Record<string, unknown>
 	// Remove SSR externals that conflict with Cloudflare Workers
-	const envs = c.environments as Record<string, unknown> | undefined;
-	const ssrEnv = envs?.ssr as Record<string, unknown> | undefined;
-	const resolve = ssrEnv?.resolve as Record<string, unknown> | undefined;
+	const envs = c.environments as Record<string, unknown> | undefined
+	const ssrEnv = envs?.ssr as Record<string, unknown> | undefined
+	const resolve = ssrEnv?.resolve as Record<string, unknown> | undefined
 	if (resolve?.external) {
-		delete resolve.external;
+		delete resolve.external
 	}
-	const ssr = c.ssr as Record<string, unknown> | undefined;
+	const ssr = c.ssr as Record<string, unknown> | undefined
 	if (ssr?.external) {
-		delete ssr.external;
+		delete ssr.external
 	}
-	return config;
+	return config
 }
 
 // Wrap vanilla-extract plugin to prevent SSR externalization for Cloudflare Workers
 function vanillaExtractCloudflare(): Plugin[] {
-	const vePlugins = vanillaExtractPlugin();
-	const plugins = Array.isArray(vePlugins) ? vePlugins : [vePlugins];
+	const vePlugins = vanillaExtractPlugin()
+	const plugins = Array.isArray(vePlugins) ? vePlugins : [vePlugins]
 
 	return plugins.map((plugin): Plugin => {
-		if (!plugin.config) return plugin;
+		if (!plugin.config) return plugin
 
 		const originalConfig = plugin.config as
 			| ((...args: unknown[]) => unknown)
-			| { handler: (...args: unknown[]) => unknown };
+			| { handler: (...args: unknown[]) => unknown }
 
 		// Handle function hook format
-		if (typeof originalConfig === "function") {
+		if (typeof originalConfig === 'function') {
 			return {
 				...plugin,
 				config(...args: unknown[]) {
-					const result = originalConfig.apply(plugin, args);
+					const result = originalConfig.apply(plugin, args)
 					if (result instanceof Promise) {
-						return result.then(removeExternals);
+						return result.then(removeExternals)
 					}
-					return removeExternals(result);
+					return removeExternals(result)
 				},
-			} as Plugin;
+			} as Plugin
 		}
 
 		// Handle object hook format
-		const handler = originalConfig.handler;
+		const handler = originalConfig.handler
 		return {
 			...plugin,
 			config: {
 				...originalConfig,
 				handler(...args: unknown[]) {
-					const result = handler.apply(plugin, args);
+					const result = handler.apply(plugin, args)
 					if (result instanceof Promise) {
-						return result.then(removeExternals);
+						return result.then(removeExternals)
 					}
-					return removeExternals(result);
+					return removeExternals(result)
 				},
 			},
-		} as Plugin;
-	});
+		} as Plugin
+	})
 }
 
 export default defineConfig({
 	plugins: [
-		cloudflare({ viteEnvironment: { name: "ssr" } }),
+		cloudflare({ viteEnvironment: { name: 'ssr' } }),
 		tailwindcss(),
 		vanillaExtractCloudflare(),
 		reactRouter(),
 		tsconfigPaths(),
 	],
 	ssr: {
-		noExternal: ["posthog-js", "@posthog/react"],
+		noExternal: ['posthog-js', '@posthog/react'],
 	},
-});
+})
