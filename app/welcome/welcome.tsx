@@ -618,9 +618,9 @@ export function Welcome({ locale }: WelcomeProps) {
 			{/* App Section */}
 			<section id="app" className={styles.sectionAnchor}>
 				<div className={styles.container}>
+					<h2 className={styles.sectionTitle}>{ui.appTitle}</h2>
 					<div className={styles.splitSection}>
 						<div>
-							<h2 className={styles.sectionTitle}>{ui.appTitle}</h2>
 							<p className={styles.appText}>{ui.appText}</p>
 							<div className={styles.storeButtons}>
 								<a
@@ -641,7 +641,7 @@ export function Welcome({ locale }: WelcomeProps) {
 								</a>
 							</div>
 						</div>
-						<div className={styles.appImage}></div>
+						<div className={styles.appImage} />
 					</div>
 				</div>
 			</section>

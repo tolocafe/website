@@ -365,12 +365,14 @@ export const chip = style([
 
 // App Section
 export const splitSection = style({
-	display: 'block',
+	display: 'flex',
+	flexDirection: 'column',
+	gap: vars.space[10],
 	'@media': {
 		'(min-width: 900px)': {
-			display: 'grid',
-			gridTemplateColumns: '1fr',
-			gap: vars.space[10],
+			alignItems: 'center',
+			flexDirection: 'row',
+
 		},
 	},
 })
