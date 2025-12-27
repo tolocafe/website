@@ -1,5 +1,4 @@
-import { useOutletContext } from 'react-router'
-import type { Route } from './+types/links'
+import { type MetaArgs, useOutletContext } from 'react-router'
 import type { Locale } from '~/lib/locale'
 import * as styles from './links.css'
 
@@ -41,14 +40,14 @@ const LINKS: LinkItem[] = [
 		id: 'app-store',
 		icon: '🍎',
 		labelKey: 'appStore',
-		url: 'https://apps.apple.com/app/tolo-cafe',
+		url: 'https://apps.apple.com/app/id6749597635',
 		section: 'apps',
 	},
 	{
 		id: 'google-play',
 		icon: '🤖',
 		labelKey: 'googlePlay',
-		url: 'https://play.google.com/store/apps/details?id=cafe.tolo',
+		url: 'https://play.google.com/store/apps/details?id=cafe.tolo.app',
 		section: 'apps',
 	},
 ]
@@ -58,7 +57,7 @@ const TRANSLATIONS = {
 		title: 'Enlaces - TOLO',
 		description: 'Enlaces útiles de TOLO Café',
 		heading: 'TOLO Café',
-		subtitle: 'Buen café, buena vida',
+		subtitle: 'Buen café',
 		menu: 'Ver Menú',
 		googleReviews: 'Déjanos una Reseña en Google',
 		tripadvisor: 'Visítanos en TripAdvisor',
@@ -70,7 +69,7 @@ const TRANSLATIONS = {
 		title: 'Links - TOLO',
 		description: 'Useful links for TOLO Café',
 		heading: 'TOLO Café',
-		subtitle: 'Good coffee, good life',
+		subtitle: 'Good coffee',
 		menu: 'View Menu',
 		googleReviews: 'Leave us a Google Review',
 		tripadvisor: 'Visit us on TripAdvisor',
@@ -82,7 +81,7 @@ const TRANSLATIONS = {
 		title: 'Links - TOLO',
 		description: 'Nützliche Links für TOLO Café',
 		heading: 'TOLO Café',
-		subtitle: 'Guter Kaffee, gutes Leben',
+		subtitle: 'Guter Kaffee',
 		menu: 'Menü ansehen',
 		googleReviews: 'Bewerten Sie uns auf Google',
 		tripadvisor: 'Besuchen Sie uns auf TripAdvisor',
@@ -94,7 +93,7 @@ const TRANSLATIONS = {
 		title: 'Liens - TOLO',
 		description: 'Liens utiles pour TOLO Café',
 		heading: 'TOLO Café',
-		subtitle: 'Bon café, bonne vie',
+		subtitle: 'Bon café',
 		menu: 'Voir le Menu',
 		googleReviews: 'Laissez-nous un avis Google',
 		tripadvisor: 'Visitez-nous sur TripAdvisor',
@@ -106,7 +105,7 @@ const TRANSLATIONS = {
 		title: 'リンク - TOLO',
 		description: 'TOLO Caféの便利なリンク',
 		heading: 'TOLO Café',
-		subtitle: '良いコーヒー、良い人生',
+		subtitle: '良いコーヒー',
 		menu: 'メニューを見る',
 		googleReviews: 'Googleレビューを書く',
 		tripadvisor: 'TripAdvisorで見る',
@@ -116,7 +115,7 @@ const TRANSLATIONS = {
 	},
 } as const
 
-export function meta({ params }: Route.MetaArgs) {
+export function meta({ params }: MetaArgs) {
 	const locale = (params.locale as Locale) || 'es'
 	const t = TRANSLATIONS[locale] || TRANSLATIONS.es
 
@@ -151,7 +150,6 @@ export default function Links() {
 		<main className={styles.main}>
 			<div className={styles.container}>
 				<header className={styles.header}>
-					<img src="/assets/tolo.png" alt="TOLO Café" className={styles.logo} />
 					<h1 className={styles.heading}>{t.heading}</h1>
 					<p className={styles.subtitle}>{t.subtitle}</p>
 				</header>

@@ -26,10 +26,16 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 		const acceptLanguage = request.headers.get('Accept-Language')
 		const preferredLocale = detectLocaleFromHeader(acceptLanguage)
 
-		// Redirect to the preferred locale
 		const url = new URL(request.url)
-		const pathWithoutLocale = url.pathname.replace(/^\/[^/]*/, '')
-		throw redirect(`/${preferredLocale}${pathWithoutLocale || ''}`)
+
+		// If the first segment is 2 chars, it looks like a failed locale attempt - strip it
+		// Otherwise, it's probably a path without locale prefix - keep the entire path
+		const isLikelyLocaleAttempt = locale.length === 2
+		const pathToRedirect = isLikelyLocaleAttempt
+			? url.pathname.replace(/^\/[^/]*/, '')
+			: url.pathname
+
+		throw redirect(`/${preferredLocale}${pathToRedirect}${url.search}${url.hash}`)
 	}
 
 	// Fetch locations for the footer
