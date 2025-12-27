@@ -1,3 +1,14 @@
+# Task Completion
+
+**Always run `bun run format` before finishing any task** to ensure code is properly formatted.
+
+After completing changes:
+1. Run `bun run format` to format code
+2. Run `bun run typecheck` to verify types
+3. Run `bun run lint` to check for issues
+
+---
+
 # Git Commit Policy
 
 **CRITICAL: NEVER commit or push changes without explicit user instruction.**
