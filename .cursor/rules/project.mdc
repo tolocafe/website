@@ -79,3 +79,38 @@ Located in `/studio`, runs on `localhost:3333`:
 ```bash
 cd studio && bun run dev
 ```
+
+## Project Structure
+
+```
+/workspace
+├── app/                    # Main application code
+│   ├── components/         # Reusable UI components (PascalCase folders)
+│   ├── lib/                # Utilities and helpers
+│   │   ├── locale.ts       # Locale detection and validation
+│   │   ├── sanity.ts       # Sanity client, queries, and types
+│   │   └── posthog.ts      # Analytics
+│   ├── routes/             # React Router routes (colocated with .css.ts)
+│   ├── styles/             # Global styles and design tokens
+│   └── routes.ts           # Route configuration
+├── studio/                 # Sanity Studio (separate package)
+│   └── schemaTypes/        # Content type definitions
+├── workers/                # Cloudflare Workers entry
+└── public/                 # Static assets
+```
+
+## Adding New Routes
+
+1. Create route file in `app/routes/` (e.g., `links.tsx`)
+2. Create colocated styles (e.g., `links.css.ts`)
+3. Register route in `app/routes.ts`
+4. Use `useOutletContext<LocaleContext>()` for locale access
+5. Add translations object with all supported locales
+
+## Supported Locales
+
+- `es` - Spanish (default)
+- `en` - English
+- `de` - German
+- `fr` - French
+- `ja` - Japanese

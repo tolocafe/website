@@ -151,11 +151,7 @@ export default function Links() {
 		<main className={styles.main}>
 			<div className={styles.container}>
 				<header className={styles.header}>
-					<img
-						src="/assets/tolo.png"
-						alt="TOLO Café"
-						className={styles.logo}
-					/>
+					<img src="/assets/tolo.png" alt="TOLO Café" className={styles.logo} />
 					<h1 className={styles.heading}>{t.heading}</h1>
 					<p className={styles.subtitle}>{t.subtitle}</p>
 				</header>
