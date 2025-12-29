@@ -3,12 +3,12 @@
 // Runtime types generated with workerd@1.20251210.0 2024-12-20 nodejs_compat
 declare namespace Cloudflare {
 	interface GlobalProps {
-		mainModule: typeof import("./workers/app");
+		mainModule: typeof import('./workers/app')
 	}
 	interface Env {
-		VALUE_FROM_CLOUDFLARE: "Hello from Cloudflare";
-		VITE_PUBLIC_POSTHOG_KEY: string;
-		VITE_PUBLIC_POSTHOG_HOST: string;
+		VALUE_FROM_CLOUDFLARE: 'Hello from Cloudflare'
+		VITE_PUBLIC_POSTHOG_KEY: string
+		VITE_PUBLIC_POSTHOG_HOST: string
 	}
 }
 interface Env extends Cloudflare.Env {}

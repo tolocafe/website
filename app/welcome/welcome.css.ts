@@ -372,7 +372,6 @@ export const splitSection = style({
 		'(min-width: 900px)': {
 			alignItems: 'center',
 			flexDirection: 'row',
-
 		},
 	},
 })
