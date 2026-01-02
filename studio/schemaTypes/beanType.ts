@@ -116,6 +116,13 @@ export const beanType = defineType({
 				}),
 			],
 		}),
+		defineField({
+			name: 'isActive',
+			title: 'Is Active',
+			type: 'boolean',
+			description: 'Whether this bean is currently active/available',
+			initialValue: false,
+		}),
 	],
 	preview: {
 		select: {
