@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router'
 import { isValidLocale, DEFAULT_LOCALE, type Locale } from '~/lib/locale'
 import { type Location, getLocalizedString, getLocalizedSlug } from '~/lib/sanity'
 import * as styles from './Footer.css'
-import logoLight from '~/welcome/logo-light.svg'
+import toloLogo from '~/assets/tolo.png'
 
 const APP_STORE_URL = 'https://apps.apple.com/app/tolo-buen-café/id6749597635' as const
 const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=cafe.tolo.app' as const
@@ -145,7 +145,7 @@ export function Footer({ locations = [] }: FooterProps) {
 		<footer className={styles.footer}>
 			<div className={styles.container}>
 				<div className={styles.brandSection}>
-					<img src={logoLight} alt={t.brand} className={styles.logo} />
+					<img src={toloLogo} alt={t.brand} className={styles.logo} />
 					<p className={styles.tagline}>{t.tagline}</p>
 				</div>
 
