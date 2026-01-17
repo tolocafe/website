@@ -101,7 +101,7 @@ const TRANSLATIONS = {
 		privacyPath: 'confidentialite',
 		connect: 'Suivez-nous',
 		locations: 'Emplacements',
-		downloadApp: 'Télécharger l'app',
+		downloadApp: 'Télécharger l\'app',
 		appStore: 'App Store',
 		googlePlay: 'Google Play',
 		copyright: `© ${currentYear} TOLO. Tous droits réservés.`,
