@@ -41,7 +41,7 @@ const TRANSLATIONS = {
 			'Nuestro equipo está certificado por la SCA y siempre listo para ayudarte a encontrar tu café.',
 		feature3Title: 'Una comunidad chida',
 		feature3Text:
-			'4.9★ con +100 reseñas (¡gracias!). Finalistas en competencias locales. Un espacio para convivir o trabajar.',
+			'4.9★ con +150 reseñas (¡gracias!). Finalistas en competencias locales. Un espacio para convivir o trabajar.',
 		menuTitle: '¿Qué hay?',
 		menuText:
 			'Espresso, pour overs, matcha, cold brew, chai, pan dulce, cacao y té. Café en grano también.',
@@ -75,7 +75,7 @@ const TRANSLATIONS = {
 		feature2Text: 'Our team is SCA-certified and always happy to help you find your cup.',
 		feature3Title: 'A community thing',
 		feature3Text:
-			'4.9★ with 100+ reviews (thank you!). Local competition finalists. A space to hang or get stuff done.',
+			'4.9★ with 150+ reviews (thank you!). Local competition finalists. A space to hang or get stuff done.',
 		menuTitle: 'What\u2019s here',
 		menuText:
 			'Espresso, pour overs, matcha, cold brew, chai, pastries, cacao, and tea. Whole beans too.',
@@ -109,7 +109,7 @@ const TRANSLATIONS = {
 		feature2Text: 'Unser Team ist SCA-zertifiziert und hilft dir gern, deinen Kaffee zu finden.',
 		feature3Title: 'Community-Sache',
 		feature3Text:
-			'4,9★ mit 100+ Bewertungen (danke!). Finalisten bei lokalen Wettbewerben. Ein Ort zum Abhängen oder Arbeiten.',
+			'4,9★ mit 150+ Bewertungen (danke!). Finalisten bei lokalen Wettbewerben. Ein Ort zum Abhängen oder Arbeiten.',
 		menuTitle: 'Was gibt\u2019s',
 		menuText: 'Espresso, Pour Overs, Matcha, Cold Brew, Chai, Gebäck, Kakao und Tee. Bohnen auch.',
 		connectTitle: 'Verbinde dich mit TOLO',
@@ -144,7 +144,7 @@ const TRANSLATIONS = {
 			'Notre équipe est certifiée SCA et toujours là pour t\u2019aider à trouver ton café.',
 		feature3Title: 'Un truc de communauté',
 		feature3Text:
-			'4,9★ avec 100+ avis (merci !). Finalistes de compétitions locales. Un endroit pour traîner ou bosser.',
+			'4,9★ avec 150+ avis (merci !). Finalistes de compétitions locales. Un endroit pour traîner ou bosser.',
 		menuTitle: 'Qu\u2019est-ce qu\u2019il y a',
 		menuText:
 			'Espresso, pour overs, matcha, cold brew, chai, pâtisseries, cacao et thé. Grains aussi.',
@@ -177,7 +177,7 @@ const TRANSLATIONS = {
 		feature2Text: 'SCA認定チームが、あなたの一杯探しをお手伝い。',
 		feature3Title: 'みんなの場所',
 		feature3Text:
-			'4.9★、100件以上のレビュー（ありがとう！）。地元大会のファイナリスト。集まる場所、作業する場所。',
+			'4.9★、150件以上のレビュー（ありがとう！）。地元大会のファイナリスト。集まる場所、作業する場所。',
 		menuTitle: '何がある？',
 		menuText:
 			'エスプレッソ、プアオーバー、抹茶、コールドブリュー、チャイ、焼き菓子、カカオ、紅茶。豆も。',
@@ -193,7 +193,7 @@ const UI_TRANSLATIONS = {
 			beans: 'Café en grano',
 		},
 		trustItems: [
-			{ value: '4.9★', label: '100+ reseñas' },
+			{ value: '4.9★', label: '150+ reseñas' },
 			{ value: 'Semanal', label: 'Tostado cada semana' },
 			{ value: 'App', label: 'Pide por adelantado' },
 		],
@@ -252,7 +252,7 @@ const UI_TRANSLATIONS = {
 			beans: 'Whole beans',
 		},
 		trustItems: [
-			{ value: '4.9★', label: '100+ reviews' },
+			{ value: '4.9★', label: '150+ reviews' },
 			{ value: 'Weekly', label: 'Roasted every week' },
 			{ value: 'App', label: 'Order ahead' },
 		],
@@ -310,7 +310,7 @@ const UI_TRANSLATIONS = {
 			beans: 'Bohnen',
 		},
 		trustItems: [
-			{ value: '4.9★', label: '100+ Bewertungen' },
+			{ value: '4.9★', label: '150+ Bewertungen' },
 			{ value: 'Wöchentlich', label: 'Jede Woche geröstet' },
 			{ value: 'App', label: 'Vorbestellen' },
 		],
@@ -369,7 +369,7 @@ const UI_TRANSLATIONS = {
 			beans: 'Café en grains',
 		},
 		trustItems: [
-			{ value: '4.9★', label: '100+ avis' },
+			{ value: '4.9★', label: '150+ avis' },
 			{ value: 'Hebdo', label: 'Torréfié chaque semaine' },
 			{ value: 'App', label: 'Commande à l\u2019avance' },
 		],
@@ -427,7 +427,7 @@ const UI_TRANSLATIONS = {
 			beans: '豆',
 		},
 		trustItems: [
-			{ value: '4.9★', label: 'レビュー100件+' },
+			{ value: '4.9★', label: 'レビュー150件+' },
 			{ value: '毎週', label: '毎週焙煎' },
 			{ value: 'App', label: '事前注文' },
 		],

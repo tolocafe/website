@@ -102,6 +102,12 @@ export const brand = style({
 	marginBottom: vars.space[2],
 })
 
+export const logo = style({
+	height: '32px',
+	width: 'auto',
+	marginBottom: vars.space[2],
+})
+
 export const tagline = style({
 	fontSize: vars.fontSize.sm,
 	color: 'rgba(255, 255, 255, 0.7)',

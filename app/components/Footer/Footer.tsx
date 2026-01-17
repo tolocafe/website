@@ -2,6 +2,10 @@ import { Link, useParams } from 'react-router'
 import { isValidLocale, DEFAULT_LOCALE, type Locale } from '~/lib/locale'
 import { type Location, getLocalizedString, getLocalizedSlug } from '~/lib/sanity'
 import * as styles from './Footer.css'
+import logoLight from '~/welcome/logo-light.svg'
+
+const APP_STORE_URL = 'https://apps.apple.com/app/tolo-buen-café/id6749597635' as const
+const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=cafe.tolo.app' as const
 
 const currentYear = new Date().getFullYear()
 
@@ -25,6 +29,9 @@ const TRANSLATIONS = {
 		privacyPath: 'privacidad',
 		connect: 'Síguenos',
 		locations: 'Ubicaciones',
+		downloadApp: 'Descarga la app',
+		appStore: 'App Store',
+		googlePlay: 'Google Play',
 		copyright: `© ${currentYear} TOLO. Todos los derechos reservados.`,
 	},
 	en: {
@@ -46,6 +53,9 @@ const TRANSLATIONS = {
 		privacyPath: 'privacy',
 		connect: 'Follow Us',
 		locations: 'Locations',
+		downloadApp: 'Download the app',
+		appStore: 'App Store',
+		googlePlay: 'Google Play',
 		copyright: `© ${currentYear} TOLO. All rights reserved.`,
 	},
 	de: {
@@ -67,6 +77,9 @@ const TRANSLATIONS = {
 		privacyPath: 'datenschutz',
 		connect: 'Folgen Sie uns',
 		locations: 'Standorte',
+		downloadApp: 'App herunterladen',
+		appStore: 'App Store',
+		googlePlay: 'Google Play',
 		copyright: `© ${currentYear} TOLO. Alle Rechte vorbehalten.`,
 	},
 	fr: {
@@ -88,6 +101,9 @@ const TRANSLATIONS = {
 		privacyPath: 'confidentialite',
 		connect: 'Suivez-nous',
 		locations: 'Emplacements',
+		downloadApp: 'Télécharger l'app',
+		appStore: 'App Store',
+		googlePlay: 'Google Play',
 		copyright: `© ${currentYear} TOLO. Tous droits réservés.`,
 	},
 	ja: {
@@ -109,6 +125,9 @@ const TRANSLATIONS = {
 		privacyPath: 'privacy',
 		connect: 'フォロー',
 		locations: '店舗',
+		downloadApp: 'アプリをダウンロード',
+		appStore: 'App Store',
+		googlePlay: 'Google Play',
 		copyright: `© ${currentYear} TOLO. 全著作権所有。`,
 	},
 } as const
@@ -126,7 +145,7 @@ export function Footer({ locations = [] }: FooterProps) {
 		<footer className={styles.footer}>
 			<div className={styles.container}>
 				<div className={styles.brandSection}>
-					<span className={styles.brand}>{t.brand}</span>
+					<img src={logoLight} alt={t.brand} className={styles.logo} />
 					<p className={styles.tagline}>{t.tagline}</p>
 				</div>
 
@@ -200,6 +219,26 @@ export function Footer({ locations = [] }: FooterProps) {
 							className={styles.link}
 						>
 							TikTok
+						</a>
+					</div>
+
+					<div className={styles.section}>
+						<h3 className={styles.sectionTitle}>{t.downloadApp}</h3>
+						<a
+							href={APP_STORE_URL}
+							target="_blank"
+							rel="noreferrer"
+							className={styles.link}
+						>
+							{t.appStore}
+						</a>
+						<a
+							href={GOOGLE_PLAY_URL}
+							target="_blank"
+							rel="noreferrer"
+							className={styles.link}
+						>
+							{t.googlePlay}
 						</a>
 					</div>
 				</div>
