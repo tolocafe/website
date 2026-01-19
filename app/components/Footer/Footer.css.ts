@@ -19,6 +19,7 @@ export const container = style({
 export const brandSection = style({
 	display: 'flex',
 	flexDirection: 'column',
+	alignItems: 'flex-start',
 	gap: vars.space[2],
 	maxWidth: '400px',
 })
@@ -99,6 +100,13 @@ export const brand = style({
 	fontSize: vars.fontSize['2xl'],
 	fontWeight: vars.fontWeight.bold,
 	color: vars.color.white,
+	marginBottom: vars.space[2],
+})
+
+export const logo = style({
+	display: 'block',
+	height: '32px',
+	width: 'auto',
 	marginBottom: vars.space[2],
 })
 
